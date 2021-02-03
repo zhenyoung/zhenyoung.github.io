@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zhenyoung.github.io">
-  <title>typora插入LaTex公式 | zhenyoung的博客</title>
+  <title>码制的一些问题 | zhenyoung的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="插入数学公式（LaTex）LaTex基本语法公式中的转义字符\">
+  <meta name="description" content="以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="typora插入LaTex公式">
-<meta property="og:url" content="http://zhenyoung.github.io/2021/02/02/%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/index.html">
+<meta property="og:title" content="码制的一些问题">
+<meta property="og:url" content="http://zhenyoung.github.io/2021/02/02/%E7%A0%81%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="zhenyoung的博客">
-<meta property="og:description" content="插入数学公式（LaTex）LaTex基本语法公式中的转义字符\">
+<meta property="og:description" content="以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-02T01:54:21.000Z">
-<meta property="article:modified_time" content="2021-02-02T01:55:14.158Z">
+<meta property="og:image" content="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png">
+<meta property="og:image" content="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png">
+<meta property="og:image" content="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png">
+<meta property="article:published_time" content="2021-02-02T06:57:31.000Z">
+<meta property="article:modified_time" content="2021-02-02T16:21:43.206Z">
 <meta property="article:author" content="zhenyoung">
-<meta property="article:tag" content="Typora使用">
+<meta property="article:tag" content="疑惑">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png">
   
     <link rel="alternative" href="/atom.xml" title="zhenyoung的博客" type="application/atom+xml">
   
@@ -82,9 +86,9 @@ var _hmt = _hmt || [];
 			
 				<li><a href="/">HOMEPAGE/主页</a></li>
 	        
-				<li><a href="/">ESSAY/随笔</a></li>
+				<li><a href="/archives/index.html">ARCHIVE/归档</a></li>
 	        
-				<li><a href="/photos">PHOTO/相册</a></li>
+				<li><a href="/photos/">PHOTO/相册</a></li>
 	        
 			</ul>
 		</nav>
@@ -158,9 +162,9 @@ var _hmt = _hmt || [];
 				
 					<li style="width: 33.333333333333336%"><a href="/">HOMEPAGE/主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/">ESSAY/随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives/index.html">ARCHIVE/归档</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/photos">PHOTO/相册</a></li>
+					<li style="width: 33.333333333333336%"><a href="/photos/">PHOTO/相册</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,521 +179,41 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-插入数学公式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-码制的一些问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      typora插入LaTex公式
+      码制的一些问题
     </h1>
   
 
         
-        <a href="/2021/02/02/%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-02-02T01:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-02</time>
+        <a href="/2021/02/02/%E7%A0%81%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-02-02T06:57:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-02</time>
 </a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
         
+        <!-- 添加完成 -->
+		
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="插入数学公式（LaTex）"><a href="#插入数学公式（LaTex）" class="headerlink" title="插入数学公式（LaTex）"></a>插入数学公式（LaTex）</h1><h2 id="LaTex基本语法"><a href="#LaTex基本语法" class="headerlink" title="LaTex基本语法"></a>LaTex基本语法</h2><h3 id="公式中的转义字符"><a href="#公式中的转义字符" class="headerlink" title="公式中的转义字符\"></a>公式中的转义字符\</h3><a id="more"></a>
-
-
-<table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">显示</th>
-<th align="center">命令</th>
-<th align="center">显示</th>
-<th align="center">命令</th>
-<th align="center">显示</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">\space</td>
-<td align="center">空格</td>
-<td align="center">\sum</td>
-<td align="center">$\sum$</td>
-<td align="center">\oiint</td>
-<td align="center">$\oiint$</td>
-</tr>
-<tr>
-<td align="center">\\</td>
-<td align="center">换行</td>
-<td align="center">\prod</td>
-<td align="center">$\prod$</td>
-<td align="center">\oiiint</td>
-<td align="center">$\oiiint$</td>
-</tr>
-<tr>
-<td align="center">\and,\or,\not</td>
-<td align="center">$\and,\or,\not$</td>
-<td align="center">\partial</td>
-<td align="center">$\partial$</td>
-<td align="center">%</td>
-<td align="center">$%$</td>
-</tr>
-<tr>
-<td align="center">\exist</td>
-<td align="center">$\exist$</td>
-<td align="center">\rm{d}</td>
-<td align="center">$\rm{d}$</td>
-<td align="center">\approx</td>
-<td align="center">$\approx$</td>
-</tr>
-<tr>
-<td align="center">\to</td>
-<td align="center">$\to$</td>
-<td align="center">a,b,\rm{a},\rm{b}···</td>
-<td align="center">$a,b,\rm{a},\rm{b},\cdots$</td>
-<td align="center">\leq</td>
-<td align="center">$\leq$</td>
-</tr>
-<tr>
-<td align="center">\neq</td>
-<td align="center">$\neq$</td>
-<td align="center">\nabla</td>
-<td align="center">$\nabla$</td>
-<td align="center">\geq</td>
-<td align="center">$\geq$</td>
-</tr>
-<tr>
-<td align="center">\infty,\+infty,\infty</td>
-<td align="center">$\infty,+\infty,-\infty$</td>
-<td align="center">\Delta</td>
-<td align="center">$\Delta$</td>
-<td align="center">\cdot</td>
-<td align="center">$\cdot$</td>
-</tr>
-<tr>
-<td align="center">\lim</td>
-<td align="center">$\lim$</td>
-<td align="center">\triangle</td>
-<td align="center">$\triangle$</td>
-<td align="center">\times</td>
-<td align="center">$\times$</td>
-</tr>
-<tr>
-<td align="center">\max</td>
-<td align="center">$\max$</td>
-<td align="center">\int,\iint,\iiint</td>
-<td align="center">$\int,\iint,\iiint$</td>
-<td align="center">\div</td>
-<td align="center">$\div$</td>
-</tr>
-<tr>
-<td align="center">\min</td>
-<td align="center">$\min$</td>
-<td align="center">\oint</td>
-<td align="center">$\oint$</td>
-<td align="center">\exp</td>
-<td align="center">$\exp$</td>
-</tr>
-<tr>
-<td align="center">\overline{Q}</td>
-<td align="center">$\overline{Q}$</td>
-<td align="center">\dots</td>
-<td align="center">$\dots$</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">\underline{Q}</td>
-<td align="center">$\underline{Q}$</td>
-<td align="center">\cdots</td>
-<td align="center">$\cdots$</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<h3 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h3><p>\字母发音，如下<br>$$<br>\alpha,\beta,\gamma<br>$$<br>附上一张希腊字母表，如下：</p>
-<table>
-<thead>
-<tr>
-<th align="center">序号</th>
-<th align="center">小写</th>
-<th align="left">LaTeX</th>
-<th align="left">读音</th>
-<th align="center">序号</th>
-<th align="center">大写</th>
-<th align="left">LaTeX</th>
-<th align="left">读音</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">α</td>
-<td align="left">\alpha</td>
-<td align="left">/ˈælfə/</td>
-<td align="center">31</td>
-<td align="center">Γ</td>
-<td align="left">\Gamma</td>
-<td align="left">/ˈɡæmə/</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">β</td>
-<td align="left">\beta</td>
-<td align="left">/ˈbiːtə/, US: /ˈbeɪtə/</td>
-<td align="center">32</td>
-<td align="center">Δ</td>
-<td align="left">\Delta</td>
-<td align="left">/ˈdɛltə/</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">γ</td>
-<td align="left">\gamma</td>
-<td align="left">/ˈɡæmə/</td>
-<td align="center">33</td>
-<td align="center">Θ</td>
-<td align="left">\Theta</td>
-<td align="left">/ˈθiːtə/</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">δ</td>
-<td align="left">\delta</td>
-<td align="left">/ˈdɛltə/</td>
-<td align="center">34</td>
-<td align="center">Λ</td>
-<td align="left">\Lambda</td>
-<td align="left">/ˈlæmdə/</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">ϵ</td>
-<td align="left">\epsilon</td>
-<td align="left">/ˈɛpsɪlɒn/</td>
-<td align="center">35</td>
-<td align="center">Ξ</td>
-<td align="left">\Xi</td>
-<td align="left">/zaɪ, ksaɪ/</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="center">ε</td>
-<td align="left">\varepsilon</td>
-<td align="left">/ˈɛpsɪlɒn/</td>
-<td align="center">36</td>
-<td align="center">Π</td>
-<td align="left">\Pi</td>
-<td align="left">/paɪ/</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="center">ζ</td>
-<td align="left">\zeta</td>
-<td align="left">/ˈzeɪtə/</td>
-<td align="center">37</td>
-<td align="center">Σ</td>
-<td align="left">\Sigma</td>
-<td align="left">/ˈsɪɡmə/</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">η</td>
-<td align="left">\eta</td>
-<td align="left">/ˈeɪtə/</td>
-<td align="center">38</td>
-<td align="center">Υ</td>
-<td align="left">\Upsilon</td>
-<td align="left">/ˈʌpsɪlɒn/</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">θ</td>
-<td align="left">\theta</td>
-<td align="left">/ˈθiːtə/</td>
-<td align="center">39</td>
-<td align="center">Φ</td>
-<td align="left">\Phi</td>
-<td align="left">/faɪ/</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td align="center">ϑ</td>
-<td align="left">\vartheta</td>
-<td align="left">/ˈθiːtə/</td>
-<td align="center">40</td>
-<td align="center">Ψ</td>
-<td align="left">\Psi</td>
-<td align="left">/psaɪ/</td>
-</tr>
-<tr>
-<td align="center">11</td>
-<td align="center">ι</td>
-<td align="left">\iota</td>
-<td align="left">/aɪˈoʊtə/</td>
-<td align="center">41</td>
-<td align="center">Ω</td>
-<td align="left">\Omega</td>
-<td align="left">/oʊˈmeɪɡə/</td>
-</tr>
-<tr>
-<td align="center">12</td>
-<td align="center">κ</td>
-<td align="left">\kappa</td>
-<td align="left">/ˈkæpə/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td align="center">λ</td>
-<td align="left">\lambda</td>
-<td align="left">/ˈlæmdə/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">14</td>
-<td align="center">μ</td>
-<td align="left">\mu</td>
-<td align="left">/mjuː/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">15</td>
-<td align="center">ν</td>
-<td align="left">\nu</td>
-<td align="left">/njuː/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">16</td>
-<td align="center">ξ</td>
-<td align="left">\xi</td>
-<td align="left">/zaɪ, ksaɪ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">17</td>
-<td align="center">o</td>
-<td align="left">o</td>
-<td align="left">/ˈɒmɪkrɒn/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">18</td>
-<td align="center">π</td>
-<td align="left">\pi</td>
-<td align="left">/paɪ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">19</td>
-<td align="center">ϖ</td>
-<td align="left">\varpi</td>
-<td align="left">/paɪ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">20</td>
-<td align="center">ρ</td>
-<td align="left">\rho</td>
-<td align="left">/roʊ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">21</td>
-<td align="center">ϱ</td>
-<td align="left">\varrho</td>
-<td align="left">/roʊ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">22</td>
-<td align="center">σ</td>
-<td align="left">\sigma</td>
-<td align="left">/ˈsɪɡmə/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">23</td>
-<td align="center">ς</td>
-<td align="left">\varsigma</td>
-<td align="left">/ˈsɪɡmə/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">24</td>
-<td align="center">τ</td>
-<td align="left">\tau</td>
-<td align="left">/taʊ, tɔː/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">25</td>
-<td align="center">υ</td>
-<td align="left">\upsilon</td>
-<td align="left">/ˈʌpsɪlɒn/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">26</td>
-<td align="center">ϕ</td>
-<td align="left">\phi</td>
-<td align="left">/faɪ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">27</td>
-<td align="center">φ</td>
-<td align="left">\varphi</td>
-<td align="left">/faɪ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">28</td>
-<td align="center">χ</td>
-<td align="left">\chi</td>
-<td align="left">/kaɪ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">29</td>
-<td align="center">ψ</td>
-<td align="left">\psi</td>
-<td align="left">/psaɪ/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="center">30</td>
-<td align="center">ω</td>
-<td align="left">\omega</td>
-<td align="left">/oʊˈmeɪɡə/</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h3 id="根号"><a href="#根号" class="headerlink" title="根号"></a>根号</h3><p>格式：\sqrt3，如：$\sqrt3$</p>
-<p>开多次方：\sqrt[5]3，如：$\sqrt[5]3$</p>
-<h3 id="分式"><a href="#分式" class="headerlink" title="分式"></a>分式</h3><p>格式：\frac{3x}{2y}，如：$\frac{3x}{2}$</p>
-<h3 id="上标和下标"><a href="#上标和下标" class="headerlink" title="上标和下标"></a>上标和下标</h3><p>此处以右上下标为例，正上下标到下一标题中的极限中统一讨论</p>
-<h4 id="上标"><a href="#上标" class="headerlink" title="上标"></a>上标</h4><p>格式：x^t，如：$x^t$</p>
-<h4 id="下标"><a href="#下标" class="headerlink" title="下标"></a>下标</h4><p>格式：x_i，如：$x_i$</p>
-<p>当上下标多于一个字母或符号时，需要用{}将其括起来，即：x^{\alpha t},x_{i1}，如：$x^{\alpha t},x_{i1}$</p>
-<h4 id="上下标组合"><a href="#上下标组合" class="headerlink" title="上下标组合"></a>上下标组合</h4><p>格式：a_1^2 + a_2^2 = a_3^2 ，如：$ a_1^2 + a_2^2 = a_3^2 $</p>
-<h3 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h3><ol>
-<li><p>插入行间公式：</p>
-<p>${\lim_{x \to 0^+}}$</p>
-</li>
-<li><p>插入块间公式：</p>
-</li>
-</ol>
-<p>$$<br>{\lim_{x \to 0^+}}<br>$$</p>
-<ol start="3">
-<li>由上述差别不难发现，在Typora中，若插入行间公式，则上下标显示在右下角和右上角；若插入块间公式，则上下标显示在正下方和正上方</li>
-<li>若要移动行间和快件公式的上下标的位置，则在该字符 lim 与下标符 _ 中间添加： </li>
-</ol>
-<ul>
-<li><p>若要将行间公式的上下标强制移动到上下方（一般用于在行间公式中显示上下标），则添加 \limits，如下</p>
-<p>​    $\lim\limits_{x \to 0^+}$</p>
-</li>
-<li><p>若要将块间公式的上下标强制移动到右上下放，则添加 \nolimits（一般用于在行块间公式中显示右上下标），如下：</p>
-</li>
-</ul>
-<p>$$<br>{\lim \nolimits_{x \to 0^+}}<br>$$</p>
-<ol start="5">
-<li>对于数学符号，要添加上下标，直接操作即可；对于非数学符号的普通符号如Math，若要对其添加上下标（一般是下标）则需要利用 \mathop{Math}先将其转化为数学符号，再进行添加下标的操作：$\mathop{Math} \limits_{a \to \infty}$</li>
-<li>几个经典极限如下</li>
-</ol>
-<p>$$<br>{\lim_{x \to 0}\frac{sinx}{x}=1}\<br>{\lim_{x \to \infty}(1+\frac{1}{x})^x=e}\<br>{\lim_{x \to 0}(1 + x)^{\frac{1}{x}}=e}\<br>$$</p>
-<h3 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h3><p>格式：\int_1^{+ \infty}，如：$\int_1^{+ \infty}$</p>
-<p>多重积分：\iiint_1^n，如：$\iiint_1^{+ \infty}$</p>
-<p>闭合曲线积分：\oint_C，如：$\oint \limits_C$</p>
-<p>多重闭合曲积分：\oiint_1^n，如：$\oint \limits_{l}$</p>
-<h3 id="方程组、行列式、矩阵"><a href="#方程组、行列式、矩阵" class="headerlink" title="方程组、行列式、矩阵"></a>方程组、行列式、矩阵</h3><p>$$<br>方程组：<br>\left{<br>    \begin{array}{}<br>        a_1x+b_1y+c_1z=d_1\<br>        a_2x+b_2y+c_2z=d_2\<br>        a_3x+b_3y+c_3z=d_3<br>    \end{array}<br>\right.<br>\<br>行列式：<br>\begin{vmatrix}<br>    1 &amp;    2    &amp; 3\<br>    4 &amp;    5    &amp; 6\<br>    7 &amp;    8    &amp; 9<br>\end{vmatrix}\<br>矩阵：<br>\begin{matrix} {}<br>    1 &amp;    2    &amp; 3\<br>    4 &amp;    5    &amp; 6\<br>    7 &amp;    8    &amp; 9<br>\end{matrix}<br>\ or<br>\begin{bmatrix} {}<br>    1 &amp;    2    &amp; 3\<br>    4 &amp;    5    &amp; 6\<br>    7 &amp;    8    &amp; 9<br>\end{bmatrix}<br>\ or<br>\left(<br>\begin{array}{}<br>    1 &amp;    2    &amp; 3\<br>    4 &amp;    5    &amp; 6\<br>    7 &amp;    8    &amp; 9<br>\end{array}<br>\right)<br>$$</p>
-<h2 id="几个重要的公式"><a href="#几个重要的公式" class="headerlink" title="几个重要的公式"></a>几个重要的公式</h2><h3 id="双曲函数"><a href="#双曲函数" class="headerlink" title="双曲函数"></a>双曲函数</h3><p>$$<br>双曲函数<br>\begin{cases}<br>双曲正弦函数：\sinh x = \frac{e^x - e^{-x}}{2}\<br>双曲余弦函数：\cosh x = \frac{e^x + e^{-x}}{2}<br>\end{cases}，<br>满足：\cosh^2 x - \sinh^2 x =1<br>$$</p>
-<h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$$<br>欧拉公式<br>\begin{cases}<br>e^{ix} = \cos x + i\sin x \<br>\sin x = \frac{e^{ix}-e^{-ix}}{2i}\<br>\cos x = \frac{e^{ix}+e^{-ix}}{2}\<br>\end{cases}\<br>对比上述双曲函数，不难发现，在复数域，满足<br>\begin{cases}<br>\sin ix = -i\sinh x\<br>\cos ix = \cosh x<br>\end{cases}<br>$$</p>
-<h3 id="积化和差、和差化积"><a href="#积化和差、和差化积" class="headerlink" title="积化和差、和差化积"></a>积化和差、和差化积</h3><p>$$<br>积化和差公式<br>\begin{cases}<br>\sin x \cos y = \frac{1}{2}[\sin(x+y)+\sin(x-y)]\<br>\cos x \cos y = \frac{1}{2}[\cos(x+y)+\cos(x-y)]\<br>\sin x \sin y = \frac{1}{2}[\cos(x-y)-\cos(x+y)]<br>\end{cases}<br>$$</p>
-<p>$$<br>和差化积公式<br>\begin{cases}<br>\sin x \pm \sin y = 2\sin\frac{x \pm y}{2} \cos\frac{x \mp y}{2}\<br>\cos x + \cos y = 2\cos\frac{x + y}{2} \cos\frac{x - y}{2}\<br>\cos x - \cos y = -2\sin\frac{x + y}{2} \sin\frac{x - y}{2}<br>\end{cases}<br>$$</p>
-<h3 id="正切函数"><a href="#正切函数" class="headerlink" title="正切函数"></a>正切函数</h3><p>$$<br>\begin{cases}<br>\tan(x\pm y) = \frac{\tan x\pm\tan y}{1\mp\tan x\tan y}\<br>\tan 2x = \frac{2\tan x}{1- \tan^2x}\<br>\tan^2\frac{x}{2} = \frac{1-\cos x}{1+\cos x}<br>\end{cases}<br>$$</p>
-<h3 id="万能公式"><a href="#万能公式" class="headerlink" title="万能公式"></a>万能公式</h3><p>$$<br>万能公式<br>\begin{cases}<br>\sin x = \frac{2\tan x}{1-\tan^2 x}\<br>\cos x = \frac{1- \tan^2 \frac{x}{2}}{1+\tan^2 \frac{x}{2}}\<br>\tan x = \frac{2\tan\frac{x}{2}}{1-\tan^2\frac{x}{2}}<br>\end{cases}<br>$$</p>
-<h3 id="三倍角公式"><a href="#三倍角公式" class="headerlink" title="三倍角公式"></a>三倍角公式</h3><p>$$<br>三倍角公式<br>\begin{cases}<br>\sin 3x = 3\sin x - 4\sin^3 x\<br>\cos 3x = 4\cos^3 x - 3\cos x<br>\end{cases}<br>$$</p>
+        <p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
+<a id="more"></a>
+<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
+<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
+<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
+<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
+<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
+<p>3.按照补码的定义，负数的补码，定义如下：</p>
+<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
 
       
 
@@ -720,7 +244,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Typora使用</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">疑惑</a>
         		</li>
       		
 		</ul>
@@ -776,7 +300,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhenyoung.github.iohub.io/2021/02/02/%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhenyoung.github.iohub.io/2021/02/02/%E7%A0%81%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -790,18 +314,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2021/02/02/%E5%B8%B8%E7%94%A8DOS%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/02/02/%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E8%83%BD%E5%A4%9F%E5%B8%A6%E8%B5%B0%E5%92%8C%E7%95%99%E4%B8%8B%E4%BB%80%E4%B9%88/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          常用DOS命令
+          这个博客能够带走和留下什么
         
       </div>
     </a>
   
   
-    <a href="/2021/02/02/%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">young的一些疑惑</div>
+    <a href="/2021/02/02/%E8%87%AA%E7%84%B6%E5%BA%95%E6%95%B0e%E7%9A%84%E7%94%B1%E6%9D%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自然底数e的由来</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -828,7 +352,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%EF%BC%88LaTex%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">插入数学公式（LaTex）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LaTex%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">LaTex基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%BC%8F%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="toc-number">1.1.1.</span> <span class="toc-text">公式中的转义字符\</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">希腊字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E5%8F%B7"><span class="toc-number">1.1.3.</span> <span class="toc-text">根号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%BC%8F"><span class="toc-number">1.1.4.</span> <span class="toc-text">分式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E6%A0%87%E5%92%8C%E4%B8%8B%E6%A0%87"><span class="toc-number">1.1.5.</span> <span class="toc-text">上标和下标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E6%A0%87"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">上标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E6%A0%87"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">下标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%A0%87%E7%BB%84%E5%90%88"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">上下标组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E9%99%90"><span class="toc-number">1.1.6.</span> <span class="toc-text">极限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%AF%E5%88%86"><span class="toc-number">1.1.7.</span> <span class="toc-text">积分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E7%A8%8B%E7%BB%84%E3%80%81%E8%A1%8C%E5%88%97%E5%BC%8F%E3%80%81%E7%9F%A9%E9%98%B5"><span class="toc-number">1.1.8.</span> <span class="toc-text">方程组、行列式、矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E5%85%AC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">几个重要的公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E6%9B%B2%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">双曲函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">欧拉公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%AF%E5%8C%96%E5%92%8C%E5%B7%AE%E3%80%81%E5%92%8C%E5%B7%AE%E5%8C%96%E7%A7%AF"><span class="toc-number">1.2.3.</span> <span class="toc-text">积化和差、和差化积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%87%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.4.</span> <span class="toc-text">正切函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F"><span class="toc-number">1.2.5.</span> <span class="toc-text">万能公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%80%8D%E8%A7%92%E5%85%AC%E5%BC%8F"><span class="toc-number">1.2.6.</span> <span class="toc-text">三倍角公式</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0%E5%92%8C-0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">+0和-0的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3%E8%A1%A5%E7%A0%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">求解补码的方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -957,19 +481,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Typora</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">疑惑</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Typora使用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DOS命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Git命令</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
             
             <div class="clearfix"></div>
