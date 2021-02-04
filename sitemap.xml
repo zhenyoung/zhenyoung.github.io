@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhenyoung.github.io/2021/02/03/poem1/</loc>
+    
+    <lastmod>2021-02-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zhenyoung.github.io/2021/02/04/Java/</loc>
+    
+    <lastmod>2021-02-04</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zhenyoung.github.io/2021/02/02/formula_in_Typora/</loc>
     
     <lastmod>2021-02-04</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://zhenyoung.github.io/tags/index.html</loc>
     
     <lastmod>2021-02-04</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zhenyoung.github.io/2021/02/03/poem1/</loc>
-    
-    <lastmod>2021-02-03</lastmod>
     
   </url>
   
@@ -103,6 +110,13 @@
   
   <url>
     <loc>http://zhenyoung.github.io/tags/essay/</loc>
+    <lastmod>2021-02-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zhenyoung.github.io/tags/Java/</loc>
     <lastmod>2021-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
