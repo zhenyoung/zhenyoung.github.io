@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>码制的一些问题</title>
+    <url>/2021/02/02/complement/</url>
+    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
+<a id="more"></a>
+<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
+<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
+<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
+<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
+<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
+<p>3.按照补码的定义，负数的补码，定义如下：</p>
+<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
+]]></content>
+      <tags>
+        <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Typora使用</title>
     <url>/2021/02/02/Typora_usage/</url>
     <content><![CDATA[<p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
@@ -200,22 +219,27 @@ y=x^2\\
       </tags>
   </entry>
   <entry>
-    <title>码制的一些问题</title>
-    <url>/2021/02/02/complement/</url>
-    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
+    <title>将进酒</title>
+    <url>/2021/02/03/poem1/</url>
+    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
 <a id="more"></a>
-<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
-<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
-<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
-<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
-<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
-<p>3.按照补码的定义，负数的补码，定义如下：</p>
-<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
+<center>将进酒</center>
+
+<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
+<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
+<p><center>人生得意须尽欢，莫使金樽空对月。</p>
+<p><center>天生我才必有用，千金散尽还复来。</p>
+<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
+<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
+<p><center>与君歌一曲，请君为我倾耳听。</p>
+<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
+<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
+<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
+<p><center>主人何为言少钱，径须沽取对君酌。</p>
+<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
 ]]></content>
       <tags>
-        <tag>doubt</tag>
+        <tag>essay</tag>
       </tags>
   </entry>
   <entry>
@@ -831,30 +855,6 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
       </tags>
   </entry>
   <entry>
-    <title>将进酒</title>
-    <url>/2021/02/03/poem1/</url>
-    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
-<a id="more"></a>
-<center>将进酒</center>
-
-<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
-<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
-<p><center>人生得意须尽欢，莫使金樽空对月。</p>
-<p><center>天生我才必有用，千金散尽还复来。</p>
-<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
-<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
-<p><center>与君歌一曲，请君为我倾耳听。</p>
-<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
-<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
-<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
-<p><center>主人何为言少钱，径须沽取对君酌。</p>
-<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
-]]></content>
-      <tags>
-        <tag>essay</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>这个博客能够带走和留下什么</title>
     <url>/2021/02/02/%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E8%83%BD%E5%A4%9F%E5%B8%A6%E8%B5%B0%E5%92%8C%E7%95%99%E4%B8%8B%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p><center>1.从我自己的角度，看看<b>社会和世界的样子</b></center></p>
@@ -873,7 +873,8 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
   <entry>
     <title>Java基础语法</title>
     <url>/2021/02/04/Java/</url>
-    <content><![CDATA[<p>此前学习了C语言，思维仍是面向过程的编程思想。现在开始学习Java，转变一下思路。特此写博客记录Java的知识点。关于编程语言中的一些通用的重复性内容就不再赘述，在此文中提及的基础，都是当时学习C语言时候自己埋下的坑，都是自己的血泪！！！此篇博客未完待续……</p>
+    <content><![CDATA[<p>此前学习了C语言，思维仍是面向过程的编程思想。现在开始学习Java，转变一下思路。特此写博客记录Java的知识点。关于编程语言中的一些通用的重复性内容就不再赘述，在此文中提及的基础，都是当时学习C语言时候自己埋下的坑，都是自己的血泪！！！</p>
+<p>此篇博客未完待续……</p>
 <a id="more"></a>
 <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><h3 id="1-1语言的特点"><a href="#1-1语言的特点" class="headerlink" title="1.1语言的特点"></a>1.1语言的特点</h3><ul>
 <li><p>面向对象</p>
@@ -973,7 +974,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <li><p>最新标准的 java 和 C 中自增自减的区别</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">short</span> a = <span class="number">1</span>;</span><br><span class="line">a += (a++) + (++a);<span class="comment">//此类“谭++”式表达式虽然毫无意义，甚至有点反人类，但是考试经常考</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C中先计算右边内容：1+(2+1)=4，此时由于(++a)的自增，a=3；然后进行a = a + 4的计算，所以最后结果a = 7</span></span><br><span class="line"><span class="comment">java中同样是先计算右边的内容：1+(2+1)=4，但是a的值不会因为自增而改变，仍然a = 1，然后直接进行a = a + 4的计算，结果a = 5</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">System.out.println(a);<span class="comment">//5</span></span><br></pre></td></tr></table></figure></li>
 <li><p>比较运算符</p>
-<p>==instanceof==：判断对象是否是一个类</p>
+<p><code>instanceof</code>：判断对象是否是一个类</p>
 </li>
 <li><p>逻辑运算符（操作对象必须是 boolean 型）</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C中只有&amp;&amp;、||、!（即与、或、非）三种逻辑运算符（操作对象可以是任何基本数据类型，只对值进行判断：0即为假，非0即为真）</span></span><br><span class="line"><span class="comment">java中有&amp;、|、&amp;&amp;、||、!、^（即逻辑与、逻辑或、短路与、短路或、逻辑非、逻辑异或）6种逻辑运算符，前面四种也可称单与、双与和单或、双或</span></span><br><span class="line"><span class="comment">java逻辑运算符中的&amp;、|不管前面的表达式如何，都会执行后面的表达式（比较笨），而C中无此类的逻辑运算符</span></span><br><span class="line"><span class="comment">而逻辑运算符有短路情况，即前面的表达式可以得到最终结果时，后面的表达式将不被执行（比较聪明，节省了运行时间），反之执行；在这一点上，C中的&amp;&amp;、||与java相同；</span></span><br><span class="line"><span class="comment">因此一般开发都使用&amp;&amp;、||，|和&amp;多出现在考试中</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//下面以&amp;和&amp;&amp;为例，|和||类似</span></span><br><span class="line"><span class="keyword">boolean</span> judgement1 = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span> number1 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(judgement1 &amp; (number1++ &gt; <span class="number">0</span>))</span><br><span class="line">    System.out.println(number1);<span class="comment">//2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> judgement2 = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span> number2 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span>(judgement2 &amp;&amp; (number2++ &gt; <span class="number">0</span>))</span><br><span class="line">    System.out.println(number2);<span class="comment">//1</span></span><br></pre></td></tr></table></figure></li>
@@ -1077,7 +1078,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <ul>
 <li><p>属性：直接定义在类的一对 {} 内</p>
 </li>
-<li><p>局部变量：==声明==在方法内、方法形参、代码块内、构造器形参、构造器内部的变量</p>
+<li><p>局部变量：<code>声明</code>在方法内、方法形参、代码块内、构造器形参、构造器内部的变量</p>
 </li>
 <li><p>区别</p>
 <ul>
@@ -1087,9 +1088,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <p>但是局部变量不能用修饰符修饰，否则编译不通过，报错</p>
 </li>
 <li><p>默认初始化值</p>
-<p>属性默认的初始化值如下：</p>
-<p>| 元素类型                             | 初始化值 |<br>| —————————————————— | :———: |<br>| 整型（byte、short、char、int、long） |    0     |<br>| 浮点型（float、double）              |   0.0    |<br>| 字符型（char）                       |    0     |<br>| 布尔型（boolean）                    |  false   |<br>| 引用类型（class、interface、array）  |   null   |</p>
-<p>局部变量没有默认的初始化值，因此在调用局部变量时，一定要显式赋值（调用形参时赋值即可）</p>
+<p>局部变量没有默认的初始化值，因此在调用局部变量时，一定要显式赋值（调用形参时赋值即可）。属性默认的初始化值如下<img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210204184244430.png" alt="image-20210204184244430"></p>
 </li>
 <li><p>内存中加载的位置</p>
 <p>属性加载到堆空间中（非static）。堆内变量在没有栈内变量的指向时，</p>
@@ -1111,6 +1110,9 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <p>public修饰的类名必须和源文件的名称一致</p>
 <p>一个源文件可以声明多个class类，然而只能有一个类为public所修饰，所以编译时若有多个类，便会产生多个类对应的字节码文件名（因为一个类对应一个.class字节码文件）</p>
 ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
       <tags>
         <tag>Java</tag>
       </tags>
