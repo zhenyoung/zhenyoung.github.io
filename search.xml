@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>码制的一些问题</title>
-    <url>/2021/02/02/complement/</url>
-    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
-<a id="more"></a>
-<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
-<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
-<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
-<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
-<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
-<p>3.按照补码的定义，负数的补码，定义如下：</p>
-<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
-]]></content>
-      <tags>
-        <tag>doubt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Typora使用</title>
     <url>/2021/02/02/Typora_usage/</url>
     <content><![CDATA[<p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
@@ -216,30 +197,6 @@ y=x^2\\
 ]]></content>
       <tags>
         <tag>Typora</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将进酒</title>
-    <url>/2021/02/03/poem1/</url>
-    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
-<a id="more"></a>
-<center>将进酒</center>
-
-<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
-<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
-<p><center>人生得意须尽欢，莫使金樽空对月。</p>
-<p><center>天生我才必有用，千金散尽还复来。</p>
-<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
-<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
-<p><center>与君歌一曲，请君为我倾耳听。</p>
-<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
-<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
-<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
-<p><center>主人何为言少钱，径须沽取对君酌。</p>
-<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
-]]></content>
-      <tags>
-        <tag>essay</tag>
       </tags>
   </entry>
   <entry>
@@ -852,6 +809,49 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 ]]></content>
       <tags>
         <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>码制的一些问题</title>
+    <url>/2021/02/02/complement/</url>
+    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
+<a id="more"></a>
+<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
+<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
+<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
+<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
+<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
+<p>3.按照补码的定义，负数的补码，定义如下：</p>
+<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
+]]></content>
+      <tags>
+        <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将进酒</title>
+    <url>/2021/02/03/poem1/</url>
+    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
+<a id="more"></a>
+<center>将进酒</center>
+
+<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
+<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
+<p><center>人生得意须尽欢，莫使金樽空对月。</p>
+<p><center>天生我才必有用，千金散尽还复来。</p>
+<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
+<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
+<p><center>与君歌一曲，请君为我倾耳听。</p>
+<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
+<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
+<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
+<p><center>主人何为言少钱，径须沽取对君酌。</p>
+<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
+]]></content>
+      <tags>
+        <tag>essay</tag>
       </tags>
   </entry>
   <entry>
