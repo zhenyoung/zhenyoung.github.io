@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhenyoung.github.io/2021/02/08/C_progarmming/</loc>
+    
+    <lastmod>2021-02-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zhenyoung.github.io/2021/02/02/complement/</loc>
     
     <lastmod>2021-02-05</lastmod>
@@ -95,50 +102,57 @@
 
   <url>
     <loc>http://zhenyoung.github.io/</loc>
-    <lastmod>2021-02-05</lastmod>
+    <lastmod>2021-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://zhenyoung.github.io/tags/doubt/</loc>
-    <lastmod>2021-02-05</lastmod>
+    <loc>http://zhenyoung.github.io/tags/Typora/</loc>
+    <lastmod>2021-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zhenyoung.github.io/tags/Typora/</loc>
-    <lastmod>2021-02-05</lastmod>
+    <loc>http://zhenyoung.github.io/tags/doubt/</loc>
+    <lastmod>2021-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhenyoung.github.io/tags/LaTex/</loc>
-    <lastmod>2021-02-05</lastmod>
+    <lastmod>2021-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhenyoung.github.io/tags/essay/</loc>
-    <lastmod>2021-02-05</lastmod>
+    <lastmod>2021-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zhenyoung.github.io/tags/C/</loc>
+    <lastmod>2021-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhenyoung.github.io/tags/Java/</loc>
-    <lastmod>2021-02-05</lastmod>
+    <lastmod>2021-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://zhenyoung.github.io/tags/Git/</loc>
-    <lastmod>2021-02-05</lastmod>
+    <lastmod>2021-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
