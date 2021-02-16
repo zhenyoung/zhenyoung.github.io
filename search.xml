@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>码制的一些问题</title>
-    <url>/2021/02/02/complement/</url>
-    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
-<a id="more"></a>
-<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
-<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
-<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
-<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
-<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
-<p>3.按照补码的定义，负数的补码，定义如下：</p>
-<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
-]]></content>
-      <tags>
-        <tag>doubt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Typora使用</title>
     <url>/2021/02/02/Typora_usage/</url>
     <content><![CDATA[<p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
@@ -216,6 +197,25 @@ y=x^2\\
 ]]></content>
       <tags>
         <tag>Typora</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>码制的一些问题</title>
+    <url>/2021/02/02/complement/</url>
+    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
+<a id="more"></a>
+<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
+<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
+<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
+<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
+<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
+<p>3.按照补码的定义，负数的补码，定义如下：</p>
+<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
+]]></content>
+      <tags>
+        <tag>doubt</tag>
       </tags>
   </entry>
   <entry>
@@ -799,6 +799,30 @@ e^{ix} = \cos x + i\sin x \\
       </tags>
   </entry>
   <entry>
+    <title>将进酒</title>
+    <url>/2021/02/03/poem1/</url>
+    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
+<a id="more"></a>
+<center>将进酒</center>
+
+<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
+<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
+<p><center>人生得意须尽欢，莫使金樽空对月。</p>
+<p><center>天生我才必有用，千金散尽还复来。</p>
+<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
+<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
+<p><center>与君歌一曲，请君为我倾耳听。</p>
+<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
+<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
+<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
+<p><center>主人何为言少钱，径须沽取对君酌。</p>
+<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
+]]></content>
+      <tags>
+        <tag>essay</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>自然底数e的由来</title>
     <url>/2021/02/02/origin_of_e/</url>
     <content><![CDATA[<p>与圆周率$\pi$一样，自然底数e是一个常数。然而自从知道e开始，就只记得其大致的值为2.71828182845…，却不知其从何而来，这个数有什么意义。</p>
@@ -831,30 +855,6 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
       </tags>
   </entry>
   <entry>
-    <title>将进酒</title>
-    <url>/2021/02/03/poem1/</url>
-    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
-<a id="more"></a>
-<center>将进酒</center>
-
-<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
-<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
-<p><center>人生得意须尽欢，莫使金樽空对月。</p>
-<p><center>天生我才必有用，千金散尽还复来。</p>
-<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
-<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
-<p><center>与君歌一曲，请君为我倾耳听。</p>
-<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
-<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
-<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
-<p><center>主人何为言少钱，径须沽取对君酌。</p>
-<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
-]]></content>
-      <tags>
-        <tag>essay</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>这个博客能够带走和留下什么</title>
     <url>/2021/02/02/%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2%E8%83%BD%E5%A4%9F%E5%B8%A6%E8%B5%B0%E5%92%8C%E7%95%99%E4%B8%8B%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p><center>1.从我自己的角度，看看<b>社会和世界的样子</b></center></p>
@@ -864,10 +864,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <p><center>3.记录生活的点点滴滴，<b>热爱生活</b></center></p>
 
 <a id="more"></a>
-<p>我为什么写博客？</p>
-<p>1.记录以后可能会用得到的东西（教程，心得，总结等）</p>
-<p>2.记录每天的生活和想法，热爱生活</p>
-<p>3.供多年以后追念</p>
+<p>我为什么写博客？<br>1.记录以后可能会用得到的东西（教程，心得，总结等）<br>2.记录每天的生活和想法，热爱生活<br>3.供多年以后追念</p>
 ]]></content>
   </entry>
   <entry>
@@ -1714,6 +1711,501 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <h1 id="6-使用GitHub"><a href="#6-使用GitHub" class="headerlink" title="6.使用GitHub"></a>6.使用GitHub</h1><h1 id="7-使用Gitee"><a href="#7-使用Gitee" class="headerlink" title="7.使用Gitee"></a>7.使用Gitee</h1><h1 id="8-自定义Git"><a href="#8-自定义Git" class="headerlink" title="8.自定义Git"></a>8.自定义Git</h1><h1 id="9-使用SourceTree"><a href="#9-使用SourceTree" class="headerlink" title="9.使用SourceTree"></a>9.使用SourceTree</h1>]]></content>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/02/09/Web/</url>
+    <content><![CDATA[<p>之前在写博客时有些需求是Markdown本身的语法不能满足的，必须使用HTML。，而由于Markdown最后也是将Markdown的源码转换成HTML或者XHTML文档。最近有一点时间，开始学习一些常用的HTML标签以及CSS样式。由于我自己并不是一个专业的前端工程师，学习这些知识也仅仅是为了写博客时的一些格式。所以目前主要写的是关于HTML的。以后如果我想要深入了解CSS和JS，会继续写下去。因此这篇博客并不会涵盖所有的内容，只是粗略地学习一下。</p>
+<a id="more"></a>
+<h1 id="1-网页的结构"><a href="#1-网页的结构" class="headerlink" title="1.网页的结构"></a>1.网页的结构</h1><p>根据W3C（World Wide Web Consortium，万维网联盟）的标准，一个网页主要由三部分组成：结构、表现、行为。</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210209103456336.png" alt="image-20210209103456336"></p>
+<p>结构：HTML用于描述页面的结构，类似人的骨架，是看不到的；<br>表现：CSS用于控制页面中元素的样式，类似人的皮肤、衣服等，是可以被人看到的；<br>行为：JavaScript用于响应用户操作，类似人的行为动作等。</p>
+<h1 id="2-HTML（Hypertext-Markup-Language，超文本标记语言）介绍"><a href="#2-HTML（Hypertext-Markup-Language，超文本标记语言）介绍" class="headerlink" title="2.HTML（Hypertext Markup Language，超文本标记语言）介绍"></a>2.HTML（Hypertext Markup Language，超文本标记语言）介绍</h1><p>HTML使用标签的形式来表示网页中的不同组成部分。标签一般成对出现，但是也存在一些自动结束标签，下面列举一些简单的标签。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="comment">&lt;!--文档声明，声明当前网页的版本，此处是HTML5--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="comment">&lt;!--网页的头部，不会在网页中直接出现，帮助浏览器或者搜索引擎来解析网页--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>/&gt;</span><span class="comment">&lt;!--通过meta标签来设置网页的元数据，这里是设置字符集，避免乱码问题--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--标签即元素，元素即标签--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>这是网页的标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="comment">&lt;!--title中的内容会显示在浏览器的标题栏，搜索引擎会根据title中的内容来判断网页的主要内容--&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="comment">&lt;!--body表示网页的主体，网页中所有的内容都应该写在body中--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是正文的一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>这是正文的二级标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h6</span>&gt;</span>这是正文的六级标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p1</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span> <span class="attr">size</span>=<span class="string">&#x27;16&#x27;</span>&gt;</span>这是第一个自然段<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--font标签，不推荐使用，文本的表现样式都是属于CSS的范畴，所以在HTML中font标签尽量不用--&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>&lt;!DOCTYPE html&gt;</code>告诉浏览器：网页是基于HTML5版本的。<code>&lt;html&gt;&lt;/html&gt;</code>是根标签，内部有head和body两个子标签。head标签内部有一个title子标签，写网页的标题。body标签内部即为正文内容。<code>&lt;h1&gt;&lt;/h1&gt;</code>内部写的标题是正文的一个一级标题<br>标签之中可以设置属性（字体的大小、颜色等），有些属性有属性值，有些没有。如果有属性值，则应该用引号引起来</p>
+<ul>
+<li>字符编码<br>编码：将字符转换为二进制码的过程<br>解码：将二进制码转换为字符的过程<br>字符集（charset）：编码和解码所采用的规则<br>当编码和解码所采用的字符集不同，就会出现乱码问题<br></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符集</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ASCII</code></td>
+<td>美国标准信息交换码，7位二进制位表示字符，共表示128个字符</td>
+</tr>
+<tr>
+<td><code>ISO88591</code></td>
+<td>欧洲字符编码（对ASCII码的一种扩充），8位二进制位表示字符，共表示256个字符</td>
+</tr>
+<tr>
+<td><code>GB2312</code></td>
+<td>中国字符编码（对ASCII码的一种扩充）</td>
+</tr>
+<tr>
+<td><code>GBK</code></td>
+<td>对GB2312编码的一种扩充</td>
+</tr>
+<tr>
+<td><code>UTF-8</code></td>
+<td>万国码，包含了世界上所有字符的编码格式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一般是使用UTF-8编码格式。由于ASCII码是最开始的字符编码格式，其他所有的编码格式都是基于ASCII码的扩展，所以所有的编码都能够兼容ASCII码。</p>
+<ul>
+<li>实体（转义字符）<br>在网页中，使用空格键输出的多个空格默认会被浏览器解析为一个空格，在HTML中的一些特殊符号如空格、小于号、大于号等，需要使用实体（或者称为转义字符）：<code>&amp;实体名;</code></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>实体</th>
+<th>显示字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;nbsp;</code>（none break space，即不带换行的空格）</td>
+<td>空格</td>
+</tr>
+<tr>
+<td><code>&amp;gt;</code>（大于号）</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td><code>&amp;lt;</code>（小于号）</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td><code>&amp;copy;</code>（版权符号）</td>
+<td>©</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>1个<code>&amp;nbsp;</code>代表1个空格，3个<code>&amp;nbsp;</code>代表3个空格，其他的实体也是同样的。详细的实体符号查询，<a href="https://www.w3school.com.cn/html/html_entities.asp">点这</a></p>
+<h1 id="3-标签"><a href="#3-标签" class="headerlink" title="3.标签"></a>3.标签</h1><h2 id="3-1meta标签"><a href="#3-1meta标签" class="headerlink" title="3.1meta标签"></a>3.1meta标签</h2><p>meta主要用于设置网页中的一些元数据，元数据不是给用户看的，以下为常用meta标签的属性</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>charset</code></td>
+<td style="text-align:left">指定网页中的字符集</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left">指定数据的名称</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left">指定数据的内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http-equiv</code></td>
+<td style="text-align:left">将页面重定向到另一个网站</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-1-1name属性不同时的各种情况"><a href="#3-1-1name属性不同时的各种情况" class="headerlink" title="3.1.1name属性不同时的各种情况"></a>3.1.1name属性不同时的各种情况</h3><ol>
+<li>Keywords</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;Keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,京东&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>设置一个元数据，名称为<code>Keywords</code>，值为<code>网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,京东</code>。name元素名称为Keywords表示网站的关键字，可以同时指定多个关键字，关键字使用英文逗号隔开。在上面一行代码中，如果搜索<code>网上购物</code>关键字或者<code>网上商城</code>等关键字，那么便会搜索到该网站</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210209210749079.png" alt="image-20210209210749079"></p>
+<ol>
+<li>description</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;京东JD.COM-专业的综合网上购物商城,销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品等数万个品牌优质商品.便捷、诚信的服务，为您提供愉悦的网上购物体验!&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上述代码中的<code>description</code>用于网站的描述，网站的描述会显示在搜索引擎的搜索结果中</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210209212504938.png" alt="image-20210209212504938"></p>
+<p>既然说到了搜索引擎的搜索结果，那么就提一下：title标签的内容会作为搜索结果的超链接上方的文字显示</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210209210805794.png" alt="image-20210209210805794"></p>
+<h3 id="3-1-2http-equiv属性（较少用）"><a href="#3-1-2http-equiv属性（较少用）" class="headerlink" title="3.1.2http-equiv属性（较少用）"></a>3.1.2http-equiv属性（较少用）</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;3;https://www.baidu.com&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p>上述代码将在3秒之后将网页重定向（即刷新）到百度的首页。</p>
+<h2 id="3-2语义化标签"><a href="#3-2语义化标签" class="headerlink" title="3.2语义化标签"></a>3.2语义化标签</h2><h3 id="3-2-1常见标签"><a href="#3-2-1常见标签" class="headerlink" title="3.2.1常见标签"></a>3.2.1常见标签</h3><ul>
+<li><p>标题标签：<code>&lt;h1&gt;head1&lt;/h1&gt;</code> ~ <code>&lt;h6&gt;head6&lt;/h6&gt;</code> 总共六级标签，一般情况下只会使用h1~h3，剩下的很少用。在页面中独占一行的元素称为块元素（block element）。标题标签就是一个块元素</p>
+</li>
+<li><p>段落标签：<code>&lt;p&gt;paragraph&lt;/p&gt;</code>表示页面中的一个段落，p标签也是一个块元素</p>
+</li>
+<li><p>em标签：<code>&lt;em&gt;emphasize&lt;/em&gt;</code>表示”语音语调“的一个加重。在页面中不会独占一行的元素称为行内元素（或称内联元素，inline element）</p>
+</li>
+<li><p>强调标签：<code>&lt;strong&gt;strong&lt;/strong&gt;</code>表示强调重要内容</p>
+</li>
+<li><p>引用标签：<code>&lt;blockquote&gt;blockquote&lt;/blockquote&gt;</code>用来进行换行引用。而<code>&lt;q&gt;quote&lt;/q&gt;</code>用来进行不换行引用</p>
+</li>
+<li>换行标签：<code>&lt;br/&gt;</code>用来进行换行</li>
+</ul>
+<h3 id="3-2-2布局标签（结构化）"><a href="#3-2-2布局标签（结构化）" class="headerlink" title="3.2.2布局标签（结构化）"></a>3.2.2布局标签（结构化）</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;header&gt;&lt;/header&gt;</code></td>
+<td>表示网页头部</td>
+</tr>
+<tr>
+<td><code>&lt;main&gt;&lt;/main&gt;</code></td>
+<td>表示网页主题部分，一个网页只能有一个main</td>
+</tr>
+<tr>
+<td><code>&lt;footer&gt;&lt;/footer&gt;</code></td>
+<td>表示网页底部</td>
+</tr>
+<tr>
+<td><code>&lt;nav&gt;&lt;/nav&gt;</code></td>
+<td>表示网页导航</td>
+</tr>
+<tr>
+<td><code>&lt;article&gt;&lt;/article&gt;</code></td>
+<td>表示一个独立的文章</td>
+</tr>
+<tr>
+<td><code>&lt;aside&gt;&lt;/aside&gt;</code></td>
+<td>表示与主题相关的其他内容（侧边栏）</td>
+</tr>
+<tr>
+<td><code>&lt;section&gt;&lt;/section&gt;</code></td>
+<td>表示一个独立的区块，上边的标签都不能表示时使用</td>
+</tr>
+<tr>
+<td><code>&lt;div&gt;&lt;/div&gt;</code></td>
+<td>没有语义，仅仅表示一个区块，目前仍是主要的布局元素</td>
+</tr>
+<tr>
+<td><code>&lt;span&gt;&lt;/span&gt;</code></td>
+<td>行内元素，没有语义，一般用于在网页中选中文字</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-2-3列表"><a href="#3-2-3列表" class="headerlink" title="3.2.3列表"></a>3.2.3列表</h3><p>无序列表使用<code>&lt;ul&gt;&lt;/ul&gt;</code>，有序列表使用<code>&lt;ol&gt;&lt;/ol&gt;</code>，使用<code>&lt;li&gt;list item&lt;/li&gt;</code>表示列表项。<br>定义列表使用<code>&lt;dl&gt;&lt;/dl&gt;</code>，使用<code>&lt;dt&gt;&lt;/dt&gt;</code>表示定义的内容，使用<code>&lt;dd&gt;&lt;/dd&gt;</code>来对内容进行解释说明。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;3;https://www.baidu.com&quot;&gt; --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 3秒后将页面刷新到百度首页 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- hgroup标签用来为标题分组，可以将一组相关的标题同时放到hgroup --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hgroup</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>回乡偶书&lt;/h1 &gt;</span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>其一<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">hgroup</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>一个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        鲁迅说过：<span class="tag">&lt;<span class="name">blockquote</span>&gt;</span>我没说过这句话<span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br><span class="line">        孔子说过：<span class="tag">&lt;<span class="name">q</span>&gt;</span>学而时习之，不亦乐乎<span class="tag">&lt;/<span class="name">q</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span>break return</span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>结构<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>表现<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>行为<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>结构<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>表现<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>行为<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dt</span>&gt;</span>结构<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dd</span>&gt;</span>结构表示网页的结构<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dd</span>&gt;</span>结构表示网页的结构<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dd</span>&gt;</span>结构表示网页的结构<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-3特殊标签"><a href="#3-3特殊标签" class="headerlink" title="3.3特殊标签"></a>3.3特殊标签</h2><h3 id="3-3-1超链接"><a href="#3-3-1超链接" class="headerlink" title="3.3.1超链接"></a>3.3.1超链接</h3><p>跳转到其他页面或者当前页面的其他位置，超链接也是一个行内元素。通过a标签的href属性可以跳转到目标路径。</p>
+<p>当需要跳转到一个服务器内部的页面时，一般使用相对路径，如果不写目录，则默认是在该HTML文件所在目录。<br>关于是否是在当前网页打开超链接还是在新页面打开超链接，取决于target属性值：<br><code>self</code>（默认值）在当前页面中打开超链接<br><code>blank</code>在一个新的页面中打开超链接<br></p>
+<p>href属性设置为<code>#</code>，页面不会发生跳转，而是转到当前页面的顶部的位置<br>id属性（唯一不重复的）：每一个标签都可以添加一个id属性，id属性就是元素的唯一标识，同一个页面中不能重复出现的id属性，并且是区分大小写的，一般是小写<br>只要将href属性设置为<code>#目标元素的id属性值</code>，便能跳转到目标元素处的位置</p>
+<p>暂时不知道具体的指向的超链接可写作<code>&lt;a href=&quot;javascript:;&quot;&gt;&lt;/a&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.baidu.com&quot;</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;index.html&quot;</span>&gt;</span>index.html<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;./01.html&quot;</span>&gt;</span>01.html<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;./index.html&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>index.html<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#bottom&quot;</span>&gt;</span>底部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#paragraph_4&quot;</span>&gt;</span>第4自然段<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#paragraph_9&quot;</span>&gt;</span>第9自然段<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我比现在年轻十岁的时候，获得了一个游手好闲的职业，去乡间收集民间歌谣。那一年的整个夏天，我如同一只乱飞的麻雀，游荡在知了和阳光充斥的村舍田野。我喜欢喝农民那种带有苦味的茶水，他们的茶桶就放在田埂的树下，我毫无顾忌地拿起漆满茶垢的茶碗舀水喝，还把自己的水壶灌满，与田里干活的男人说上几句废话，在姑娘因我而起的窃窃私笑里扬长而去。我曾经和一位守着瓜田的老人聊了整整一个下午，这是我有生以来瓜吃得最多的一次，当我站起来告辞时，突然发现自己像个孕妇一样步履艰难了。然后我与一位当上了祖母的女人坐在门槛上，她编着草鞋为我唱了一支《十月怀胎》。我最喜欢的是傍晚来到时，坐在农民的屋前，看着他们将提上的井水泼在地上，压住蒸腾的尘土，夕阳的光芒在树梢上照射下来，拿一把他们递过来的扇子，尝尝他们和盐一样咸的咸菜，看看几个年轻女人，和男人们说着话。</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我头戴宽边草帽，脚上穿着拖鞋，一条毛巾挂在身后的皮带上，让它像尾巴似的拍打着我的屁股。我整日张大嘴巴打着呵欠，散漫地走在田间小道上，我的拖鞋吧哒吧哒，把那些小道弄得尘土飞扬，仿佛是车轮滚滚而过时的情景。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我到处游荡，已经弄不清楚哪些村庄我曾经去过，哪些我没有去过。我走近一个村子时，常会听到孩子的喊叫：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;paragraph_4&quot;</span>&gt;</span>&quot;那个老打呵欠的人又来啦。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>于是村里人就知道那个会讲荤故事会唱酸曲的人又来了。其实所有的荤故事所有的酸曲都是从他们那里学来的，我知道他们全部的兴趣在什么地方，自然这也是我的兴趣。我曾经遇到一个哭泣的老人，他鼻青眼肿地坐在田埂上，满腹的悲哀使他变得十分激动，看到我走来他仰起脸哭声更为响亮。我问他是谁把他打成这样的？他手指挖着裤管上的泥巴，愤怒地告诉我是他那不孝的儿子，当我再问为何打他时，他支支吾吾说不清楚了，我就立刻知道他准是对儿媳干了偷鸡摸狗的勾当。还有一个晚上我打着手电赶夜路时，在一口池塘旁照到了两段赤裸的身体，一段压在另一段上面，我照着的时候两段身体纹丝不动，只是有一只手在大腿上轻轻搔痒，我赶紧熄灭手电离去。在农忙的一个中午，我走进一家敞开大门的房屋去找水喝，一个穿短裤的男人神色荒张地挡住了我，把我引到井旁，殷勤地替我打上来一桶水，随后又像耗子一样窜进了屋里。这样的事我屡见不鲜，差不多和我听到的歌谣一样多，当我望着到处都充满绿色的土地时，我就会进一步明白庄稼为何长得如此旺盛。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>那个夏天我还差一点谈情说爱，我遇到了一位赏心悦目的女孩，她黝黑的脸蛋至今还在我眼前闪闪发光。我见到她时，她卷起裤管坐在河边的青草上，摆弄着一根竹竿在照看一群肥硕的鸭子。这个十六七岁的女孩，羞怯地与我共同度过了一个炎热的下午，她每次露出笑容时都要深深地低下头去，我看着她偷偷放下卷起的裤管，又怎样将自己的光脚丫子藏到草丛里去。那个下午我信口开河，向她兜售如何带她外出游玩的计划，这个女孩又惊又喜。我当初情绪激昂，说这些也是真心实意。我只是感到和她在一起身心愉快，也不去考虑以后会是怎样。可是后来，当她三个强壮如牛的哥哥走过来时，我才吓一跳，我感到自己应该逃之夭夭了，否则我就会不得不娶她为妻。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我遇到那位名叫福贵的老人时，是夏天刚刚来到的季节。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>那天午后，我走到了一棵有着茂盛树叶的树下，田里的棉花已被收起，几个包着头巾的女人正将棉秆拔出来，她们不时抖动着屁股摔去根须上的泥巴。我摘下草帽，从身后取过毛巾擦起脸上的汗水，身旁是一口在阳光下泛黄的池塘，我就靠着树干面对池塘坐了下来，紧接着我感到自己要睡觉了，就在青草上躺下来，把草帽盖住脸，枕着背包在树荫里闭上了眼睛。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;paragraph_9&quot;</span>&gt;</span>这位比现在年轻十岁的我，躺在树叶和草丛中间，睡了两个小时。其间有几只蚂蚁爬到了我的腿上，我沉睡中的手指依然准确地将它们弹走。后来仿佛是来到了水边，一位老人撑着竹筏在远处响亮地吆喝。我从睡梦里挣脱而出，吆喝声在现实里清晰地传来，我起身后，看到近旁田里一个老人正在开导一头老牛。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>犁田的老牛或许已经深感疲倦，它低头伫立在那里，后面赤裸着脊背扶犁的老人，对老牛的消极态度似乎不满，我听到他嗓音响亮地对牛说道：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;做牛耕田，做狗看家，做和尚化缘，做鸡报晓，做女人织布，哪只牛不耕田？这可是自古就有的道理，走呀，走呀。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>疲倦的老牛听到老人的吆喝后，仿佛知错般地抬起了头，拉着犁往前走去。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我看到老人的脊背和牛背一样黝黑，两个进入垂暮的生命将那块古板的田地耕得哗哗翻动，犹如水面上掀起的波浪。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>随后，我听到老人粗哑却令人感动的嗓音，他唱起了旧日的歌谣，先是口依呀啦呀唱出长长的引子，接着出现两句歌词-- 皇帝招我做女婿，　　路远迢迢我不去。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>因为路途遥远，不愿去做皇帝的女婿。老人的自鸣得意让我失声而笑。可能是牛放慢了脚步，老人又吆喝起来：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;二喜，有庆不要偷懒；家珍，凤霞耕得好；苦根也行啊。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>一头牛竟会有这么多名字？我好奇地走到田边，问走近的老人：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;这牛有多少名字？&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>老人扶住犁站下来，他将我上下打量一番后问：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;你是城里人吧？&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;是的。&quot;我点点头。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>老人得意起来，&quot;我一眼就看出来了。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我说：&quot;这牛究竟有多少名字？&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>老人回答：&quot;这牛叫福贵，就一个名字。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;可你刚才叫了几个名字。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;噢--&quot;老人高兴地笑起来，他神秘地向我招招手，当我凑过去时，他欲说又止，他看到牛正抬着头，就训斥它：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;你别偷听，把头低下。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>牛果然低下了头，这时老人悄声对我说：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;我怕它知道只有自己在耕田，就多叫出几个名字去骗它，它听到还有别的牛也在耕田，就不会不高兴，耕田也就起劲啦。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>老人黝黑的脸在阳光里笑得十分生动，脸上的皱纹欢乐地游动着，里面镶满了泥土，就如布满田间的小道。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这位老人后来和我一起坐在了那棵茂盛的树下，在那个充满阳光的下午，他向我讲述了自己。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>四十多年前，我爹常在这里走来走去，他穿着一身黑颜色的绸衣，总是把双手背在身后，他出门时常对我娘说：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;我到自己的地上去走走。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我爹走在自己的田产上，干活的佃户见了，都要双手握住锄头恭敬地叫一声：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;老爷。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我爹走到了城里，城里人见了都叫他先生。我爹是很有身份的人，可他拉屎时就像个穷人了。他不爱在屋里床边的马桶上拉屎，跟牲畜似的喜欢到野地里去拉屎。每天到了傍晚的时候，我爹打着饱嗝，那声响和青蛙叫唤差不多，走出屋去，慢吞吞地朝村口的粪缸走去。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>走到了粪缸旁，他嫌缸沿脏，就抬脚踩上去蹲在上面。我爹年纪大了，屎也跟着老了，出来不容易，那时候我们全家人都会听到他在村口嗷嗷叫着。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>几十年来我爹一直这样拉屎，到了六十多岁还能在粪缸上一蹲就是半晌，那两条腿就和鸟爪一样有劲。我爹喜欢看着天色慢慢黑下来，罩住他的田地。我女儿凤霞到了三、四岁，常跑到村口去看她爷爷拉屎，我爹毕竟年纪大了，蹲在粪缸上腿有些哆嗦，凤霞就问他：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;爷爷，你为什么动呀？&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我爹说：&quot;是风吹的。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>那时候我们家境还没有败落，我们徐家有一百多亩地，从这里一直到那边工厂的烟囱，都是我家的。我爹和我，是远近闻名的阔老爷和阔少爷，我们走路时鞋子的声响，都像是铜钱碰来撞去的。我女人家珍，是城里米行老板的女儿，她也是有钱人家出生的。有钱人嫁给有钱人，就是把钱堆起来，钱在钱上面哗哗地流，这样的声音我有四十年没有听到了。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是我们徐家的败家子，用我爹的话说，我是他的孽子。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我念过几年私塾，穿长衫的私塾先生叫我念一段书时，是我最高兴的。我站起来，拿着本线装的《千字文》，对私塾先生说：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;好好听着，爹给你念一段。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>年过花甲的私塾先生对我爹说：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;你家少爷长大了准能当个二流子。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我从小就不可救药，这是我爹的话。私塾先生说我是朽木不可雕也。现在想想他们都说对了，当初我可不这么想，我想我有钱呵，我是徐家仅有的一根香火，我要是灭了，徐家就得断子绝孙。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>上私塾时我从来不走路，都是我家一个雇工背着我去，放学时他已经恭恭敬敬地弯腰蹲在那里了，我骑上去后拍拍雇工的脑袋，说一声：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;长根，跑呀。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>雇工长根就跑起来，我在上面一颠一颠的，像是一只在树梢上的麻雀。我说一声：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;飞呀。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>长根就一步一跳，做出一副飞的样子。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我长大以后喜欢往城里跑，常常是十天半月不回家。我穿着白色的丝绸衣衫，头发抹得光滑透亮，往镜子前一站，我看到自己满脑袋的黑油漆，一副有钱人的样子。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我爱往妓院钻，听那些风骚的女人整夜叽叽喳喳和哼哼哈哈，那些声音听上去像是在给我挠痒痒。做人呵，一旦嫖上以后，也就免不了要去赌。这个嫖和赌，就像是胳膊和肩膀连在一起，怎么都分不开。后来我更喜欢赌博了，嫖妓只是为了轻松一下，就跟水喝多了要去方便一下一样，说白了就是撒尿。赌博就完全不一样了，我是又痛快又紧张，特别是那个紧张，有一股叫我说不出来的舒坦。以前我是过一天和尚撞一天钟，整天有气无力，每天早晨醒来犯愁的就是这一天该怎么打发。我爹常常唉声叹气，训斥我没有光耀祖宗。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我心想光耀祖宗也不是非我莫属，我对自己说：&quot;凭什么让我放着好端端的日子不过，去想光耀祖宗这些累人的事。再说我爹年轻时也和我一样，我家祖上有两百多亩地，到他手上一折腾就剩一百多亩了。我对爹说：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;你别犯愁啦，我儿子会光耀祖宗的。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>总该给下一辈留点好事吧。我娘听了这话吃吃笑，她偷偷告诉我：&quot;我爹年轻时也这么对我爷爷说过。我心想就是嘛，他自己干不了的事硬要我来干，我怎么会答应。那时候我儿子有庆还没出来，我女儿凤霞刚好四岁。家珍怀着有庆有六个月了，自然有些难看，走路时裤裆里像是夹了个馒头似的一撇一撇，两只脚不往前往横里跨，我嫌弃她，对她说：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;你呀，风一吹肚子就要大上一圈。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>家珍从不顶撞我，听了这糟蹋她的话，她心里不乐意也只是轻轻说一句：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&quot;又不是风吹大的。&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">&quot;bottom&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>回到顶部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:;&quot;</span>&gt;</span>这是一个暂时没有指向的超链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-3-2图片标签"><a href="#3-3-2图片标签" class="headerlink" title="3.3.2图片标签"></a>3.3.2图片标签</h3><p>图片标签用于向当前页面中引入一个外部图片。使用img标签来引入外部图片，img标签是一个自结束标签，属于替换元素（基于块和行内元素之间，具有两种元素的特点）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src</td>
+<td style="text-align:center">图片的地址</td>
+</tr>
+<tr>
+<td>alt</td>
+<td style="text-align:center">图片的描述，默认不会显示，搜索引擎会根据alt中的内容来识别图片</td>
+</tr>
+<tr>
+<td>width</td>
+<td style="text-align:center">图片的宽度（单位为像素）</td>
+</tr>
+<tr>
+<td>height</td>
+<td style="text-align:center">图片的高度（单位为像素）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>图片宽度和高度如果只修改了一个，则另一个会等比例缩放，一般也只改一个属性值。</p>
+<ul>
+<li>图片格式<br>jpeg（或者jpg，两者是一样的）：支持颜色较丰富，不支持透明效果，不支持动图。一般用来显示照片。<br>gif：支持颜色较少，支持简单透明，支持动图。一般用来显示颜色单一、动图。<br>png：支持颜色丰富，支持复杂透明度，不支持动图。适合颜色丰富，复杂透明度的图片。<br>webp：谷歌推出专门用来表示网页图片的一种格式，它具备上述3中图片格式的所有优点，而且文件还小，但兼容性差。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>  <span class="attr">width</span>=<span class="string">&quot;300&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>  <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-3-3内联框架"><a href="#3-3-3内联框架" class="headerlink" title="3.3.3内联框架"></a>3.3.3内联框架</h3><p>用于向当前页面中引入一个其他页面，src属性中输入引入网页的url。frameborder属性指定内联框架的边框，0代表无边框，1代表有边框</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;https://www.qq.com&quot;</span> <span class="attr">width</span>=<span class="string">&quot;1300&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1000&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-3-4音视频标签"><a href="#3-3-4音视频标签" class="headerlink" title="3.3.4音视频标签"></a>3.3.4音视频标签</h3><p>音频使用audio标签，视频使用video标签。<br>加上controls属性就能够使其被用户控制播放，若没有写<code>controls</code>则用户在该页面是无法控制播放音频和视频的。加上loop属性，音视频就能循环播放。加上autopaly属性，音视频便能自动播放，但是这个属性基本上不用。这三个属性都是不用给值的，写上就是有，没写就是没有。此外，音视频也都是可以加上width和height属性的。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>controls</td>
+<td style="text-align:center">是否控制播放</td>
+</tr>
+<tr>
+<td>loop</td>
+<td style="text-align:center">是否循环播放</td>
+</tr>
+<tr>
+<td>autoplay</td>
+<td style="text-align:center">是否自动播放</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span> <span class="attr">loop</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/audio/MY%20ALL.mp3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">loop</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/video/Dream%20It%20Possible.mp4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="4-CSS（Cascading-Style-Sheet，层叠样式表）介绍"><a href="#4-CSS（Cascading-Style-Sheet，层叠样式表）介绍" class="headerlink" title="4.CSS（Cascading Style Sheet，层叠样式表）介绍"></a>4.CSS（Cascading Style Sheet，层叠样式表）介绍</h1><p>网页实际上是一个多层的结构，通过CSS可以分别为网页的每个层来设置样式，而最终我们能够看到的只是网页的最上边一层。凡是网页中外在表现出来的都可以算是表现。</p>
+<p>使用CSS来修改元素的样式：<br>1.使用内联样式/行内样式：在需要添加样式的标签内部写入style属性<br>2.使用内部样式表：在head标签内通过style标签使得<br>3.使用外部样式表：在同级目录中新建一个.css文件写入样式即可<br>由于表现与结构是分开的，如果使用内联样式通过style属性设置样式，那么结构与表现还是有着非常紧密的联系，为了将两者分开，所以第1种方式基本不用，舍弃掉。<br>而第2种也仅仅实在head标签内写入style样式，仅限于当前该html文件中使用。<br>现实中往往是多个html都能共用1个样式，那么第3种方式便应用广泛了。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 内部样式表（很少用）所有的p标签都共用该样式 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;style&gt;</span></span><br><span class="line"><span class="comment">    /* 所有的p标签都共用该样式 */</span></span><br><span class="line"><span class="comment">        p&#123;</span></span><br><span class="line"><span class="comment">            color:red;</span></span><br><span class="line"><span class="comment">            font-size:40px;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &lt;/style&gt; --&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 外部样式表（最常用） --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./style.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 内联样式/行内样式（基本不用） --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;p style=&quot;color:red; font-size: 50px;&quot;&gt;少小离家老大回，乡音无改鬓毛衰&lt;/p&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>落霞与孤鹜齐飞，秋水共长天一色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-1选择器"><a href="#4-1选择器" class="headerlink" title="4.1选择器"></a>4.1选择器</h2><p>内部样式表中的style标签内部是遵守CSS语法规范的，与HTML是隔离的</p>
+<h3 id="4-1-1普通选择器"><a href="#4-1-1普通选择器" class="headerlink" title="4.1.1普通选择器"></a>4.1.1普通选择器</h3><ul>
+<li>元素选择器（对应元素都使用该样式）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:blue;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>id选择器（对应id的标签使用该样式，id不能重复）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#yellow</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类选择器 <br>class属性是标签的一个属性，与id类似，不同的是class属性是可以重复使用的。一个元素可使用多个class，不同class之间使用空格隔开</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.color_orange</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:orange;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通配选择器</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="comment">/*选择页面中所有的元素*/</span></span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-2复合选择器"><a href="#4-1-2复合选择器" class="headerlink" title="4.1.2复合选择器"></a>4.1.2复合选择器</h3><ul>
+<li>交集选择器<br>选中同时符合符合多个条件的多个元素。如果交集选择器中有元素选择器，必须使用元素选择器开头，如<code>div.red</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-class">.red</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.a</span><span class="selector-class">.b</span><span class="selector-class">.c</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>并集选择器（选择器分组）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h2</span>,<span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="comment">/*h1元素或span元素都使用绿色样式*/</span></span><br><span class="line">    <span class="attribute">color</span>:green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-3关系选择器"><a href="#4-1-3关系选择器" class="headerlink" title="4.1.3关系选择器"></a>4.1.3关系选择器</h3><ul>
+<li>子元素选择器（少用）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*将div元素的子元素span使用绿色样式，有class属性为tag1的div元素的子元素span使用棕色样式*/</span></span><br><span class="line"><span class="selector-tag">div</span> &gt; <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.tag1</span> &gt; <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:brown;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>后代元素选择器（范围比子元素选择器大，因此更常用）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span> <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="comment">/*div的子元素p的子元素span使用天空蓝样式*/</span></span><br><span class="line">    <span class="attribute">color</span>:skyblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>兄弟元素选择器</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*选择下一个兄弟*/</span></span><br><span class="line"><span class="selector-tag">s</span> + <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="comment">/*选择与p元素的下一个兄弟span元素*/</span></span><br><span class="line">    <span class="attribute">color</span>:wheat;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*选择后面所有的兄弟*/</span></span><br><span class="line"><span class="selector-tag">s</span> ~ <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="comment">/*选择s后面所有的兄弟span元素*/</span></span><br><span class="line">    <span class="attribute">color</span>:thistle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-4属性选择器"><a href="#4-1-4属性选择器" class="headerlink" title="4.1.4属性选择器"></a>4.1.4属性选择器</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title]</span>&#123;</span><br><span class="line">    <span class="comment">/* 选择含有title属性的元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:blueviolet;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title=abc]</span>&#123;</span><br><span class="line">    <span class="comment">/* 选择含有title属性并且值为purple */</span></span><br><span class="line">    <span class="attribute">color</span>:purple;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title^=abc]</span>&#123;</span><br><span class="line">    <span class="comment">/* 选择title属性值以abc开头的元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:teal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title$=abc]</span>&#123;</span><br><span class="line">    <span class="comment">/* 选择title属性以abc结尾的元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:chartreuse;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title*=abc]</span>&#123;</span><br><span class="line">    <span class="comment">/* 选择title属性中含有abc的元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:coral;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-5伪类选择器"><a href="#4-1-5伪类选择器" class="headerlink" title="4.1.5伪类选择器"></a>4.1.5伪类选择器</h3><p>伪类，即不存在的类、特殊的类。用来描述一个元素的特殊状态。如：第一个子元素、被点击的元素、鼠标移入的元素……伪类一般情况下都是以<code>:</code>开头：<br><code>:first-child</code> 第一个子元素<br><code>:last-child</code> 最后一个子元素<br><code>nth-child(1)</code> 选中第1个子元素，<code>nth-child(2)</code> 选中第2个子元素……参数的特殊值见下表<br></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>特殊值</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n</td>
+<td>选中第所有子元素</td>
+</tr>
+<tr>
+<td>2n或者even</td>
+<td>选中偶数位的元素</td>
+</tr>
+<tr>
+<td>2n+1或者odd</td>
+<td>选中奇数位元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>first-of-type</code> 相同类型的第一个子元素<br><code>last-of-type</code> 相同类型中的最后一个子元素<br><code>nth-of-type</code> 选中相同类型的某个元素</p>
+<p><code>:not()</code> 否定伪类，将符合条件的元素从选择器中去除，类似取反</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-pseudo">:first-child</span>&#123;</span><br><span class="line">    <span class="comment">/* 选中ul元素的第一个子元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-pseudo">:last-child</span>&#123;</span><br><span class="line">    <span class="comment">/* 选中ul元素的最后一个子元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(3)</span>&#123;</span><br><span class="line">    <span class="comment">/* 选中ul元素中的第三个子元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:green;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-pseudo">:first-of-type</span>&#123;</span><br><span class="line">    <span class="comment">/* 选中li子元素中的第一个子元素 */</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">19px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-pseudo">:last-of-type</span>&#123;</span><br><span class="line">    <span class="comment">/* 选中li子元素中的最后一个子元素 */</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">9px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">29px</span>;</span><br><span class="line">    <span class="comment">/* 选中li子元素中的第二个li子元素 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 否定伪类 */</span></span><br><span class="line"><span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span><span class="selector-pseudo">:not(</span><span class="selector-pseudo">:nth-child(3))</span>&#123;</span><br><span class="line">    <span class="comment">/* 选中除li子元素中的第三个子元素外的li子元素 */</span></span><br><span class="line">    <span class="attribute">color</span>:yellowgreen;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">18px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>超链接的伪类<br></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 超链接的伪类 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>&#123;</span><br><span class="line">    <span class="comment">/* :link表示正常的链接 */</span></span><br><span class="line">    <span class="attribute">color</span>: teal;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span>&#123;</span><br><span class="line">    <span class="comment">/* 用来表示访问过的链接 */</span></span><br><span class="line">    <span class="attribute">color</span>:steelblue;</span><br><span class="line">    <span class="comment">/* 由于考虑到用户的隐私问题，:visited伪类只能设置颜色 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-6伪元素选择器"><a href="#4-1-6伪元素选择器" class="headerlink" title="4.1.6伪元素选择器"></a>4.1.6伪元素选择器</h3><p>伪元素：表示页面中一些特殊的并不真实存在的元素（特殊的位置）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>伪元素</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>::first-letter</code></td>
+<td>表示第一个字母</td>
+</tr>
+<tr>
+<td><code>::first-line</code></td>
+<td>表示第一行</td>
+</tr>
+<tr>
+<td><code>::selection</code></td>
+<td>表示选中的内容</td>
+</tr>
+<tr>
+<td><code>::before</code></td>
+<td>元素的开始</td>
+</tr>
+<tr>
+<td><code>::after</code></td>
+<td>元素的最后</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>注意：before和after必须结合content属性使用，并且其内容是不能被鼠标选中的</p>
+<ul>
+<li>样式的继承<br>为一个元素设置样式的同时也会应用到它的后代元素上。利用继承可以将一些通用的样式统一设置到共同的祖先元素上，这样只需设置一次即可让所有的元素都具有改样式。并不是所有的样式都会被继承，比如背景相关的，布局等相关的这些样式都不会被继承。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>邢某深知，对于一个普普通通的小捕快，骄傲自满乃是大忌，只有保持一份谦虚谨慎的赤子之心，才能使自己不断进步啊</span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是p标签中的p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 子元素p继承了祖先p元素的样式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>样式的冲突<br>当通过不同的选择器，选中相同的元素，并且为相同的样式设置不同的值时，此刻便发生了样式冲突，此时应用哪个样式由选择器的权重决定。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选择器类型</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内联样式</td>
+<td>1,0,0,0</td>
+</tr>
+<tr>
+<td>id选择器</td>
+<td>0,1,0,0</td>
+</tr>
+<tr>
+<td>元素选择器</td>
+<td>0,0,1,0</td>
+</tr>
+<tr>
+<td>通配选择器</td>
+<td>0,0,0,0</td>
+</tr>
+<tr>
+<td>继承的样式</td>
+<td>没有优先级</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>比较优先级时，需要将所有的选择器的优先级进行相加计算，最后优先级越高，则越优先显示（分组选择器各分组是单独计算的）。<br>选择器的累加不会超过其最大的数量级，类选择器也不会超过id选择器。<br>如果优先级计算之后是相同的，此时则优先使用靠下的样式</p>
+<ul>
+<li>RGB颜色<br>在CSS中可以直接使用颜色名来设置各种颜色，比如：red、blue、green、yellow等。但这样只能使用一些常见的颜色，并不能覆盖所有的颜色，十分不方便。<br>RGB值：通过三种颜色不同的浓度来调配出不同的颜色，每种颜色的范围在0~255之间。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>RGB值</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rgb(255,0,0)</td>
+<td>红色</td>
+</tr>
+<tr>
+<td>rgb(0,255,0)</td>
+<td>绿色</td>
+</tr>
+<tr>
+<td>rgb(0,0,255)</td>
+<td>蓝色</td>
+</tr>
+<tr>
+<td>rgb(255,255,255)</td>
+<td>白色</td>
+</tr>
+<tr>
+<td>rgb(0,0,0)</td>
+<td>黑色</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>RGBA：在RGB的基础之上增加了一个a表示不透明度，第四个值即表示不透明度（1表示完全不透明，0表示完全透明，.5表示半透明）。rgba(255,123,011,.5)<br>十六进制的RGB：与RGB不同的是，浓度值使用十六进制。如果颜色两位两位重复，可以进行简写：#aabbcc==#abc。<br>HSL值：Hue（色相，0 - 360）、Saturation（饱和度，0% - 100%）、Lightness（亮度，0% - 100%）。hsl(98,48%,40%,0.642)<br></p>
+<h1 id="5-布局（Layout）"><a href="#5-布局（Layout）" class="headerlink" title="5.布局（Layout）"></a>5.布局（Layout）</h1><h2 id="5-1文档流"><a href="#5-1文档流" class="headerlink" title="5.1文档流"></a>5.1文档流</h2><p>网页是一个多层结构，一层叠着一层，通过CSS可以位每一层来设置样式，而用户只能看到最顶上一层。这些层中，最底下的一层成为文档流，文档流是网页的基础，创建的元素均是在文档流中进行排列的。<br>对于用户而言，元素有两个状态：在文档流中、不在文档流中（或者叫脱离文档流）。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>块元素</th>
+<th>行内元素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在页面中独占一行（自上向下垂直排列）<br>默认宽度是父元素的全部（会把父元素撑满）<br>默认高度是被内容撑开（子元素）</td>
+<td>不会独占页面的一行，之战自身的大小<br>在页面中自左向右水平排列，且会自动换行到下一行<br>默认宽度和高度都是被内容撑开</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="5-2盒子模型（box-model）"><a href="#5-2盒子模型（box-model）" class="headerlink" title="5.2盒子模型（box model）"></a>5.2盒子模型（box model）</h2><p>CSS将页面中的所有元素都设置为一个矩形的盒子。将元素设置为矩形的盒子后，对页面的布局其实就是将不同的盒子摆放到不同的位置。每一个盒子都由以下几个部分组成：<br>内容区（content）、内边距（padding）、外框（border）、外边距（margin）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内容区</td>
+<td>相当于盒子里面的物品，存放元素的内容</td>
+</tr>
+<tr>
+<td>内边距</td>
+<td>相当于物品与盒子之间的泡沫纸</td>
+</tr>
+<tr>
+<td>外框</td>
+<td>相当于盒子的边线</td>
+</tr>
+<tr>
+<td>外边距</td>
+<td>盒子与盒子之间的距离</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/boxmodel-(3).png"/></p>
+<p>边框三种属性：宽度、颜色、样式（实现or虚线or其他）</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">200px</span>;<span class="comment">/*内容区宽度*/</span></span><br><span class="line">            <span class="attribute">height</span>: <span class="number">200px</span>;<span class="comment">/*内容区高度*/</span></span><br><span class="line">            <span class="attribute">background-color</span>: blue;<span class="comment">/*内容区颜色*/</span></span><br><span class="line"></span><br><span class="line">            <span class="attribute">border-width</span>: <span class="number">10px</span>;<span class="comment">/*边框宽度，1个值时四边均为10px*/</span></span><br><span class="line">            <span class="comment">/* 其他值时的情况 */</span></span><br><span class="line">            <span class="attribute">border-width</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;<span class="comment">/*4个值时，上10px 右20px 下30px 左40px(即顺时针方向)*/</span></span><br><span class="line">            <span class="attribute">border-width</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span>;<span class="comment">/*3个值时，上10px，左右20px，下30px*/</span></span><br><span class="line">            <span class="attribute">border-width</span>: <span class="number">10px</span> <span class="number">20px</span>;<span class="comment">/*2个值时，上下10px，左右20px*/</span></span><br><span class="line">            <span class="comment">/*也可单独设置*/</span></span><br><span class="line">            <span class="comment">/* border-top-width: 10px;</span></span><br><span class="line"><span class="comment">            border-right-width: 20px;</span></span><br><span class="line"><span class="comment">            border-bottom-width: 30px;</span></span><br><span class="line"><span class="comment">            border-left-width: 40px; */</span></span><br><span class="line"></span><br><span class="line">            <span class="attribute">color</span>:tomato;</span><br><span class="line">            <span class="attribute">border-color</span>: aqua;<span class="comment">/*也可单独设置，默认值为color值，若没有color，则默认是黑色（因为color默认值即为黑色）*/</span></span><br><span class="line">            <span class="attribute">border-style</span>: solid;<span class="comment">/*也可单独设置，默认值是none，即没有边框*/</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">/*以下这种简单的写法更常用，三者没有顺序*/</span></span><br><span class="line">            <span class="attribute">border</span>: aqua solid <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+<p>padding和margin设置同上。<br/>相邻的垂直方向外边距会发生重叠现象：兄弟元素间的响铃垂直外边距会取两者之间的较大值</p>
+<p>进度P57，未完待续……</p>
+]]></content>
+      <tags>
+        <tag>HTML</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
 </search>
