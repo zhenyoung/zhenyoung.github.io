@@ -1,224 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Typora使用</title>
-    <url>/2021/02/02/Typora_usage/</url>
-    <content><![CDATA[<p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
-<p>直到去年疫情期间在家，某天闲得无聊，就开始折腾这个软件了，觉得挺有意思的，开始学习使用。起先发现有些功能涉及到HTML，于是又花了一些时间去大致了解一下HTML。经过多次谷歌、百度之后，掌握了一些常用的功能。这两天搭好了个人博客网站，把几篇之前写的文章都上传到网站上，此篇作为第一篇。</p>
-<a id="more"></a>
-<p>以下是我自己使用了一段时间Typora之后的总结。由于Typora是Markdown编辑器，所以其是支持HTML的，但是这里仅介绍其常用的几个文本编辑功能，其他的一些HTML语法的部分我了解的也不是很多，此处暂不介绍，以后有时间的话写博客记录一下常用的HTML语法。</p>
-<h1 id="1-文章目录的创建"><a href="#1-文章目录的创建" class="headerlink" title="1.文章目录的创建"></a>1.文章目录的创建</h1><p>生成目录：在单独的一行输入[toc]或[TOC]然后回车，即可显示所有标题的目录（并且会根据后面是否继续生成标题而自动更新目录），由于目录一般都在开头，所以一般在文章第一行输入[toc]</p>
-<h1 id="2-一些常用的文本渲染"><a href="#2-一些常用的文本渲染" class="headerlink" title="2.一些常用的文本渲染"></a>2.一些常用的文本渲染</h1><p>1.文本居中，通过HTML的标签（后面简称标签）：&lt;center&gt;要居中显示的内容&lt;/center&gt;，效果：</p>
-<center>要居中显示的内容</center>
-
-<p>2.文本添加删除线：~~这是要添加删除线的内容~~，效果：<del>这是要添加删除线的内容</del></p>
-<p>3.文本添加下划线，设置粗体、斜体、粗斜体</p>
-<p><u>这是一行带下划线的语句，选中需要添加下划线的文字，再通过Ctrl+U即可为选中的文本添加下划线；同样，也通过Ctrl+U来取消下划线，</u>也可通过标签的&lt;u&gt;添加下划线的内容&lt;/u&gt;</p>
-<p>同理，<strong>Ctrl+B设置粗体/取消粗体</strong>，或者：**加粗内容**</p>
-<p><em>Ctrl+I设置斜体/取消斜体，如：This is a italics font</em>，或者*斜体内容*</p>
-<p><strong><em>Ctrl+I并且Ctrl+B设置加粗斜体，</em></strong>如：<strong><em>This is a bold and italics font</em></strong>，或者***加粗斜体内容***</p>
-<p>4.添加分割线，在单独的一行输入三个或三个以上-或者*即可添加分割线，如下</p>
-<hr>
-<h1 id="3-导入图片"><a href="#3-导入图片" class="headerlink" title="3.导入图片"></a>3.导入图片</h1><p>通过 Ctrl+Shift+I （也可输入 ![图片说明](图片路径) 来实现）然后从文件目录中添加图片，如下</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/Penguim.jpg"  /></p>
-<p>也可直接拖拽、复制粘贴过来，如下</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/Penguim.jpg" alt="Penguim"></p>
-<p><strong>注意</strong>：在所有的Markdown编辑器插入图片，如果是从网上（如从别人博客中）粘贴的图片，尚且不会出现问题；但如果是本地图片，且没有使用图床，只有在自己的电脑查看时才能显示图片，上传md文件到博客时，访问者的终端上并没有该图片，所以会无法显示。此外，由该md文件导出的其他格式文件中也无法显示图片，即显示:<img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202205311268.png" alt="image-20210202205311268">。因此需要使用图床（即储存图片的服务器），将其上传到服务器中，访问者便能将该图片从服务器中下载缓存到终端上。其实，从网上粘贴的图片也是存在服务器中，访问者访问时终端缓存下载，所以不用图床用户也可以查看。</p>
-<h1 id="4-添加超链接"><a href="#4-添加超链接" class="headerlink" title="4.添加超链接"></a>4.添加超链接</h1><p>超链接（Markdown编辑器及导出的文本文档中 Ctrl+左键 访问，导出的html和pdf中直接点击即可访问）</p>
-<p>1.&lt;&gt;中输入网址（必须加上<a href="http://），如：">http://），如：</a><a href="http://www.baidu.com">http://www.baidu.com</a></p>
-<p>2.快捷键Ctrl+K，或者<code>[不会就百度](http://www.baidu.com)</code>，[]中添加说明内容，()中输入网址，效果：<a href="http://www.baidu.com">不会就百度</a></p>
-<h1 id="5-列表和表格"><a href="#5-列表和表格" class="headerlink" title="5.列表和表格"></a>5.列表和表格</h1><h2 id="5-1列表"><a href="#5-1列表" class="headerlink" title="5.1列表"></a>5.1列表</h2><h3 id="5-1-1无序列表"><a href="#5-1-1无序列表" class="headerlink" title="5.1.1无序列表"></a>5.1.1无序列表</h3><p>在单独的一行输入 *+空格，或者 -空格，或者++空格，如下</p>
-<ul>
-<li>这是用*创建的列表</li>
-</ul>
-<ul>
-<li>这是用-创建的列表</li>
-</ul>
-<ul>
-<li>这是用+创建的列表</li>
-</ul>
-<ul>
-<li>无序列表1</li>
-<li>无序列表2（在列表后输入 Tab 即可降级，Shift + Tab 降级，如下）<ul>
-<li>无序列表3<ul>
-<li>无序列表4<ul>
-<li>有序列表5</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>也可使用Ctrl+Shift+]  对选中的文本所在段落生成无序列表</p>
-<h3 id="5-1-2有序列表"><a href="#5-1-2有序列表" class="headerlink" title="5.1.2有序列表"></a>5.1.2有序列表</h3><p>在单独的一行输入 数字+.+空格，如下</p>
-<ol>
-<li>有序列表1</li>
-<li>有序列表2（在列表后输入 Tab 即可降级，Shift + Tab 降级，如下）<ol>
-<li>有序列表3<ol>
-<li>有序列表4<ol>
-<li>有序列表5</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<p>也可使用 Ctrl+Shift+[  对选中的文本所在段落生成有序列表</p>
-<h3 id="5-1-3任务列表（不常用）"><a href="#5-1-3任务列表（不常用）" class="headerlink" title="5.1.3任务列表（不常用）"></a>5.1.3任务列表（不常用）</h3><p>在单独一行输入    -空格[空格]空格（在列表后输入 Tab 即可降级，Shift + Tab 降级，如下）</p>
-<ul>
-<li>[x] 吃饭<ul>
-<li>[x] 早上吃啥</li>
-<li>[x] 中午吃啥</li>
-<li>[x] 晚上吃啥</li>
-</ul>
-</li>
-<li>[x] 睡觉<ul>
-<li>[ ] 早上几点起</li>
-<li>[x] 晚上几点睡</li>
-</ul>
-</li>
-<li>[ ] 打豆豆<ul>
-<li>[x] 我是一个无情的点赞机器</li>
-</ul>
-</li>
-</ul>
-<p>由于Hexo的Markdown渲染引擎与Typora不同，所以这里显示不出来，特此截图</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202212546261.png" alt="image-20210202212546261"></p>
-<p>综上，Typora中，列表均可通过Tab和Shift+Tab来对列表进行升级和降级操作</p>
-<h2 id="5-2表格"><a href="#5-2表格" class="headerlink" title="5.2表格"></a>5.2表格</h2><ul>
-<li>快捷键Ctrl+T，然后设置行列即生成表格</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">姓名</th>
-<th style="text-align:center">年龄</th>
-<th style="text-align:center">性别</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">张三</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">男</td>
-</tr>
-<tr>
-<td style="text-align:center">李四</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">女</td>
-</tr>
-<tr>
-<td style="text-align:center">王二麻子</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">其他</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">张麻子</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">你猜</td>
-</tr>
-<tr>
-<td style="text-align:center">黄鹤</td>
-<td style="text-align:center">已跑路，不详</td>
-<td style="text-align:center">你再猜</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>  在表格中任意位置按下 Ctrl+回车 在该行与下行之间新建一行</p>
-<ul>
-<li>在单独的一行输入|姓名|年龄|性别|，然后回车，生成表格</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">年龄</th>
-<th style="text-align:center">姓名</th>
-<th style="text-align:center">性别</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">同上</td>
-<td style="text-align:center">同上</td>
-<td style="text-align:center">同上</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="6-引用"><a href="#6-引用" class="headerlink" title="6.引用"></a>6.引用</h1><p>引用名言，现也用来作为文章的前言，在单独的一行输入 &gt;+空格（或者Ctrl+Shift+Q），如下</p>
-<blockquote>
-<p>这是第一个引用的第一行</p>
-<p>这是第一个引用的第二行</p>
-<blockquote>
-<p>引用嵌套</p>
-<blockquote>
-<p>引用再嵌套</p>
-</blockquote>
-</blockquote>
-<p>这是第二个引用中的第一行</p>
-<p><em>这是一句斜体</em></p>
-<p><strong>这是一句粗体</strong></p>
-<p><strong><em>这是一句粗斜体</em></strong></p>
-</blockquote>
-<h1 id="7-脚注"><a href="#7-脚注" class="headerlink" title="7.脚注"></a>7.脚注</h1><p>类似书中对一些内容作一些详尽的解释，一般把解释写在文章末尾，格式：脚注[^数字]，如下</p>
-<p>饮中八仙歌<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
-<p>脚注<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
-<p>注释<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
-<h1 id="8-脚标"><a href="#8-脚标" class="headerlink" title="8.脚标"></a>8.脚标</h1><p>上脚标：<code>x^2^</code> ；下脚标：<code>H~2~O</code></p>
-<p>同<code>5.1.3任务列表</code>一样的问题，此处效果无法显示，特此截图：<img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202225535284.png" alt="image-20210202225535284"></p>
-<h1 id="9-行内代码和代码块"><a href="#9-行内代码和代码块" class="headerlink" title="9.行内代码和代码块"></a>9.行内代码和代码块</h1><h2 id="9-1行内代码"><a href="#9-1行内代码" class="headerlink" title="9.1行内代码"></a>9.1行内代码</h2><p>对于简单的一句代码或者需要强调显示的文本（本文中不能显示的格式正是用代码块来显示的），格式：<code>code or text</code>（或者选中内容，Ctrl+Shift+`），如下</p>
-<p><code>printf(&quot;笨鸟先飞&quot;);</code>    <code>笨鸟先飞</code>    <code>前文也引用了</code></p>
-<h2 id="9-2代码块"><a href="#9-2代码块" class="headerlink" title="9.2代码块"></a>9.2代码块</h2><p>```+编程语言名字（或者Ctrl+Shift+K），如C和JAVA（若没有补加语言说明，则代码不会显示高亮），然后在代码块中输入源码，如下</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, World!!!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello, World!!!&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="10-插入公式"><a href="#10-插入公式" class="headerlink" title="10.插入公式"></a>10.插入公式</h1><p>Typora中插入公式是基于LaTex排版系统的，下面仅作了解，具体的一些常用公式的排版见<a href="https://zhenyoung.github.io/2021/02/02/Typora%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">Typora插入公式</a></p>
-<h2 id="10-1插入行间公式"><a href="#10-1插入行间公式" class="headerlink" title="10.1插入行间公式"></a>10.1插入行间公式</h2><p>Ctrl+Shift+M 或者 $$+回车，如下</p>
-<script type="math/tex; mode=display">
-y=x^2\\
-\vec{a},\vec{c}\\
-\frac{1}{2}\\
-\alpha,\beta,\theta,\zeta\\</script><p>这个行间公式是单独显示的，而且默认居中对齐，</p>
-<h2 id="10-2插入块间公式"><a href="#10-2插入块间公式" class="headerlink" title="10.2插入块间公式"></a>10.2插入块间公式</h2><p><script type="math/tex">公式</script>，如：$y=x^2$，块间公式是可以在任意位置嵌入的，不能像行间公式那样单独显示</p>
-<h1 id="11-表情"><a href="#11-表情" class="headerlink" title="11.表情"></a>11.表情</h1><p>:单词:，仅支持部分表情，具体可查看官方文档</p>
-<p>同<code>5.1.3任务列表</code>一样的问题，此处效果无法显示，特此截图：<img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202215523813.png" alt="image-20210202215523813"></p>
-<h1 id="12-脚注解释"><a href="#12-脚注解释" class="headerlink" title="12.脚注解释"></a>12.脚注解释</h1><p>[^数字]:解释</p>
-<p>同<code>5.1.3任务列表</code>一样的问题，此处效果无法显示，特此截图：</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202220715217.png" alt="image-20210202220715217"></p>
-]]></content>
-      <tags>
-        <tag>Typora</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>码制的一些问题</title>
-    <url>/2021/02/02/complement/</url>
-    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
-<a id="more"></a>
-<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
-<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
-<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
-<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
-<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
-<p>3.按照补码的定义，负数的补码，定义如下：</p>
-<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
-]]></content>
-      <tags>
-        <tag>doubt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Typora插入公式</title>
     <url>/2021/02/02/formula_in_Typora/</url>
     <content><![CDATA[<p>Typora中插入公式是基于LaTex排班系统的。关于LaTex，因为并不是所有的人都懂得专业的书籍及论文的排版，而这些排版的知识的学习成本极高。LaTex相较其而言，学习成本较低，可以让一些排版和程序设计的知识也可以能在几天、甚至几小时内生成很多具有书籍质量的印刷品。</p>
@@ -799,27 +581,221 @@ e^{ix} = \cos x + i\sin x \\
       </tags>
   </entry>
   <entry>
-    <title>将进酒</title>
-    <url>/2021/02/03/poem1/</url>
-    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
+    <title>码制的一些问题</title>
+    <url>/2021/02/02/complement/</url>
+    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
 <a id="more"></a>
-<center>将进酒</center>
-
-<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
-<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
-<p><center>人生得意须尽欢，莫使金樽空对月。</p>
-<p><center>天生我才必有用，千金散尽还复来。</p>
-<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
-<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
-<p><center>与君歌一曲，请君为我倾耳听。</p>
-<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
-<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
-<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
-<p><center>主人何为言少钱，径须沽取对君酌。</p>
-<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
+<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
+<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
+<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
+<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
+<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
+<p>3.按照补码的定义，负数的补码，定义如下：</p>
+<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
 ]]></content>
       <tags>
-        <tag>essay</tag>
+        <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typora使用</title>
+    <url>/2021/02/02/Typora_usage/</url>
+    <content><![CDATA[<p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
+<p>直到去年疫情期间在家，某天闲得无聊，就开始折腾这个软件了，觉得挺有意思的，开始学习使用。起先发现有些功能涉及到HTML，于是又花了一些时间去大致了解一下HTML。经过多次谷歌、百度之后，掌握了一些常用的功能。这两天搭好了个人博客网站，把几篇之前写的文章都上传到网站上，此篇作为第一篇。</p>
+<a id="more"></a>
+<p>以下是我自己使用了一段时间Typora之后的总结。由于Typora是Markdown编辑器，所以其是支持HTML的，但是这里仅介绍其常用的几个文本编辑功能，其他的一些HTML语法的部分我了解的也不是很多，此处暂不介绍，以后有时间的话写博客记录一下常用的HTML语法。</p>
+<h1 id="1-文章目录的创建"><a href="#1-文章目录的创建" class="headerlink" title="1.文章目录的创建"></a>1.文章目录的创建</h1><p>生成目录：在单独的一行输入[toc]或[TOC]然后回车，即可显示所有标题的目录（并且会根据后面是否继续生成标题而自动更新目录），由于目录一般都在开头，所以一般在文章第一行输入[toc]</p>
+<h1 id="2-一些常用的文本渲染"><a href="#2-一些常用的文本渲染" class="headerlink" title="2.一些常用的文本渲染"></a>2.一些常用的文本渲染</h1><p>1.文本居中，通过HTML的标签（后面简称标签）：&lt;center&gt;要居中显示的内容&lt;/center&gt;，效果：</p>
+<center>要居中显示的内容</center>
+
+<p>2.文本添加删除线：~~这是要添加删除线的内容~~，效果：<del>这是要添加删除线的内容</del></p>
+<p>3.文本添加下划线，设置粗体、斜体、粗斜体</p>
+<p><u>这是一行带下划线的语句，选中需要添加下划线的文字，再通过Ctrl+U即可为选中的文本添加下划线；同样，也通过Ctrl+U来取消下划线，</u>也可通过标签的&lt;u&gt;添加下划线的内容&lt;/u&gt;</p>
+<p>同理，<strong>Ctrl+B设置粗体/取消粗体</strong>，或者：**加粗内容**</p>
+<p><em>Ctrl+I设置斜体/取消斜体，如：This is a italics font</em>，或者*斜体内容*</p>
+<p><strong><em>Ctrl+I并且Ctrl+B设置加粗斜体，</em></strong>如：<strong><em>This is a bold and italics font</em></strong>，或者***加粗斜体内容***</p>
+<p>4.添加分割线，在单独的一行输入三个或三个以上-或者*即可添加分割线，如下</p>
+<hr>
+<h1 id="3-导入图片"><a href="#3-导入图片" class="headerlink" title="3.导入图片"></a>3.导入图片</h1><p>通过 Ctrl+Shift+I （也可输入 ![图片说明](图片路径) 来实现）然后从文件目录中添加图片，如下</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/Penguim.jpg"  /></p>
+<p>也可直接拖拽、复制粘贴过来，如下</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/Penguim.jpg" alt="Penguim"></p>
+<p><strong>注意</strong>：在所有的Markdown编辑器插入图片，如果是从网上（如从别人博客中）粘贴的图片，尚且不会出现问题；但如果是本地图片，且没有使用图床，只有在自己的电脑查看时才能显示图片，上传md文件到博客时，访问者的终端上并没有该图片，所以会无法显示。此外，由该md文件导出的其他格式文件中也无法显示图片，即显示:<img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202205311268.png" alt="image-20210202205311268">。因此需要使用图床（即储存图片的服务器），将其上传到服务器中，访问者便能将该图片从服务器中下载缓存到终端上。其实，从网上粘贴的图片也是存在服务器中，访问者访问时终端缓存下载，所以不用图床用户也可以查看。</p>
+<h1 id="4-添加超链接"><a href="#4-添加超链接" class="headerlink" title="4.添加超链接"></a>4.添加超链接</h1><p>超链接（Markdown编辑器及导出的文本文档中 Ctrl+左键 访问，导出的html和pdf中直接点击即可访问）</p>
+<p>1.&lt;&gt;中输入网址（必须加上<a href="http://），如：">http://），如：</a><a href="http://www.baidu.com">http://www.baidu.com</a></p>
+<p>2.快捷键Ctrl+K，或者<code>[不会就百度](http://www.baidu.com)</code>，[]中添加说明内容，()中输入网址，效果：<a href="http://www.baidu.com">不会就百度</a></p>
+<h1 id="5-列表和表格"><a href="#5-列表和表格" class="headerlink" title="5.列表和表格"></a>5.列表和表格</h1><h2 id="5-1列表"><a href="#5-1列表" class="headerlink" title="5.1列表"></a>5.1列表</h2><h3 id="5-1-1无序列表"><a href="#5-1-1无序列表" class="headerlink" title="5.1.1无序列表"></a>5.1.1无序列表</h3><p>在单独的一行输入 *+空格，或者 -空格，或者++空格，如下</p>
+<ul>
+<li>这是用*创建的列表</li>
+</ul>
+<ul>
+<li>这是用-创建的列表</li>
+</ul>
+<ul>
+<li>这是用+创建的列表</li>
+</ul>
+<ul>
+<li>无序列表1</li>
+<li>无序列表2（在列表后输入 Tab 即可降级，Shift + Tab 降级，如下）<ul>
+<li>无序列表3<ul>
+<li>无序列表4<ul>
+<li>有序列表5</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>也可使用Ctrl+Shift+]  对选中的文本所在段落生成无序列表</p>
+<h3 id="5-1-2有序列表"><a href="#5-1-2有序列表" class="headerlink" title="5.1.2有序列表"></a>5.1.2有序列表</h3><p>在单独的一行输入 数字+.+空格，如下</p>
+<ol>
+<li>有序列表1</li>
+<li>有序列表2（在列表后输入 Tab 即可降级，Shift + Tab 降级，如下）<ol>
+<li>有序列表3<ol>
+<li>有序列表4<ol>
+<li>有序列表5</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>也可使用 Ctrl+Shift+[  对选中的文本所在段落生成有序列表</p>
+<h3 id="5-1-3任务列表（不常用）"><a href="#5-1-3任务列表（不常用）" class="headerlink" title="5.1.3任务列表（不常用）"></a>5.1.3任务列表（不常用）</h3><p>在单独一行输入    -空格[空格]空格（在列表后输入 Tab 即可降级，Shift + Tab 降级，如下）</p>
+<ul>
+<li>[x] 吃饭<ul>
+<li>[x] 早上吃啥</li>
+<li>[x] 中午吃啥</li>
+<li>[x] 晚上吃啥</li>
+</ul>
+</li>
+<li>[x] 睡觉<ul>
+<li>[ ] 早上几点起</li>
+<li>[x] 晚上几点睡</li>
+</ul>
+</li>
+<li>[ ] 打豆豆<ul>
+<li>[x] 我是一个无情的点赞机器</li>
+</ul>
+</li>
+</ul>
+<p>由于Hexo的Markdown渲染引擎与Typora不同，所以这里显示不出来，特此截图</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202212546261.png" alt="image-20210202212546261"></p>
+<p>综上，Typora中，列表均可通过Tab和Shift+Tab来对列表进行升级和降级操作</p>
+<h2 id="5-2表格"><a href="#5-2表格" class="headerlink" title="5.2表格"></a>5.2表格</h2><ul>
+<li>快捷键Ctrl+T，然后设置行列即生成表格</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">姓名</th>
+<th style="text-align:center">年龄</th>
+<th style="text-align:center">性别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">男</td>
+</tr>
+<tr>
+<td style="text-align:center">李四</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">女</td>
+</tr>
+<tr>
+<td style="text-align:center">王二麻子</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">其他</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">张麻子</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">你猜</td>
+</tr>
+<tr>
+<td style="text-align:center">黄鹤</td>
+<td style="text-align:center">已跑路，不详</td>
+<td style="text-align:center">你再猜</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  在表格中任意位置按下 Ctrl+回车 在该行与下行之间新建一行</p>
+<ul>
+<li>在单独的一行输入|姓名|年龄|性别|，然后回车，生成表格</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">年龄</th>
+<th style="text-align:center">姓名</th>
+<th style="text-align:center">性别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">同上</td>
+<td style="text-align:center">同上</td>
+<td style="text-align:center">同上</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="6-引用"><a href="#6-引用" class="headerlink" title="6.引用"></a>6.引用</h1><p>引用名言，现也用来作为文章的前言，在单独的一行输入 &gt;+空格（或者Ctrl+Shift+Q），如下</p>
+<blockquote>
+<p>这是第一个引用的第一行</p>
+<p>这是第一个引用的第二行</p>
+<blockquote>
+<p>引用嵌套</p>
+<blockquote>
+<p>引用再嵌套</p>
+</blockquote>
+</blockquote>
+<p>这是第二个引用中的第一行</p>
+<p><em>这是一句斜体</em></p>
+<p><strong>这是一句粗体</strong></p>
+<p><strong><em>这是一句粗斜体</em></strong></p>
+</blockquote>
+<h1 id="7-脚注"><a href="#7-脚注" class="headerlink" title="7.脚注"></a>7.脚注</h1><p>类似书中对一些内容作一些详尽的解释，一般把解释写在文章末尾，格式：脚注[^数字]，如下</p>
+<p>饮中八仙歌<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+<p>脚注<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+<p>注释<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
+<h1 id="8-脚标"><a href="#8-脚标" class="headerlink" title="8.脚标"></a>8.脚标</h1><p>上脚标：<code>x^2^</code> ；下脚标：<code>H~2~O</code></p>
+<p>同<code>5.1.3任务列表</code>一样的问题，此处效果无法显示，特此截图：<img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202225535284.png" alt="image-20210202225535284"></p>
+<h1 id="9-行内代码和代码块"><a href="#9-行内代码和代码块" class="headerlink" title="9.行内代码和代码块"></a>9.行内代码和代码块</h1><h2 id="9-1行内代码"><a href="#9-1行内代码" class="headerlink" title="9.1行内代码"></a>9.1行内代码</h2><p>对于简单的一句代码或者需要强调显示的文本（本文中不能显示的格式正是用代码块来显示的），格式：<code>code or text</code>（或者选中内容，Ctrl+Shift+`），如下</p>
+<p><code>printf(&quot;笨鸟先飞&quot;);</code>    <code>笨鸟先飞</code>    <code>前文也引用了</code></p>
+<h2 id="9-2代码块"><a href="#9-2代码块" class="headerlink" title="9.2代码块"></a>9.2代码块</h2><p>```+编程语言名字（或者Ctrl+Shift+K），如C和JAVA（若没有补加语言说明，则代码不会显示高亮），然后在代码块中输入源码，如下</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, World!!!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello, World!!!&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="10-插入公式"><a href="#10-插入公式" class="headerlink" title="10.插入公式"></a>10.插入公式</h1><p>Typora中插入公式是基于LaTex排版系统的，下面仅作了解，具体的一些常用公式的排版见<a href="https://zhenyoung.github.io/2021/02/02/Typora%E6%8F%92%E5%85%A5%E5%85%AC%E5%BC%8F/">Typora插入公式</a></p>
+<h2 id="10-1插入行间公式"><a href="#10-1插入行间公式" class="headerlink" title="10.1插入行间公式"></a>10.1插入行间公式</h2><p>Ctrl+Shift+M 或者 $$+回车，如下</p>
+<script type="math/tex; mode=display">
+y=x^2\\
+\vec{a},\vec{c}\\
+\frac{1}{2}\\
+\alpha,\beta,\theta,\zeta\\</script><p>这个行间公式是单独显示的，而且默认居中对齐，</p>
+<h2 id="10-2插入块间公式"><a href="#10-2插入块间公式" class="headerlink" title="10.2插入块间公式"></a>10.2插入块间公式</h2><p><script type="math/tex">公式</script>，如：$y=x^2$，块间公式是可以在任意位置嵌入的，不能像行间公式那样单独显示</p>
+<h1 id="11-表情"><a href="#11-表情" class="headerlink" title="11.表情"></a>11.表情</h1><p>:单词:，仅支持部分表情，具体可查看官方文档</p>
+<p>同<code>5.1.3任务列表</code>一样的问题，此处效果无法显示，特此截图：<img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202215523813.png" alt="image-20210202215523813"></p>
+<h1 id="12-脚注解释"><a href="#12-脚注解释" class="headerlink" title="12.脚注解释"></a>12.脚注解释</h1><p>[^数字]:解释</p>
+<p>同<code>5.1.3任务列表</code>一样的问题，此处效果无法显示，特此截图：</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202220715217.png" alt="image-20210202220715217"></p>
+]]></content>
+      <tags>
+        <tag>Typora</tag>
       </tags>
   </entry>
   <entry>
@@ -852,6 +828,30 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 ]]></content>
       <tags>
         <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将进酒</title>
+    <url>/2021/02/03/poem1/</url>
+    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
+<a id="more"></a>
+<center>将进酒</center>
+
+<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
+<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
+<p><center>人生得意须尽欢，莫使金樽空对月。</p>
+<p><center>天生我才必有用，千金散尽还复来。</p>
+<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
+<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
+<p><center>与君歌一曲，请君为我倾耳听。</p>
+<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
+<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
+<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
+<p><center>主人何为言少钱，径须沽取对君酌。</p>
+<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
+]]></content>
+      <tags>
+        <tag>essay</tag>
       </tags>
   </entry>
   <entry>
@@ -1714,16 +1714,16 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>Web前端</title>
     <url>/2021/02/09/Web/</url>
-    <content><![CDATA[<p>之前在写博客时有些需求是Markdown本身的语法不能满足的，必须使用HTML。，而由于Markdown最后也是将Markdown的源码转换成HTML或者XHTML文档。最近有一点时间，开始学习一些常用的HTML标签以及CSS样式。由于我自己并不是一个专业的前端工程师，学习这些知识也仅仅是为了写博客时的一些格式。所以目前主要写的是关于HTML的。以后如果我想要深入了解CSS和JS，会继续写下去。因此这篇博客并不会涵盖所有的内容，只是粗略地学习一下。</p>
+    <content><![CDATA[<p>之前在写博客时有些需求是Markdown本身的语法不能满足的，必须使用HTML。而由于Markdown最后也是将Markdown的源码转换成HTML或者XHTML文档。最近有一点时间，开始学习一些常用的HTML标签以及CSS样式。由于我自己并不是一个专业的前端工程师，学习这些知识也仅仅是为了写博客时的一些格式，所以目前主要写的是关于HTML的。以后如果我想要深入了解CSS和JS，会继续写下去。因此这篇博客并不会涵盖所有的内容，只是粗略地学习一下。</p>
 <a id="more"></a>
 <h1 id="1-网页的结构"><a href="#1-网页的结构" class="headerlink" title="1.网页的结构"></a>1.网页的结构</h1><p>根据W3C（World Wide Web Consortium，万维网联盟）的标准，一个网页主要由三部分组成：结构、表现、行为。</p>
 <p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210209103456336.png" alt="image-20210209103456336"></p>
 <p>结构：HTML用于描述页面的结构，类似人的骨架，是看不到的；<br>表现：CSS用于控制页面中元素的样式，类似人的皮肤、衣服等，是可以被人看到的；<br>行为：JavaScript用于响应用户操作，类似人的行为动作等。</p>
 <h1 id="2-HTML（Hypertext-Markup-Language，超文本标记语言）介绍"><a href="#2-HTML（Hypertext-Markup-Language，超文本标记语言）介绍" class="headerlink" title="2.HTML（Hypertext Markup Language，超文本标记语言）介绍"></a>2.HTML（Hypertext Markup Language，超文本标记语言）介绍</h1><p>HTML使用标签的形式来表示网页中的不同组成部分。标签一般成对出现，但是也存在一些自动结束标签，下面列举一些简单的标签。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="comment">&lt;!--文档声明，声明当前网页的版本，此处是HTML5--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="comment">&lt;!--网页的头部，不会在网页中直接出现，帮助浏览器或者搜索引擎来解析网页--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>/&gt;</span><span class="comment">&lt;!--通过meta标签来设置网页的元数据，这里是设置字符集，避免乱码问题--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--标签即元素，元素即标签--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>这是网页的标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="comment">&lt;!--title中的内容会显示在浏览器的标题栏，搜索引擎会根据title中的内容来判断网页的主要内容--&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="comment">&lt;!--body表示网页的主体，网页中所有的内容都应该写在body中--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是正文的一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>这是正文的二级标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h6</span>&gt;</span>这是正文的六级标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p1</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span> <span class="attr">size</span>=<span class="string">&#x27;16&#x27;</span>&gt;</span>这是第一个自然段<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--font标签，不推荐使用，文本的表现样式都是属于CSS的范畴，所以在HTML中font标签尽量不用--&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>&lt;!DOCTYPE html&gt;</code>告诉浏览器：网页是基于HTML5版本的。<code>&lt;html&gt;&lt;/html&gt;</code>是根标签，内部有head和body两个子标签。head标签内部有一个title子标签，写网页的标题。body标签内部即为正文内容。<code>&lt;h1&gt;&lt;/h1&gt;</code>内部写的标题是正文的一个一级标题<br>标签之中可以设置属性（字体的大小、颜色等），有些属性有属性值，有些没有。如果有属性值，则应该用引号引起来</p>
+<p><code>&lt;!DOCTYPE html&gt;</code>告诉浏览器：网页是基于HTML5版本的。<code>&lt;html&gt;&lt;/html&gt;</code>是根标签，内部有head和body两个子标签。head标签内部有一个title子标签，写网页的标题。body标签内部即为正文内容。<code>&lt;h1&gt;&lt;/h1&gt;</code>内部写的标题是正文的一个一级标题。<br>标签之中可以设置属性（字体的大小、颜色等），有些属性有属性值，有些没有。如果有属性值，则应该用引号引起来。</p>
 <ul>
 <li>字符编码<br>编码：将字符转换为二进制码的过程<br>解码：将二进制码转换为字符的过程<br>字符集（charset）：编码和解码所采用的规则<br>当编码和解码所采用的字符集不同，就会出现乱码问题<br></li>
 </ul>
@@ -1742,15 +1742,19 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 </tr>
 <tr>
 <td><code>ISO88591</code></td>
-<td>欧洲字符编码（对ASCII码的一种扩充），8位二进制位表示字符，共表示256个字符</td>
+<td>欧洲字符编码（对ASCII码的一种扩充，或者说是基于ASCII码），8位二进制位表示字符，共表示256个字符</td>
 </tr>
 <tr>
 <td><code>GB2312</code></td>
-<td>中国字符编码（对ASCII码的一种扩充）</td>
+<td>简体中文字符编码（对ASCII码的一种扩充）</td>
+</tr>
+<tr>
+<td><code>BIG5</code></td>
+<td>繁体中文字符编码（对ASCII码的一种扩充）</td>
 </tr>
 <tr>
 <td><code>GBK</code></td>
-<td>对GB2312编码的一种扩充</td>
+<td>包含<code>GB2312</code>和<code>BIG5</code></td>
 </tr>
 <tr>
 <td><code>UTF-8</code></td>
@@ -1839,16 +1843,13 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <h3 id="3-1-2http-equiv属性（较少用）"><a href="#3-1-2http-equiv属性（较少用）" class="headerlink" title="3.1.2http-equiv属性（较少用）"></a>3.1.2http-equiv属性（较少用）</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;3;https://www.baidu.com&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>上述代码将在3秒之后将网页重定向（即刷新）到百度的首页。</p>
 <h2 id="3-2语义化标签"><a href="#3-2语义化标签" class="headerlink" title="3.2语义化标签"></a>3.2语义化标签</h2><h3 id="3-2-1常见标签"><a href="#3-2-1常见标签" class="headerlink" title="3.2.1常见标签"></a>3.2.1常见标签</h3><ul>
-<li><p>标题标签：<code>&lt;h1&gt;head1&lt;/h1&gt;</code> ~ <code>&lt;h6&gt;head6&lt;/h6&gt;</code> 总共六级标签，一般情况下只会使用h1~h3，剩下的很少用。在页面中独占一行的元素称为块元素（block element）。标题标签就是一个块元素</p>
-</li>
-<li><p>段落标签：<code>&lt;p&gt;paragraph&lt;/p&gt;</code>表示页面中的一个段落，p标签也是一个块元素</p>
-</li>
-<li><p>em标签：<code>&lt;em&gt;emphasize&lt;/em&gt;</code>表示”语音语调“的一个加重。在页面中不会独占一行的元素称为行内元素（或称内联元素，inline element）</p>
-</li>
-<li><p>强调标签：<code>&lt;strong&gt;strong&lt;/strong&gt;</code>表示强调重要内容</p>
-</li>
-<li><p>引用标签：<code>&lt;blockquote&gt;blockquote&lt;/blockquote&gt;</code>用来进行换行引用。而<code>&lt;q&gt;quote&lt;/q&gt;</code>用来进行不换行引用</p>
-</li>
+<li>标题标签：<code>&lt;h1&gt;head1&lt;/h1&gt;</code> ~ <code>&lt;h6&gt;head6&lt;/h6&gt;</code> 总共六级标签，一般情况下只会使用h1~h3，剩下的很少用。在页面中独占一行的元素称为块元素（block element）。标题标签就是一个块元素</li>
+<li>段落标签：<code>&lt;p&gt;paragraph&lt;/p&gt;</code>表示页面中的一个段落，p标签也是一个块元素。</li>
+<li>倾斜标签：<code>&lt;em&gt;emphasize&lt;/em&gt;</code>、<code>&lt;i&gt;italic&lt;/i&gt;</code>倾斜文本。推荐使用em标签，语气更加强烈。</li>
+<li>加粗标签：<code>&lt;strong&gt;strong&lt;/strong&gt;</code>、<code>&lt;b&gt;bold&lt;/b&gt;</code>加粗文本。推荐使用strong标签。</li>
+<li>删除线：<code>&lt;del&gt;delete&lt;/del&gt;</code>、<code>&lt;s&gt;strikethrough&lt;/s&gt;</code>添加删除线，推荐使用del标签。</li>
+<li>下划线：<code>&lt;ins&gt;&lt;/ins&gt;</code>、<code>&lt;u&gt;underscore&lt;/u&gt;</code>添加下划线，推荐使用ins标签。</li>
+<li>引用标签：<code>&lt;blockquote&gt;blockquote&lt;/blockquote&gt;</code>用来进行换行引用。而<code>&lt;q&gt;quote&lt;/q&gt;</code>用来进行不换行引用。</li>
 <li>换行标签：<code>&lt;br/&gt;</code>用来进行换行</li>
 </ul>
 <h3 id="3-2-2布局标签（结构化）"><a href="#3-2-2布局标签（结构化）" class="headerlink" title="3.2.2布局标签（结构化）"></a>3.2.2布局标签（结构化）</h3><div class="table-container">
@@ -1901,7 +1902,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 </div>
 <h3 id="3-2-3列表"><a href="#3-2-3列表" class="headerlink" title="3.2.3列表"></a>3.2.3列表</h3><p>无序列表使用<code>&lt;ul&gt;&lt;/ul&gt;</code>，有序列表使用<code>&lt;ol&gt;&lt;/ol&gt;</code>，使用<code>&lt;li&gt;list item&lt;/li&gt;</code>表示列表项。<br>定义列表使用<code>&lt;dl&gt;&lt;/dl&gt;</code>，使用<code>&lt;dt&gt;&lt;/dt&gt;</code>表示定义的内容，使用<code>&lt;dd&gt;&lt;/dd&gt;</code>来对内容进行解释说明。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;3;https://www.baidu.com&quot;&gt; --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 3秒后将页面刷新到百度首页 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- hgroup标签用来为标题分组，可以将一组相关的标题同时放到hgroup --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hgroup</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>回乡偶书&lt;/h1 &gt;</span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>其一<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">hgroup</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>一个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        鲁迅说过：<span class="tag">&lt;<span class="name">blockquote</span>&gt;</span>我没说过这句话<span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br><span class="line">        孔子说过：<span class="tag">&lt;<span class="name">q</span>&gt;</span>学而时习之，不亦乐乎<span class="tag">&lt;/<span class="name">q</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span>break return</span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>结构<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>表现<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>行为<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>结构<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>表现<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>行为<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dt</span>&gt;</span>结构<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dd</span>&gt;</span>结构表示网页的结构<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dd</span>&gt;</span>结构表示网页的结构<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dd</span>&gt;</span>结构表示网页的结构<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-3特殊标签"><a href="#3-3特殊标签" class="headerlink" title="3.3特殊标签"></a>3.3特殊标签</h2><h3 id="3-3-1超链接"><a href="#3-3-1超链接" class="headerlink" title="3.3.1超链接"></a>3.3.1超链接</h3><p>跳转到其他页面或者当前页面的其他位置，超链接也是一个行内元素。通过a标签的href属性可以跳转到目标路径。</p>
+<h2 id="3-3特殊标签"><a href="#3-3特殊标签" class="headerlink" title="3.3特殊标签"></a>3.3特殊标签</h2><h3 id="3-3-1超链接"><a href="#3-3-1超链接" class="headerlink" title="3.3.1超链接"></a>3.3.1超链接</h3><p>跳转到其他页面或者当前页面的其他位置，超链接也是一个行内元素。通过a标签的href属性可以跳转到目标路径。如果超链接的对象是文件（图片、音频、视频、文本文件等）或者压缩包，则点击超链接会自动下载该文件。</p>
 <p>当需要跳转到一个服务器内部的页面时，一般使用相对路径，如果不写目录，则默认是在该HTML文件所在目录。<br>关于是否是在当前网页打开超链接还是在新页面打开超链接，取决于target属性值：<br><code>self</code>（默认值）在当前页面中打开超链接<br><code>blank</code>在一个新的页面中打开超链接<br></p>
 <p>href属性设置为<code>#</code>，页面不会发生跳转，而是转到当前页面的顶部的位置<br>id属性（唯一不重复的）：每一个标签都可以添加一个id属性，id属性就是元素的唯一标识，同一个页面中不能重复出现的id属性，并且是区分大小写的，一般是小写<br>只要将href属性设置为<code>#目标元素的id属性值</code>，便能跳转到目标元素处的位置</p>
 <p>暂时不知道具体的指向的超链接可写作<code>&lt;a href=&quot;javascript:;&quot;&gt;&lt;/a&gt;</code></p>
@@ -1922,7 +1923,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 </tr>
 <tr>
 <td>alt</td>
-<td style="text-align:center">图片的描述，默认不会显示，搜索引擎会根据alt中的内容来识别图片</td>
+<td style="text-align:center">图片的描述，默认不会显示，搜索引擎会根据alt中的内容来识别图片，图片无法显示时会将alt内容显示出来</td>
 </tr>
 <tr>
 <td>width</td>
@@ -1939,7 +1940,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <ul>
 <li>图片格式<br>jpeg（或者jpg，两者是一样的）：支持颜色较丰富，不支持透明效果，不支持动图。一般用来显示照片。<br>gif：支持颜色较少，支持简单透明，支持动图。一般用来显示颜色单一、动图。<br>png：支持颜色丰富，支持复杂透明度，不支持动图。适合颜色丰富，复杂透明度的图片。<br>webp：谷歌推出专门用来表示网页图片的一种格式，它具备上述3中图片格式的所有优点，而且文件还小，但兼容性差。</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>  <span class="attr">width</span>=<span class="string">&quot;300&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>  <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>  <span class="attr">width</span>=<span class="string">&quot;300&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>  <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/zhenyoung.jpg&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--给图片添加一个超链接--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://baike.baidu.com/pic/%E6%9D%8E%E7%99%BD/1043/1/78310a55b319ebc4acda9dc68126cffc1f1716ca?fr=lemma&amp;ct=single#aid=1&amp;pic=78310a55b319ebc4acda9dc68126cffc1f1716ca&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/libai1.jpg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-3-3内联框架"><a href="#3-3-3内联框架" class="headerlink" title="3.3.3内联框架"></a>3.3.3内联框架</h3><p>用于向当前页面中引入一个其他页面，src属性中输入引入网页的url。frameborder属性指定内联框架的边框，0代表无边框，1代表有边框</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;https://www.qq.com&quot;</span> <span class="attr">width</span>=<span class="string">&quot;1300&quot;</span> <span class="attr">height</span>=<span class="string">&quot;1000&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-3-4音视频标签"><a href="#3-3-4音视频标签" class="headerlink" title="3.3.4音视频标签"></a>3.3.4音视频标签</h3><p>音频使用audio标签，视频使用video标签。<br>加上controls属性就能够使其被用户控制播放，若没有写<code>controls</code>则用户在该页面是无法控制播放音频和视频的。加上loop属性，音视频就能循环播放。加上autopaly属性，音视频便能自动播放，但是这个属性基本上不用。这三个属性都是不用给值的，写上就是有，没写就是没有。此外，音视频也都是可以加上width和height属性的。</p>
