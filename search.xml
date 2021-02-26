@@ -200,25 +200,6 @@ y=x^2\\
       </tags>
   </entry>
   <entry>
-    <title>码制的一些问题</title>
-    <url>/2021/02/02/complement/</url>
-    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
-<a id="more"></a>
-<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
-<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
-<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
-<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
-<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
-<p>3.按照补码的定义，负数的补码，定义如下：</p>
-<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
-]]></content>
-      <tags>
-        <tag>doubt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Typora插入公式</title>
     <url>/2021/02/02/formula_in_Typora/</url>
     <content><![CDATA[<p>Typora中插入公式是基于LaTex排班系统的。关于LaTex，因为并不是所有的人都懂得专业的书籍及论文的排版，而这些排版的知识的学习成本极高。LaTex相较其而言，学习成本较低，可以让一些排版和程序设计的知识也可以能在几天、甚至几小时内生成很多具有书籍质量的印刷品。</p>
@@ -799,6 +780,25 @@ e^{ix} = \cos x + i\sin x \\
       </tags>
   </entry>
   <entry>
+    <title>码制的一些问题</title>
+    <url>/2021/02/02/complement/</url>
+    <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
+<a id="more"></a>
+<h1 id="0和-0的问题"><a href="#0和-0的问题" class="headerlink" title="+0和-0的问题"></a>+0和-0的问题</h1><p>当使用8位二进制来表示-128~127时，</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232615462.png" alt="image-20210202232615462"></p>
+<p>不难发现，+0和-0的补码是相同的，即2个补码表示同一个数 “0”，因此若不作相应的规定，那么8位补码所能表示的数只有-127~127共255个（注：8位原码范围：-127~-0, +0~127；8位反码范围：同左），而8位本应该能表示256个数，为此，便做了如下规定：</p>
+<p><strong>规定：1000 0000（作为补码）表示-128，且-128仅有补码（1000 0000）而没有对应的反码、原码，因此不能根据-128的补码去反推其原码和反码</strong></p>
+<h1 id="求解补码的方法"><a href="#求解补码的方法" class="headerlink" title="求解补码的方法"></a>求解补码的方法</h1><p>1.口诀：符号位不变，各位取反，末位加1（有进位则依次进位）</p>
+<p>2.将最高位的1和最低位的1之间的数取反，其余不变                 注：若只有一个1，则按照方法1或方法3来</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
+<p>3.按照补码的定义，负数的补码，定义如下：</p>
+<p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
+]]></content>
+      <tags>
+        <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>自然底数e的由来</title>
     <url>/2021/02/02/origin_of_e/</url>
     <content><![CDATA[<p>与圆周率$\pi$一样，自然底数e是一个常数。然而自从知道e开始，就只记得其大致的值为2.71828182845…，却不知其从何而来，这个数有什么意义。</p>
@@ -1024,6 +1024,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
     <url>/2021/02/04/Java/</url>
     <content><![CDATA[<p>此前学习了C语言，思维仍是面向过程的编程思想。现在开始学习Java，转变一下思路。特此写博客记录Java的知识点。关于编程语言中的一些通用的重复性内容就不再赘述，在此文中提及的基础，都是当时学习C语言时候自己埋下的坑，都是自己的血泪！！！</p>
 <p>此篇博客未完待续……</p>
+<p><a href="bottom">底部</a></p>
 <a id="more"></a>
 <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><h2 id="1-1-语言的特点"><a href="#1-1-语言的特点" class="headerlink" title="1.1 语言的特点"></a>1.1 语言的特点</h2><p>1.面向对象<br>两个基本概念：类、对象；三大特性：封装、继承、多态<br>2.健壮性<br>去除了C/C++中的影响健壮性的指针内存的申请与释放等，提供一个相对安全的内存管理和访问机制<br>垃圾回收机制（但是仍然会出现内存溢出和内存泄露的问题）<br>3.跨平台性<br>一次编译，多次运行（Write once，run anywhere）。原理为：在需要运行Java的应用程序的操作系统上，先安装Java虚拟机即可。由虚拟机来负责Java程序在系统中的运行。</p>
 <h2 id="1-2-java的两种核心机制"><a href="#1-2-java的两种核心机制" class="headerlink" title="1.2 java的两种核心机制"></a>1.2 java的两种核心机制</h2><p>虚拟机机制（Java Virtual Machine）、垃圾回收机制（Garbage Collection）</p>
@@ -1156,7 +1157,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <td style="text-align:center">no</td>
 </tr>
 <tr>
-<td style="text-align:center">缺省</td>
+<td style="text-align:center">缺省（就是不写）</td>
 <td style="text-align:center">yes</td>
 <td style="text-align:center">yes</td>
 <td style="text-align:center">no</td>
@@ -1179,22 +1180,67 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 </tbody>
 </table>
 </div>
-<h3 id="4-4-2-封装"><a href="#4-4-2-封装" class="headerlink" title="4.4.2 封装"></a>4.4.2 封装</h3><p>当创建一个类的对象后，可以通过<code>对象.属性</code>的方法对对象的属性进行赋值。但是，在实际问题中，往往需要给属性添加限制条件（如动物的腿的数一般都是偶数even number）。然而这个限制条件就无法在属性声明时设置，只能通过在该类中创建方法添加限制条件而不用对象调用属性。<br>同时，为了避免<font color="red">既使用方法设置属性，又通过对象调用设置属性值</font>的混乱情况，使用<code>private</code>关键字将变量声明为私有变量。</p>
+<h3 id="4-4-2-封装性（面向对象的特征之一）"><a href="#4-4-2-封装性（面向对象的特征之一）" class="headerlink" title="4.4.2 封装性（面向对象的特征之一）"></a>4.4.2 封装性（面向对象的特征之一）</h3><p>当创建一个类的对象后，可以通过<code>对象.属性</code>或<code>对象.方法</code>的方式进行初始化。但是，在实际问题中，往往需要给属性添加限制条件（如动物的腿的数一般都是偶数even number）。然而这个限制条件就无法在属性声明时设置，只能通过在该类中创建方法添加限制条件而不用对象调用属性。<br>同时，为了避免<font color="red">既使用方法设置限制条件，又通过对象调用设置限制条件</font>的混乱情况，使用<code>private</code>关键字将属性或者方法声明为私有的。</p>
+<p><strong>封装性的体现1：</strong>将类的属性<code>xxx</code>使用<code>private</code>私有化，同时，提供公共的方法（即public修饰的）来获取（<code>getXxx</code>）和设置（<code>setXxx</code>）此属性的值；<br><strong>封装性的体现2：</strong>不对外暴露私有的方法；<br><strong>封装性的体现3：</strong>单例模式（将构造器私有化）；<br><strong>封装性的体现4：</strong>如果不希望类在包外被调用，可以将类设置为缺省的。</p>
 <h2 id="4-5-构造器（或构造方法，constructor）"><a href="#4-5-构造器（或构造方法，constructor）" class="headerlink" title="4.5 构造器（或构造方法，constructor）"></a>4.5 构造器（或构造方法，constructor）</h2><h3 id="4-5-1-构造器的特征"><a href="#4-5-1-构造器的特征" class="headerlink" title="4.5.1 构造器的特征"></a>4.5.1 构造器的特征</h3><p>具有与类相同的名称、不声明返回值类型（与声明为void不同）、不被<code>static</code>、<code>final</code>、<code>synchronized</code>、<code>abstract</code>、<code>native</code>修饰，不能用return语句返回值。</p>
-<h3 id="4-5-2-构造器的作用"><a href="#4-5-2-构造器的作用" class="headerlink" title="4.5.2 构造器的作用"></a>4.5.2 构造器的作用</h3><p>创建对象，如：<code>Order o = new Order();</code><br>在创建对象时对属性初始化，如：<code>Person p = Person(&quot;Peter&quot;,15);</code></p>
+<h3 id="4-5-2-构造器的作用"><a href="#4-5-2-构造器的作用" class="headerlink" title="4.5.2 构造器的作用"></a>4.5.2 构造器的作用</h3><p><strong>创建对象（最核心的作用），</strong>如：<code>Order o = new Order();</code><br>在创建对象时对属性初始化，如：<code>Person p = Person(&quot;Peter&quot;,15);</code></p>
 <h3 id="4-5-3-说明"><a href="#4-5-3-说明" class="headerlink" title="4.5.3 说明"></a>4.5.3 说明</h3><p>如果没有显式地定义类的构造器的话，则系统默认提供一个空参构造器；<br>定义构造器的格式：<code>权限修饰符 类名(形参列表)&#123;&#125;</code>；<br>一个类中定义的多个构造器，彼此构成重载；<br>一旦显式地定义了类的构造器之后，系统就不再提供默认的空参构造器；<br>一个类中，至少有一个构造器。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//        编写两个类，TriAngle和Constructor</span></span><br><span class="line"><span class="comment">//        其中TriAngle类中声明私有的底边长base和高height，同时声明公共方法访问私有变量。此外，提供类必要的构造器</span></span><br><span class="line"><span class="comment">//        Constructor类中使用这些公共方法，计算三角形的面积</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constructor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TriAngle angle1 = <span class="keyword">new</span> TriAngle();</span><br><span class="line">        angle1.setBase(<span class="number">3.0</span>);</span><br><span class="line">        angle1.setHeight(<span class="number">4.9</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;base = &quot;</span> + angle1.getBase() + <span class="string">&quot;\theight = &quot;</span> + angle1.getHeight() + <span class="string">&quot;\tarea = &quot;</span> + angle1.area());</span><br><span class="line"></span><br><span class="line">        TriAngle angle2 = <span class="keyword">new</span> TriAngle(<span class="number">2.0</span>,<span class="number">3.1</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;base = &quot;</span> + angle2.getBase() + <span class="string">&quot;\theight = &quot;</span> + angle2.getHeight() + <span class="string">&quot;\tarea = &quot;</span> + angle2.area());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriAngle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> base;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> height;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    通过声明公共的方法访问私有变量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBase</span><span class="params">(<span class="keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">        base = b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getBase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(<span class="keyword">double</span> h)</span> </span>&#123;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getHeight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> height;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    构造器声明</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TriAngle</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TriAngle</span><span class="params">(<span class="keyword">double</span> b, <span class="keyword">double</span> h)</span> </span>&#123;</span><br><span class="line">        base = b;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    声明计算面积的公共的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> area = base * height / <span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-6-JavaBean"><a href="#4-6-JavaBean" class="headerlink" title="4.6 JavaBean"></a>4.6 JavaBean</h2><p>所谓JavaBean，其实是一种符合如下标准的Java类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//        编写两个类，TriAngle和Constructor</span></span><br><span class="line"><span class="comment">//        其中TriAngle类中声明私有的底边长base和高height，同时声明公共方法访问私有变量。此外，提供类必要的构造器</span></span><br><span class="line"><span class="comment">//        Constructor类中使用这些公共方法，计算三角形的面积</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constructor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TriAngle angle1 = <span class="keyword">new</span> TriAngle();</span><br><span class="line">        angle1.setBase(<span class="number">3.0</span>);</span><br><span class="line">        angle1.setHeight(<span class="number">4.9</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;base = &quot;</span> + angle1.getBase() + <span class="string">&quot;\theight = &quot;</span> + angle1.getHeight() + <span class="string">&quot;\tarea = &quot;</span> + angle1.area());</span><br><span class="line"></span><br><span class="line">        TriAngle angle2 = <span class="keyword">new</span> TriAngle(<span class="number">2.0</span>,<span class="number">3.1</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;base = &quot;</span> + angle2.getBase() + <span class="string">&quot;\theight = &quot;</span> + angle2.getHeight() + <span class="string">&quot;\tarea = &quot;</span> + angle2.area());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TriAngle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> base;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> height;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    通过声明公共的方法访问私有变量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBase</span><span class="params">(<span class="keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">        base = b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getBase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(<span class="keyword">double</span> h)</span> </span>&#123;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getHeight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> height;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//构造器声明。一旦我们显式地定义了一个如public TriAngle(double b, double h) &#123;&#125;类的造器之后，系统便不再提供默认的空参构造器，即Triangle t1 = new Triangle();就没有用了，必须要再定义一个空的构造器public Triangle()&#123;&#125;才能使用Triangle t1 = new Triangle();创建对象t1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TriAngle</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TriAngle</span><span class="params">(<span class="keyword">double</span> b, <span class="keyword">double</span> h)</span> </span>&#123;</span><br><span class="line">        base = b;</span><br><span class="line">        height = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    声明计算面积的公共的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> area = base * height / <span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-6-JavaBean（后面再提）"><a href="#4-6-JavaBean（后面再提）" class="headerlink" title="4.6 JavaBean（后面再提）"></a>4.6 JavaBean（后面再提）</h2><p>所谓JavaBean，其实是一种符合如下标准的Java类：</p>
 <blockquote>
 <p>类是公共的；</p>
 <p>有一个无参的公共的构造器；</p>
 <p>有属性，且有对应的get、set方法。</p>
 </blockquote>
 <h2 id="4-7-关键字this"><a href="#4-7-关键字this" class="headerlink" title="4.7 关键字this"></a>4.7 关键字<code>this</code></h2><p><code>this</code>可以用来修饰和调用属性、方法、构造器</p>
-<h3 id="4-7-1-this修饰调用属性和方法"><a href="#4-7-1-this修饰调用属性和方法" class="headerlink" title="4.7.1 this修饰调用属性和方法"></a>4.7.1 <code>this</code>修饰调用属性和方法</h3><p>可以将<code>this</code>理解为当前对象或者当前正在创建的对象。<br>① 在类的方法中，我们可以使用<code>this.属性</code>或者<code>this.方法</code>的方式，调用当前对象属性或者方法。但是通常情况下，我们都选择省略<code>this</code>。特殊情况下，如果方法的形参和类的属性同名时，我们必须显式地使用<code>this.变量</code>的方式，表明此变量是属性，而非形参。<br>② 在类的构造器中，同上。</p>
+<h3 id="4-7-1-this修饰调用属性和方法"><a href="#4-7-1-this修饰调用属性和方法" class="headerlink" title="4.7.1 this修饰调用属性和方法"></a>4.7.1 <code>this</code>修饰调用属性和方法</h3><p>可以将<code>this</code>理解为当前对象或者当前正在创建的对象。<br>在类的方法中，我们可以使用<code>this.属性</code>或者<code>this.方法</code>的方式，调用当前对象属性或者方法。但是通常情况下，我们都选择省略<code>this</code>。特殊情况下即如果方法的形参和类的属性同名时，我们必须显式地使用<code>this.变量</code>的方式，表明此变量是属性，而非形参。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">    	<span class="comment">//如果这里不是用this修饰，那么便会默认是形参自己给自己赋值</span></span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-7-2-this调用构造器"><a href="#4-7-2-this调用构造器" class="headerlink" title="4.7.2 this调用构造器"></a>4.7.2 <code>this</code>调用构造器</h3><p>① 在类的构造器中，可以显式地使用<code>this(形参列表)</code>方式，调用本类中指定的其他构造器；<br>② 构造器中不能通过<code>this(形参列表)</code>调用自己；<br>③ 规定：<code>this(形参列表)</code>必须声明当前构造器的首行；</p>
-<p>P236</p>
+<h3 id="4-7-2-this调用构造器"><a href="#4-7-2-this调用构造器" class="headerlink" title="4.7.2 this调用构造器"></a>4.7.2 <code>this</code>调用构造器</h3><p>① 在类的构造器中，可以显式地使用<code>this(形参列表)</code>方式，调用本类中指定的其他构造器；<br>② 构造器中不能通过<code>this(形参列表)</code>调用自己；<br>③ 规定：<code>this(形参列表)</code>必须声明在当前构造器的首行；</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">constuctor1</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">constructor2</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.constructor1();</span><br><span class="line">    b = a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-8-package、import关键字"><a href="#4-8-package、import关键字" class="headerlink" title="4.8 package、import关键字"></a>4.8 <code>package</code>、<code>import</code>关键字</h2><h3 id="4-8-1-package关键字"><a href="#4-8-1-package关键字" class="headerlink" title="4.8.1 package关键字"></a>4.8.1 <code>package</code>关键字</h3><p>为了解决项目中有众多复杂的类和接口的问题，使用包来进行管理，类似文件夹管理文件。使用<code>package</code>在首行声明类或者接口所属的包。一般使用小写字母命名<code>xxyyzz</code>，每<code>.</code>一次就代表一层文件目录。比如<code>xx.yy.zz</code>就说明xx是yy的父目录，yy是zz的父目录。且同一个包下不能有同名的类或接口。JDK中常用的包如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>包名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>java.lang</code></td>
+<td>包含一些java语言的核心类，如 <code>String</code>、<code>Math</code>、<code>Integer</code>、<code>System</code>、<code>Thread</code>等，提供常用功能</td>
+</tr>
+<tr>
+<td><code>java.net</code></td>
+<td>包含执行与网络相关的操作的类和接口</td>
+</tr>
+<tr>
+<td><code>java.io</code></td>
+<td>包含能提供多种输入/输出功能的类</td>
+</tr>
+<tr>
+<td><code>java.util</code></td>
+<td>包含了一些实用的工具类，如定义系统特性、接口的集合框架类、使用与日期日历相关的方法</td>
+</tr>
+<tr>
+<td><code>java.text</code></td>
+<td>包含了一些java格式化相关的类</td>
+</tr>
+<tr>
+<td><code>java.sql</code></td>
+<td>包含了java进行JDBC数据库编程的相关类/接口</td>
+</tr>
+<tr>
+<td><code>java.awt</code></td>
+<td>包含了构成抽象窗口工具集（abstract window toolkits）的多个类，这些类用来构建和管理应用程序的图形用户界面（GUI）B/S、C/S<br>由于做出的界面极其丑陋，所以一般不用这个做GUI。现在一般是通过浏览器来访问后台服务器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="4-8-2-import关键字"><a href="#4-8-2-import关键字" class="headerlink" title="4.8.2 import关键字"></a>4.8.2 <code>import</code>关键字</h3><p>使用<code>import</code>结构导入指定包下的类、接口声明在包声明和类声明之间。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;<span class="comment">//导入util包下的Scanner类</span></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;<span class="comment">//导入util包下的Arrays类</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;<span class="comment">//导入util包下的所有的类和接口，不包括其子包的类和接口，子包需要额外导入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//注意，源文件都是默认导入了lang包中的所有类和接口，不用再导包</span></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;<span class="comment">//lang包中的子包reflect包下的Filed类不是lang包下的类，而是其子包reflect下的，所以一定要显式导包，不能省略</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果源文件中使用的类或接口是本包下定义的，则可以不用导包，直接调用即可</span></span><br><span class="line"><span class="comment">//尽管不同的包下的类或接口可以同名，但是若是想同时用这些同名的类或接口，则必须在使用前加上完整的包名（这样的类名称作全类名），如：</span></span><br><span class="line">pers.zhangsan.exercises.Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line">pers.lisi.exercises.Person p2 = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="comment">//拓展：import static可以导入类或接口中的静态结构（属性或方法），了解即可</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.System.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.*;<span class="comment">//切忌这样写：import static java.lang.Math;</span></span><br><span class="line">out.println(<span class="string">&quot;好好学习，天台向上&quot;</span>);</span><br><span class="line"><span class="keyword">long</span> num = round(<span class="number">123.456</span>);</span><br></pre></td></tr></table></figure>
+<p>P258</p>
 ]]></content>
       <tags>
         <tag>Java</tag>
