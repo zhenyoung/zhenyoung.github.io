@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于字符编码的一些问题</title>
+    <url>/2021/03/05/charset/</url>
+    <content><![CDATA[<p>第一次遇到乱码问题是在刚买电脑的时候由于Microsoft账户名用中文，导致一些文件夹的名字乱码。之后又在用IDE写代码的时候出现了乱码问题，只知道是字符编码格式不同。但是还是不了解字符集之间的区别。最近想要解决这个疑惑，就在网上搜索咨询了一下，记录下来。但是，由于网上的回答的水平有待提高。甚至百度百科的表述模糊不清：</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210305182708179.png" alt="image-20210305182708179">知道的人晓得这是想说：2个字节中的0x80~0xFFFF，不知道的人还以为0x80~0xFFFF表示2个字节的空间呢！！！真的是令人无语，这种有歧义的表述方式。我甚至刚看到的时候，还以为自己有问题。现在想想真是可笑之极，百度不看也罢！！！以下是我自己找到的较为中肯的解释，有不足之后，待日后发现，及时纠正。</p>
+<a id="more"></a>
+<h1 id="1-字符编码"><a href="#1-字符编码" class="headerlink" title="1. 字符编码"></a>1. 字符编码</h1><h2 id="1-1-ASCII码"><a href="#1-1-ASCII码" class="headerlink" title="1.1 ASCII码"></a>1.1 ASCII码</h2><p>最开始的时候计算机只在美国用。8位的字节一共可以组合出$2^8$共256种不同的状态。把其中的0x00~0x20的32种状态分别规定了特殊的用途，一但终端、打印机遇上约定好的这些字节被传过来时，就做出相应的行为。<br>比如：遇上0x10，终端就换行；遇上0x07，终端就向人们嘟嘟叫；遇上0x1B，打印机就打印反白的字，或者终端就用彩色显示字母。把这些0x20以下的字节状态称为<strong>控制码</strong>。</p>
+<p>后来又把所有的空格、标点符号、数字、大小写字母分别用连续的字节状态表示，一直编到了第127号0x7F（后面的128种状态没有用到，就空着了），这样计算机就可以用不同字节来存储英语的文字了。当时使用计算机的人们觉得这种方案可以非常好，可以接受，把这个方案叫做 <strong>ANSI</strong>的<strong>ASCII</strong>编码（American Standard Code for Information Interchange，美国信息互换标准代码）。当时世界上所有的计算机都用同样的<strong>ASCII</strong>方案来保存英文文字。</p>
+<p>后来计算机发展越来越广泛，世界各国为了可以在计算机保存他们的文字（有些国家的字符不止美国ASCII码的那些字符，比如希腊字母……），决定采用127号之后的空位来表示这些新的字母、符号，还加入了很多画表格时需要用下到的横线、竖线、交叉等形状，一直把序号编到了 最后一个状态255号0xFF。从128到255这之间的字符集被称为<strong>扩展字符集</strong>。至此，1个字节最多也就能表示256种状态了，再也放不下更多的编码了。</p>
+<h2 id="1-2-GB2312、GBK、GB18030"><a href="#1-2-GB2312、GBK、GB18030" class="headerlink" title="1.2 GB2312、GBK、GB18030"></a>1.2 GB2312、GBK、GB18030</h2><p>等我国得到计算机时，已经没有可以利用的字节状态来表示汉字，但是此时又有6000多个常用汉字需要保存。于是国人就自主研发，把127号0x7F后面的那些奇异符号直接取消掉。<br>并规定：1个小于127的字符的意义与原来相同（即前128个字符仍是ASCII码），但两个大于127的字符连在一起时，就表示一个汉字。前面的一个字节（称之为高字节），后面一个字节（低字节）。这样我们就可以组合出大约7000多个简体汉字了。碰到极其特殊的情况，还会使用三个字节来表示一个汉字。在这种编码里，我们还把数学符号、罗马希腊的字母、日文的假名都编进去了，还把ASCII码所表示的128个字符重新编了两个字节长的编码，这就是常说的<strong>全角字符</strong>，而原来没有做改动的0x00~0x7F之间的字符就叫<strong>半角字符</strong>。<br>中国人民看到这样很不错，于是就把这种编码方案叫做<strong>GB2312</strong>。<strong>GB2312</strong> 是对 <strong>ASCII</strong> 的中文扩展。<br>但是中国的汉字太多了，后来还是不够用，于是干脆不再要求低字节一定是127号之后的，只要第一个字节是大于127就固定表示这是一个汉字的开始，不管后面跟的是不是扩展字符集里的内容。扩展之后的编码方案被称为 <strong>GBK</strong> 标准，GBK 包括了GB2312的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。后来少数民族也要用电脑了，于是我们再扩展，又加了几千个新的少数民族的字，<strong>GBK</strong> 扩成了<strong>GB18030</strong>。从此之后，中国的所有字符都能在计算机中表示了。</p>
+<h2 id="1-3-Unicode码"><a href="#1-3-Unicode码" class="headerlink" title="1.3 Unicode码"></a>1.3 Unicode码</h2><p>因为当时各个国家都像中国这样，有一套自己的编码标准，结果互相之间谁也不懂谁的编码，谁也不支持别人的编码。当时的中国人想让电脑显示汉字，就必须装上一个<strong>汉字系统</strong>以采用上文提到过的编码格式专门用来处理汉字的显示、输入的问题，其他国家亦是如此。如果装错了字符系统，就会乱码，这在当时成了一个让人们头疼的问题。<br>就在这时，<strong>ISO</strong>（International Organization for Standardization，国际标谁化组织）决定着手解决这个问题。他们采用的方法很简单：废除所有的地区性编码方案，重新搞一个包括了地球上所有文化、所有字母和符号的编码！他们打算叫它”Universal Multiple-Octet Coded Character Set”，简称UCS, 俗称<strong>Unicode</strong>。</p>
+<p>目前最常用的Unicode编码是UCS-16编码，用2个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。对于ASCII码的那些<strong>半角字符</strong>，Unicode保持其原编码不变，只是将其长度由原来的8位扩展为16位（只用低8位，高8位恒为0），而其他文化和语言的字符则全部重新统一编码。由于半角英文符号只需要用到低8位，所以其高 8位永远是0，如半角英文大写字母A用Unicode码是<code>0x0065</code>。因此这种大气的方案在保存英文文本时会多浪费一倍的空间。<br>但是，Unicode码在制订时没有考虑与任何一种现有的编码方案保持兼容，所有现有的编码与Unicode在汉字的内码编排上完全是不一样的，没有一种简单的算术方法可以把文本内容从Unicode编码和另一种编码进行转换，因此这种转换必须通过查表来进行。</p>
+<h2 id="1-4-UTF-8"><a href="#1-4-UTF-8" class="headerlink" title="1.4 UTF-8"></a>1.4 UTF-8</h2><p>Unicode来到时，一起到来的还有计算机网络的兴起，Unicode如何在网络上传输也是一个必须考虑的问题，于是众多面向传输的UTF（UCS Transfer Format，UCS传输标准）出现了。顾名思义，<strong>UTF-8</strong>就是每次8个位传输数据，而 <strong>UTF-16</strong>就是每次16个位。<strong>为了传输时的可靠性，从Unicode到UTF时并不是直接的对应，而是要过一些算法和规则来转换，</strong>目前常用的是<strong>UTF-8</strong>编码。<br><strong>UTF-8</strong>编码把一个Unicode字符根据不同的数字大小编码成1-6个字节。其中，英文字母被编码成1个字节，汉字被编码成3个字节，极其生僻的字符被编码成4-6个字节。如果要传输的文本包含大量英文字符，用UTF-8编码就能节省空间。下面举一个例子：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字符</th>
+<th style="text-align:left">ASCII</th>
+<th style="text-align:left">Unicode</th>
+<th style="text-align:left">UTF-8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">01000001</td>
+<td style="text-align:left">00000000 01000001</td>
+<td style="text-align:left">01000001</td>
+</tr>
+<tr>
+<td style="text-align:left">中</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">01001110 00101101</td>
+<td style="text-align:left">11100100 10111000 10101101</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h2><p>简单概括为以下几点：<br>1.中国人民通过对ASCII编码的中文扩充改造，产生了GB2312编码，可以表示6000多个常用汉字；<br>2.汉字实在是太多了，包括繁体和各种中文字符，于是产生了GBK编码，它包括了GB2312中的编码，同时扩充了很多；<br>3.中国是个多民族国家，各个民族几乎都有自己独立的语言系统，为了表示那些字符，继续把 GBK 编码扩充为 GB18030 编码；<br>4.每个国家都像中国一样，把自己的语言进行编码，于是出现了各种各样的编码，如果不安装相应编码，就会出现乱码；<br>5.ISO组织制定了一种编码Unicode，这种编码非常大，可以容纳世界上任何一个文字和标志，所以只要电脑上有Unicode这种编码系统，无论是全球哪种文字，保存成Unicode编码就可以被其他电脑正常解释；<br>6.Unicode 在网络传输中，出现了<strong>两个标准UTF-8和UTF-16</strong>，分别每次传输 8个位和 16个位。</p>
+<h2 id="1-6-问题"><a href="#1-6-问题" class="headerlink" title="1.6 问题"></a>1.6 问题</h2><p>既然UTF-8能保存那么多文字、符号，为什么国内还有很多地方使用GBK等编码？<br>答：因为UTF-8编码体积比较大，占电脑空间比较多，如果面向的使用人群绝大部分都是中国人，用GBK等编码也可以，还能节省硬盘空间。目前，硬盘价格都不再像以前那样贵得要死，都是是可接受的，所以现在的网页统一都使用<strong>UTF-8</strong>编码。</p>
+<h1 id="2-计算机系统通用的字符编码工作方式"><a href="#2-计算机系统通用的字符编码工作方式" class="headerlink" title="2. 计算机系统通用的字符编码工作方式"></a>2. 计算机系统通用的字符编码工作方式</h1><p>在计算机内存中，统一使用<code>Unicode</code>编码，当需要保存到硬盘或者需要传输的时候，就转换为<code>UTF-8</code>编码。即：<br>用记事本编辑的时候，从硬盘中的文件读取的<code>UTF-8</code>字符被转换为<code>Unicode</code>字符加载到内存里，编辑完成后，保存的时候再把<code>Unicode</code>转换为<code>UTF-8</code>保存到文件：</p>
+<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/0.png"></center>
+
+<p>浏览网页的时候，服务器会把动态生成的<code>Unicode</code>内容转换为<code>UTF-8</code>再传输到浏览器：</p>
+<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/01.png"></center>
+
+<p>所以很多网页的源码种会有类似<code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>的信息，表示该网页正是用的<code>UTF-8</code>编码。由于<code>ASCII</code>码是最开始的字符编码格式，其他所有的编码格式都是基于<code>ASCII</code>码的扩展，所以所有的编码都能够兼容<code>ASCII</code>码。</p>
+]]></content>
+      <tags>
+        <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Typora使用</title>
     <url>/2021/02/02/Typora_usage/</url>
     <content><![CDATA[<p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
@@ -213,56 +266,6 @@ y=x^2\\
 <p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
 <p>3.按照补码的定义，负数的补码，定义如下：</p>
 <p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
-]]></content>
-      <tags>
-        <tag>doubt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于字符编码的一些问题</title>
-    <url>/2021/03/05/charset/</url>
-    <content><![CDATA[<h1 id="1-字符编码"><a href="#1-字符编码" class="headerlink" title="1. 字符编码"></a>1. 字符编码</h1><h2 id="1-1-ASCII码"><a href="#1-1-ASCII码" class="headerlink" title="1.1 ASCII码"></a>1.1 ASCII码</h2><p>最开始的时候计算机只在美国用。8位的字节一共可以组合出$2^8$共256种不同的状态。把其中的0x00~0x20的32种状态分别规定了特殊的用途，一但终端、打印机遇上约定好的这些字节被传过来时，就做出相应的行为。<br>比如：遇上0x10，终端就换行；遇上0x07，终端就向人们嘟嘟叫；遇上0x1B，打印机就打印反白的字，或者终端就用彩色显示字母。把这些0x20以下的字节状态称为<strong>控制码</strong>。</p>
-<p>后来又把所有的空格、标点符号、数字、大小写字母分别用连续的字节状态表示，一直编到了第127号0x7F（后面的128种状态没有用到，就空着了），这样计算机就可以用不同字节来存储英语的文字了。当时使用计算机的人们觉得这种方案可以非常好，可以接受，把这个方案叫做 <strong>ANSI</strong> 的<strong>ASCII</strong>编码（American Standard Code for Information Interchange，美国信息互换标准代码）。当时世界上所有的计算机都用同样的<strong>ASCII</strong>方案来保存英文文字。</p>
-<p>后来计算机发展越来越广泛，世界各国为了可以在计算机保存他们的文字（有些国家的字符不止美国ASCII码的那些字符，比如希腊字母……），决定采用127号之后的空位来表示这些新的字母、符号，还加入了很多画表格时需要用下到的横线、竖线、交叉等形状，一直把序号编到了 最后一个状态255号0xFF。从128到255这之间的字符集被称为<strong>扩展字符集</strong>。至此，1个字节最多也就能表示256种状态了，再也放不下更多的编码了。</p>
-<h2 id="1-2-GB2312、GBK、GB18030"><a href="#1-2-GB2312、GBK、GB18030" class="headerlink" title="1.2 GB2312、GBK、GB18030"></a>1.2 GB2312、GBK、GB18030</h2><p>等我国得到计算机时，已经没有可以利用的字节状态来表示汉字，但是此时又有6000多个常用汉字需要保存。于是国人就自主研发，把127号0x7F后面的那些奇异符号直接取消掉。<br>并规定：1个小于127的字符的意义与原来相同（即前128个字符仍是ASCII码），但两个大于127的字符连在一起时，就表示一个汉字。前面的一个字节（称之为高字节），后面一个字节（低字节）。这样我们就可以组合出大约7000多个简体汉字了。碰到极其特殊的情况，还会使用三个字节来表示一个汉字。在这种编码里，我们还把数学符号、罗马希腊的字母、日文的假名都编进去了，还把ASCII码所表示的128个字符重新编了两个字节长的编码，这就是常说的<strong>全角字符</strong>，而原来没有做改动的0x00~0x7F之间的字符就叫<strong>半角字符</strong>。<br>中国人民看到这样很不错，于是就把这种编码方案叫做<strong>GB2312</strong>。<strong>GB2312</strong> 是对 <strong>ASCII</strong> 的中文扩展。<br>但是中国的汉字太多了，后来还是不够用，于是干脆不再要求低字节一定是127号之后的，只要第一个字节是大于127就固定表示这是一个汉字的开始，不管后面跟的是不是扩展字符集里的内容。扩展之后的编码方案被称为 <strong>GBK</strong> 标准，GBK 包括了GB2312的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。后来少数民族也要用电脑了，于是我们再扩展，又加了几千个新的少数民族的字，<strong>GBK</strong> 扩成了<strong>GB18030</strong>。从此之后，中国的所有字符都能在计算机中表示了。</p>
-<h2 id="1-3-Unicode码"><a href="#1-3-Unicode码" class="headerlink" title="1.3 Unicode码"></a>1.3 Unicode码</h2><p>因为当时各个国家都像中国这样，有一套自己的编码标准，结果互相之间谁也不懂谁的编码，谁也不支持别人的编码。当时的中国人想让电脑显示汉字，就必须装上一个<strong>汉字系统</strong>以采用上文提到过的编码格式专门用来处理汉字的显示、输入的问题，其他国家亦是如此。如果装错了字符系统，就会乱码，这在当时成了一个让人们头疼的问题。<br>就在这时，<strong>ISO</strong>（International Organization for Standardization，国际标谁化组织）决定着手解决这个问题。他们采用的方法很简单：废除所有的地区性编码方案，重新搞一个包括了地球上所有文化、所有字母和符号的编码！他们打算叫它”Universal Multiple-Octet Coded Character Set”，简称UCS, 俗称<strong>Unicode</strong>。</p>
-<p>目前最常用的Unicode编码是UCS-16编码，用2个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。对于ASCII码的那些<strong>半角字符</strong>，Unicode保持其原编码不变，只是将其长度由原来的8位扩展为16位（只用低8位，高8位恒为0），而其他文化和语言的字符则全部重新统一编码。由于半角英文符号只需要用到低8位，所以其高 8位永远是0，如半角英文大写字母A用Unicode码是<code>0x0065</code>。因此这种大气的方案在保存英文文本时会多浪费一倍的空间。<br>但是，Unicode码在制订时没有考虑与任何一种现有的编码方案保持兼容，所有现有的编码与Unicode在汉字的内码编排上完全是不一样的，没有一种简单的算术方法可以把文本内容从Unicode编码和另一种编码进行转换，因此这种转换必须通过查表来进行。</p>
-<h2 id="1-4-UTF-8"><a href="#1-4-UTF-8" class="headerlink" title="1.4 UTF-8"></a>1.4 UTF-8</h2><p>Unicode来到时，一起到来的还有计算机网络的兴起，Unicode如何在网络上传输也是一个必须考虑的问题，于是众多面向传输的UTF（UCS Transfer Format，UCS传输标准）出现了。顾名思义，<strong>UTF-8</strong>就是每次8个位传输数据，而 <strong>UTF-16</strong>就是每次16个位。<strong>为了传输时的可靠性，从Unicode到UTF时并不是直接的对应，而是要过一些算法和规则来转换，</strong>目前常用的是<strong>UTF-8</strong>编码。<br><strong>UTF-8</strong>编码把一个Unicode字符根据不同的数字大小编码成1-6个字节。其中，英文字母被编码成1个字节，汉字被编码成3个字节，极其生僻的字符被编码成4-6个字节。如果要传输的文本包含大量英文字符，用UTF-8编码就能节省空间。下面举一个例子：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">字符</th>
-<th style="text-align:left">ASCII</th>
-<th style="text-align:left">Unicode</th>
-<th style="text-align:left">UTF-8</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">A</td>
-<td style="text-align:left">01000001</td>
-<td style="text-align:left">00000000 01000001</td>
-<td style="text-align:left">01000001</td>
-</tr>
-<tr>
-<td style="text-align:left">中</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">01001110 00101101</td>
-<td style="text-align:left">11100100 10111000 10101101</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h2><p>简单概括为以下几点：<br>1.中国人民通过对ASCII编码的中文扩充改造，产生了GB2312编码，可以表示6000多个常用汉字；<br>2.汉字实在是太多了，包括繁体和各种中文字符，于是产生了GBK编码，它包括了GB2312中的编码，同时扩充了很多；<br>3.中国是个多民族国家，各个民族几乎都有自己独立的语言系统，为了表示那些字符，继续把 GBK 编码扩充为 GB18030 编码；<br>4.每个国家都像中国一样，把自己的语言进行编码，于是出现了各种各样的编码，如果不安装相应编码，就会出现乱码；<br>5.ISO组织制定了一种编码Unicode，这种编码非常大，可以容纳世界上任何一个文字和标志，所以只要电脑上有Unicode这种编码系统，无论是全球哪种文字，保存成Unicode编码就可以被其他电脑正常解释；<br>6.Unicode 在网络传输中，出现了<strong>两个标准UTF-8和UTF-16</strong>，分别每次传输 8个位和 16个位。</p>
-<h2 id="1-6-问题"><a href="#1-6-问题" class="headerlink" title="1.6 问题"></a>1.6 问题</h2><p>既然UTF-8能保存那么多文字、符号，为什么国内还有很多地方使用GBK等编码？<br>答：因为UTF-8编码体积比较大，占电脑空间比较多，如果面向的使用人群绝大部分都是中国人，用GBK等编码也可以，还能节省硬盘空间。目前，硬盘价格都不再像以前那样贵得要死，都是是可接受的，所以现在的网页统一都使用<strong>UTF-8</strong>编码。</p>
-<h1 id="2-计算机系统通用的字符编码工作方式"><a href="#2-计算机系统通用的字符编码工作方式" class="headerlink" title="2. 计算机系统通用的字符编码工作方式"></a>2. 计算机系统通用的字符编码工作方式</h1><p>在计算机内存中，统一使用<code>Unicode</code>编码，当需要保存到硬盘或者需要传输的时候，就转换为<code>UTF-8</code>编码。即：<br>用记事本编辑的时候，从硬盘中的文件读取的<code>UTF-8</code>字符被转换为<code>Unicode</code>字符加载到内存里，编辑完成后，保存的时候再把<code>Unicode</code>转换为<code>UTF-8</code>保存到文件：</p>
-<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/0.png"></center>
-
-<p>浏览网页的时候，服务器会把动态生成的<code>Unicode</code>内容转换为<code>UTF-8</code>再传输到浏览器：</p>
-<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/01.png"></center>
-
-<p>所以很多网页的源码种会有类似<code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>的信息，表示该网页正是用的<code>UTF-8</code>编码。由于<code>ASCII</code>码是最开始的字符编码格式，其他所有的编码格式都是基于<code>ASCII</code>码的扩展，所以所有的编码都能够兼容<code>ASCII</code>码。</p>
 ]]></content>
       <tags>
         <tag>doubt</tag>
