@@ -269,14 +269,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Web" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-charset" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/09/Web/">Web前端</a>
+      <a class="article-title" href="/2021/03/05/charset/">关于字符编码的一些问题</a>
     </h1>
   
 
@@ -284,7 +284,136 @@ var _hmt = _hmt || [];
 		
 		<!--显示阅读次数完毕-->
         
-        <a href="/2021/02/09/Web/" class="archive-article-date">
+        <a href="/2021/03/05/charset/" class="archive-article-date">
+  	<time datetime="2021-03-05T05:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-05</time>
+</a>
+        
+		<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+        <!-- 添加完成 -->
+		
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h1><p>编码：将字符转换为二进制码的过程<br>解码：将二进制码转换为字符的过程<br>字符集（charset）：编码和解码所采用的规则<br>当编码和解码所采用的字符集不同，就会出现乱码问题<br></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符集</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ASCII</code></td>
+<td>美国标准信息交换码。使用1个字节的0x00~0x7f的前128种状态表示128个英文字符</td>
+</tr>
+<tr>
+<td><code>ISO88591</code></td>
+<td>欧洲字符编码。在ASCII码基础上，增加了128个字符，即使用完整的1个字节的0x00~0xff共256种状态表示256个字符</td>
+</tr>
+<tr>
+<td><code>GB2312</code></td>
+<td>简体中文字符编码。用2个字节表示1个中文字符，共可以表示65536个中文字符</td>
+</tr>
+<tr>
+<td><code>BIG5</code></td>
+<td>繁体中文字符编码。</td>
+</tr>
+<tr>
+<td><code>GBK</code></td>
+<td>包含<code>GB2312</code>和<code>BIG5</code>。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>由于各国或各地区都有各自的字符编码格式，那么在传输过程中便会产生不可避免地乱码问题，因此<code>Unicode</code>字符集应运而生。<code>Unicode</code>把所有语言都统一到一套编码中，这样便不会再有乱码问题。<br>注意，<code>Unicode</code>并不涉及字符是怎么在字节中表示的，它仅仅指定了每一个字符对应的数字，仅此而已。(<code>Unicode</code>只是一个用来<font color="red">映射字符和数字的标准</font>。它对支持字符的数量没有限制，也不要求字符必须占两个、三个或者其它任意数量的字节）。最常用的是使用2个字节表示1个字符，如果遇到非常偏僻的字符，就需要使用4个字符。<br>然而，如果使用<code>Unicode</code>编码，如果写的文本基本都是英文的话，需要的存储空间比<code>ASCII</code>编码多一倍的存储空间（因为对于1个英文字符，<code>ASCII</code>使用1个字节表示，而<code>Unicode</code>一般使用2个字节表示），十分不划算。<br>所以，又出现了把<code>Unicode</code>编码<font color="red">转化为</font>“可变长编码”的<strong><code>UTF-8</code>编码（又称“万国码”，目前最常用的一种编码）</strong>。<code>UTF-8</code>编码把一个<code>Unicode</code>字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果要传输的文本包含大量英文字符，用UTF-8编码就能节省空间。</p>
+<h1 id="计算机系统通用的字符编码工作方式"><a href="#计算机系统通用的字符编码工作方式" class="headerlink" title="计算机系统通用的字符编码工作方式"></a>计算机系统通用的字符编码工作方式</h1><p>在计算机内存中，统一使用<code>Unicode</code>编码，当需要保存到硬盘或者需要传输的时候，就转换为<code>UTF-8</code>编码。<br>用记事本编辑的时候，从硬盘中的文件读取的<code>UTF-8</code>字符被转换为<code>Unicode</code>字符加载到内存里，编辑完成后，保存的时候再把<code>Unicode</code>转换为<code>UTF-8</code>保存到文件：</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/0" alt="rw-file-utf-8"></p>
+<p>浏览网页的时候，服务器会把动态生成的<code>Unicode</code>内容转换为<code>UTF-8</code>再传输到浏览器：</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/0" alt="web-utf-8"></p>
+<p>所以很多网页的源码上会有类似<code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>的信息，表示该网页正是用的<code>UTF-8</code>编码。由于<code>ASCII</code>码是最开始的字符编码格式，其他所有的编码格式都是基于<code>ASCII</code>码的扩展，所以所有的编码都能够兼容<code>ASCII</code>码。</p>
+
+      
+
+   
+<!-- 增加版权声明 -->
+	
+	
+  <div class="declare" hidden="hidden"></div>
+
+
+<!-- 增加版权声明结束 -->
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">doubt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/05/charset/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/09/web/">Web前端</a>
+    </h1>
+  
+
+		<!---显示阅读次数--->
+		
+		<!--显示阅读次数完毕-->
+        
+        <a href="/2021/02/09/web/" class="archive-article-date">
   	<time datetime="2021-02-09T02:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-09</time>
 </a>
         
@@ -334,7 +463,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/09/Web/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/02/09/web/">展开全文 >></a>
         </p>
       
 
@@ -487,7 +616,6 @@ var _hmt = _hmt || [];
       
         <p>此前学习了C语言，思维仍是面向过程的编程思想。现在开始学习Java，转变一下思路。特此写博客记录Java的知识点。关于编程语言中的一些通用的重复性内容就不再赘述，在此文中提及的基础，都是当时学习C语言时候自己埋下的坑，都是自己的血泪！！！</p>
 <p>此篇博客未完待续……</p>
-<p><a href="#bottom">到达文章底部</a></p>
         
       
 
@@ -1012,98 +1140,10 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Typora_usage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/02/Typora_usage/">Typora使用</a>
-    </h1>
-  
-
-		<!---显示阅读次数--->
-		
-		<!--显示阅读次数完毕-->
-        
-        <a href="/2021/02/02/Typora_usage/" class="archive-article-date">
-  	<time datetime="2021-02-02T06:45:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-02</time>
-</a>
-        
-		<!-- 需要添加的位置 -->
-        <!-- 开始添加字数统计-->
-        
-        <!-- 添加完成 -->
-		
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
-<p>直到去年疫情期间在家，某天闲得无聊，就开始折腾这个软件了，觉得挺有意思的，开始学习使用。起先发现有些功能涉及到HTML，于是又花了一些时间去大致了解一下HTML。经过多次谷歌、百度之后，掌握了一些常用的功能。这两天搭好了个人博客网站，把几篇之前写的文章都上传到网站上，此篇作为第一篇。</p>
-        
-      
-
-   
-<!-- 增加版权声明 -->
-	
-	
-  <div class="declare" hidden="hidden"></div>
-
-
-<!-- 增加版权声明结束 -->
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Typora</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/02/Typora_usage/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next »</a>
+    </nav>
   
 
           </div>
