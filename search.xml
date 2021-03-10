@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于字符编码的一些问题</title>
+    <url>/2021/03/05/charset/</url>
+    <content><![CDATA[<p>第一次遇到乱码问题是在刚买电脑的时候由于Microsoft账户名用中文，导致一些文件夹的名字乱码。之后又在用IDE写代码的时候出现了乱码问题，只知道是字符编码格式不同。但是还是不了解字符集之间的区别。最近想要解决这个疑惑，就在网上搜索咨询了一下，记录下来。但是，由于网上的回答的水平有待提高。甚至百度百科的表述模糊不清：</p>
+<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210305182708179.png" alt="image-20210305182708179">知道的人晓得这是想说：2个字节中的0x0080~0xFFFF，不知道的人还以为0x80~0xFFFF表示2个字节的空间呢！！！真的是令人无语，这种有歧义的表述方式。我甚至刚看到的时候，还以为自己有问题。现在想想真是可笑之极，百度不看也罢！！！以下是我自己找到的较为中肯的解释，有不足之后，待日后发现，及时纠正。</p>
+<a id="more"></a>
+<h1 id="1-字符编码"><a href="#1-字符编码" class="headerlink" title="1. 字符编码"></a>1. 字符编码</h1><h2 id="1-1-ASCII码"><a href="#1-1-ASCII码" class="headerlink" title="1.1 ASCII码"></a>1.1 ASCII码</h2><p>最开始的时候计算机只在美国用。8位的字节一共可以组合出$2^8$共256种不同的状态。把其中的0x00~0x20的32种状态分别规定了特殊的用途，一但终端、打印机遇上约定好的这些字节被传过来时，就做出相应的行为。<br>比如：遇上0x10，终端就换行；遇上0x07，终端就向人们嘟嘟叫；遇上0x1B，打印机就打印反白的字，或者终端就用彩色显示字母。把这些0x20以下的字节状态称为<strong>控制码</strong>。</p>
+<p>后来又把所有的空格、标点符号、数字、大小写字母分别用连续的字节状态表示，一直编到了第127号0x7F（后面的128种状态没有用到，就空着了），这样计算机就可以用不同字节来存储英语的文字了。当时使用计算机的人们觉得这种方案可以非常好，可以接受，把这个方案叫做 <strong>ANSI</strong>的<strong>ASCII</strong>编码（American Standard Code for Information Interchange，美国信息互换标准代码）。当时世界上所有的计算机都用同样的<strong>ASCII</strong>方案来保存英文文字。</p>
+<p>后来计算机发展越来越广泛，世界各国为了可以在计算机保存他们的文字（有些国家的字符不止美国ASCII码的那些字符，比如希腊字母……），决定采用127号之后的空位来表示这些新的字母、符号，还加入了很多画表格时需要用下到的横线、竖线、交叉等形状，一直把序号编到了 最后一个状态255号0xFF。从128到255这之间的字符集被称为<strong>扩展字符集</strong>。至此，1个字节最多也就能表示256种状态了，再也放不下更多的编码了。</p>
+<h2 id="1-2-GB2312、GBK、GB18030"><a href="#1-2-GB2312、GBK、GB18030" class="headerlink" title="1.2 GB2312、GBK、GB18030"></a>1.2 GB2312、GBK、GB18030</h2><p>等我国得到计算机时，已经没有可以利用的字节状态来表示汉字，但是此时又有6000多个常用汉字需要保存。于是国人就自主研发，把127号0x7F后面的那些奇异符号直接取消掉。<br>并规定：1个小于127的字符的意义与原来相同（即前128个字符仍是ASCII码），但两个大于127的字符连在一起时，就表示一个汉字。前面的一个字节（称之为高字节），后面一个字节（低字节）。这样我们就可以组合出大约7000多个简体汉字了。碰到极其特殊的情况，还会使用三个字节来表示一个汉字。在这种编码里，我们还把数学符号、罗马希腊的字母、日文的假名都编进去了，还把ASCII码所表示的128个字符重新编了两个字节长的编码，这就是常说的<strong>全角字符</strong>，而原来没有做改动的0x00~0x7F之间的字符就叫<strong>半角字符</strong>。<br>中国人民看到这样很不错，于是就把这种编码方案叫做<strong>GB2312</strong>。<strong>GB2312</strong> 是对 <strong>ASCII</strong> 的中文扩展。<br>但是中国的汉字太多了，后来还是不够用，于是干脆不再要求低字节一定是127号之后的，只要第一个字节是大于127就固定表示这是一个汉字的开始，不管后面跟的是不是扩展字符集里的内容。扩展之后的编码方案被称为 <strong>GBK</strong> 标准，GBK 包括了GB2312的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。后来少数民族也要用电脑了，于是我们再扩展，又加了几千个新的少数民族的字，<strong>GBK</strong> 扩成了<strong>GB18030</strong>。从此之后，中国的所有字符都能在计算机中表示了。</p>
+<h2 id="1-3-Unicode码"><a href="#1-3-Unicode码" class="headerlink" title="1.3 Unicode码"></a>1.3 Unicode码</h2><p>因为当时各个国家都像中国这样，有一套自己的编码标准，结果互相之间谁也不懂谁的编码，谁也不支持别人的编码。当时的中国人想让电脑显示汉字，就必须装上一个<strong>汉字系统</strong>以采用上文提到过的编码格式专门用来处理汉字的显示、输入的问题，其他国家亦是如此。如果装错了字符系统，就会乱码，这在当时成了一个让人们头疼的问题。<br>就在这时，<strong>ISO</strong>（International Organization for Standardization，国际标谁化组织）决定着手解决这个问题。他们采用的方法很简单：废除所有的地区性编码方案，重新搞一个包括了地球上所有文化、所有字母和符号的编码！他们打算叫它”Universal Multiple-Octet Coded Character Set”，简称UCS, 俗称<strong>Unicode</strong>。</p>
+<p>目前最常用的Unicode编码是UCS-16编码，用2个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。对于ASCII码的那些<strong>半角字符</strong>，Unicode保持其原编码不变，只是将其长度由原来的8位扩展为16位（只用低8位，高8位恒为0），而其他文化和语言的字符则全部重新统一编码。由于半角英文符号只用到低8位，高 8位永远是0，如半角英文大写字母A用Unicode码是<code>0x0065</code>。因此这种大气的方案在保存英文文本时会多浪费一倍的空间。<br>但是，Unicode码在制订时没有考虑与任何一种现有的编码方案保持兼容，所有现有的编码与Unicode在汉字的内码编排上完全是不一样的，没有一种简单的算术方法可以把文本内容从Unicode编码和另一种编码进行转换，因此这种转换必须通过查表来进行。</p>
+<h2 id="1-4-UTF-8"><a href="#1-4-UTF-8" class="headerlink" title="1.4 UTF-8"></a>1.4 UTF-8</h2><p>Unicode来到时，一起到来的还有计算机网络的兴起，Unicode如何在网络上传输也是一个必须考虑的问题，于是众多面向传输的UTF（UCS Transfer Format，UCS传输标准）出现了。顾名思义，<strong>UTF-8</strong>就是每次8个位传输数据，而 <strong>UTF-16</strong>就是每次16个位。<strong>为了传输时的可靠性，从Unicode到UTF时并不是直接的对应，而是要过一些算法和规则来转换，</strong>目前常用的是<strong>UTF-8</strong>编码。<br><strong>UTF-8</strong>编码把一个Unicode字符根据不同的数字大小编码成1-6个字节。其中，英文字母被编码成1个字节，汉字被编码成3个字节，极其生僻的字符被编码成4-6个字节。如果要传输的文本包含大量英文字符，用UTF-8编码就能节省空间。下面举一个例子：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字符</th>
+<th style="text-align:left">ASCII</th>
+<th style="text-align:left">Unicode</th>
+<th style="text-align:left">UTF-8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">01000001</td>
+<td style="text-align:left">00000000 01000001</td>
+<td style="text-align:left">01000001</td>
+</tr>
+<tr>
+<td style="text-align:left">中</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">01001110 00101101</td>
+<td style="text-align:left">11100100 10111000 10101101</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h2><p>简单概括为以下几点：<br>1.中国人民通过对ASCII编码的中文扩充改造，产生了GB2312编码，可以表示6000多个常用汉字；<br>2.汉字实在是太多了，包括繁体和各种中文字符，于是产生了GBK编码，它包括了GB2312中的编码，同时扩充了很多；<br>3.中国是个多民族国家，各个民族几乎都有自己独立的语言系统，为了表示那些字符，继续把 GBK 编码扩充为 GB18030 编码；<br>4.每个国家都像中国一样，把自己的语言进行编码，于是出现了各种各样的编码，如果不安装相应编码，就会出现乱码；<br>5.ISO组织制定了一种编码Unicode，这种编码非常大，可以容纳世界上任何一个文字和标志，所以只要电脑上有Unicode这种编码系统，无论是全球哪种文字，保存成Unicode编码就可以被其他电脑正常解释；<br>6.Unicode 在网络传输中，出现了<strong>两个标准UTF-8和UTF-16</strong>，分别每次传输 8个位和 16个位。</p>
+<h2 id="1-6-问题"><a href="#1-6-问题" class="headerlink" title="1.6 问题"></a>1.6 问题</h2><p>既然UTF-8能保存那么多文字、符号，为什么国内还有很多地方使用GBK等编码？<br>答：因为UTF-8编码体积比较大，占电脑空间比较多，如果面向的使用人群绝大部分都是中国人，用GBK等编码也可以，还能节省硬盘空间。目前，硬盘价格都不再像以前那样贵得要死，都是是可接受的，所以现在的网页统一都使用<strong>UTF-8</strong>编码。</p>
+<h1 id="2-计算机系统通用的字符编码工作方式"><a href="#2-计算机系统通用的字符编码工作方式" class="headerlink" title="2. 计算机系统通用的字符编码工作方式"></a>2. 计算机系统通用的字符编码工作方式</h1><p>在计算机内存中，统一使用<code>Unicode</code>编码，当需要保存到硬盘或者需要传输的时候，就转换为<code>UTF-8</code>编码。即：<br>用记事本编辑的时候，从硬盘中的文件读取的<code>UTF-8</code>字符被转换为<code>Unicode</code>字符加载到内存里，编辑完成后，保存的时候再把<code>Unicode</code>转换为<code>UTF-8</code>保存到文件：</p>
+<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/0.png"></center>
+
+<p>浏览网页的时候，服务器会把动态生成的<code>Unicode</code>内容转换为<code>UTF-8</code>再传输到浏览器：</p>
+<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/01.png"></center>
+
+<p>所以很多网页的源码种会有类似<code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>的信息，表示该网页正是用的<code>UTF-8</code>编码。由于<code>ASCII</code>码是最开始的字符编码格式，其他所有的编码格式都是基于<code>ASCII</code>码的扩展，所以所有的编码都能够兼容<code>ASCII</code>码。</p>
+]]></content>
+      <tags>
+        <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Typora使用</title>
     <url>/2021/02/02/Typora_usage/</url>
     <content><![CDATA[<p>说来惭愧，刚开始有记录学习和生活的想法的那一段时间，是通过<strong>Word</strong>。需要编辑公式的时候找个简单易上手的公式编辑器找半天，索性也就这样凑合过来了。虽说word功能十分强大，但是写博客的话有点不太对劲。过了大概一年左右，从一个朋友那看到了Typora这个软件，看到界面简洁，而且觉得比记事本稍微好看点，就下载了，只不过是像使用<strong>记事本</strong>一样记录生活。</p>
@@ -200,59 +253,6 @@ y=x^2\\
       </tags>
   </entry>
   <entry>
-    <title>关于字符编码的一些问题</title>
-    <url>/2021/03/05/charset/</url>
-    <content><![CDATA[<p>第一次遇到乱码问题是在刚买电脑的时候由于Microsoft账户名用中文，导致一些文件夹的名字乱码。之后又在用IDE写代码的时候出现了乱码问题，只知道是字符编码格式不同。但是还是不了解字符集之间的区别。最近想要解决这个疑惑，就在网上搜索咨询了一下，记录下来。但是，由于网上的回答的水平有待提高。甚至百度百科的表述模糊不清：</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210305182708179.png" alt="image-20210305182708179">知道的人晓得这是想说：2个字节中的0x0080~0xFFFF，不知道的人还以为0x80~0xFFFF表示2个字节的空间呢！！！真的是令人无语，这种有歧义的表述方式。我甚至刚看到的时候，还以为自己有问题。现在想想真是可笑之极，百度不看也罢！！！以下是我自己找到的较为中肯的解释，有不足之后，待日后发现，及时纠正。</p>
-<a id="more"></a>
-<h1 id="1-字符编码"><a href="#1-字符编码" class="headerlink" title="1. 字符编码"></a>1. 字符编码</h1><h2 id="1-1-ASCII码"><a href="#1-1-ASCII码" class="headerlink" title="1.1 ASCII码"></a>1.1 ASCII码</h2><p>最开始的时候计算机只在美国用。8位的字节一共可以组合出$2^8$共256种不同的状态。把其中的0x00~0x20的32种状态分别规定了特殊的用途，一但终端、打印机遇上约定好的这些字节被传过来时，就做出相应的行为。<br>比如：遇上0x10，终端就换行；遇上0x07，终端就向人们嘟嘟叫；遇上0x1B，打印机就打印反白的字，或者终端就用彩色显示字母。把这些0x20以下的字节状态称为<strong>控制码</strong>。</p>
-<p>后来又把所有的空格、标点符号、数字、大小写字母分别用连续的字节状态表示，一直编到了第127号0x7F（后面的128种状态没有用到，就空着了），这样计算机就可以用不同字节来存储英语的文字了。当时使用计算机的人们觉得这种方案可以非常好，可以接受，把这个方案叫做 <strong>ANSI</strong>的<strong>ASCII</strong>编码（American Standard Code for Information Interchange，美国信息互换标准代码）。当时世界上所有的计算机都用同样的<strong>ASCII</strong>方案来保存英文文字。</p>
-<p>后来计算机发展越来越广泛，世界各国为了可以在计算机保存他们的文字（有些国家的字符不止美国ASCII码的那些字符，比如希腊字母……），决定采用127号之后的空位来表示这些新的字母、符号，还加入了很多画表格时需要用下到的横线、竖线、交叉等形状，一直把序号编到了 最后一个状态255号0xFF。从128到255这之间的字符集被称为<strong>扩展字符集</strong>。至此，1个字节最多也就能表示256种状态了，再也放不下更多的编码了。</p>
-<h2 id="1-2-GB2312、GBK、GB18030"><a href="#1-2-GB2312、GBK、GB18030" class="headerlink" title="1.2 GB2312、GBK、GB18030"></a>1.2 GB2312、GBK、GB18030</h2><p>等我国得到计算机时，已经没有可以利用的字节状态来表示汉字，但是此时又有6000多个常用汉字需要保存。于是国人就自主研发，把127号0x7F后面的那些奇异符号直接取消掉。<br>并规定：1个小于127的字符的意义与原来相同（即前128个字符仍是ASCII码），但两个大于127的字符连在一起时，就表示一个汉字。前面的一个字节（称之为高字节），后面一个字节（低字节）。这样我们就可以组合出大约7000多个简体汉字了。碰到极其特殊的情况，还会使用三个字节来表示一个汉字。在这种编码里，我们还把数学符号、罗马希腊的字母、日文的假名都编进去了，还把ASCII码所表示的128个字符重新编了两个字节长的编码，这就是常说的<strong>全角字符</strong>，而原来没有做改动的0x00~0x7F之间的字符就叫<strong>半角字符</strong>。<br>中国人民看到这样很不错，于是就把这种编码方案叫做<strong>GB2312</strong>。<strong>GB2312</strong> 是对 <strong>ASCII</strong> 的中文扩展。<br>但是中国的汉字太多了，后来还是不够用，于是干脆不再要求低字节一定是127号之后的，只要第一个字节是大于127就固定表示这是一个汉字的开始，不管后面跟的是不是扩展字符集里的内容。扩展之后的编码方案被称为 <strong>GBK</strong> 标准，GBK 包括了GB2312的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。后来少数民族也要用电脑了，于是我们再扩展，又加了几千个新的少数民族的字，<strong>GBK</strong> 扩成了<strong>GB18030</strong>。从此之后，中国的所有字符都能在计算机中表示了。</p>
-<h2 id="1-3-Unicode码"><a href="#1-3-Unicode码" class="headerlink" title="1.3 Unicode码"></a>1.3 Unicode码</h2><p>因为当时各个国家都像中国这样，有一套自己的编码标准，结果互相之间谁也不懂谁的编码，谁也不支持别人的编码。当时的中国人想让电脑显示汉字，就必须装上一个<strong>汉字系统</strong>以采用上文提到过的编码格式专门用来处理汉字的显示、输入的问题，其他国家亦是如此。如果装错了字符系统，就会乱码，这在当时成了一个让人们头疼的问题。<br>就在这时，<strong>ISO</strong>（International Organization for Standardization，国际标谁化组织）决定着手解决这个问题。他们采用的方法很简单：废除所有的地区性编码方案，重新搞一个包括了地球上所有文化、所有字母和符号的编码！他们打算叫它”Universal Multiple-Octet Coded Character Set”，简称UCS, 俗称<strong>Unicode</strong>。</p>
-<p>目前最常用的Unicode编码是UCS-16编码，用2个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。对于ASCII码的那些<strong>半角字符</strong>，Unicode保持其原编码不变，只是将其长度由原来的8位扩展为16位（只用低8位，高8位恒为0），而其他文化和语言的字符则全部重新统一编码。由于半角英文符号只用到低8位，高 8位永远是0，如半角英文大写字母A用Unicode码是<code>0x0065</code>。因此这种大气的方案在保存英文文本时会多浪费一倍的空间。<br>但是，Unicode码在制订时没有考虑与任何一种现有的编码方案保持兼容，所有现有的编码与Unicode在汉字的内码编排上完全是不一样的，没有一种简单的算术方法可以把文本内容从Unicode编码和另一种编码进行转换，因此这种转换必须通过查表来进行。</p>
-<h2 id="1-4-UTF-8"><a href="#1-4-UTF-8" class="headerlink" title="1.4 UTF-8"></a>1.4 UTF-8</h2><p>Unicode来到时，一起到来的还有计算机网络的兴起，Unicode如何在网络上传输也是一个必须考虑的问题，于是众多面向传输的UTF（UCS Transfer Format，UCS传输标准）出现了。顾名思义，<strong>UTF-8</strong>就是每次8个位传输数据，而 <strong>UTF-16</strong>就是每次16个位。<strong>为了传输时的可靠性，从Unicode到UTF时并不是直接的对应，而是要过一些算法和规则来转换，</strong>目前常用的是<strong>UTF-8</strong>编码。<br><strong>UTF-8</strong>编码把一个Unicode字符根据不同的数字大小编码成1-6个字节。其中，英文字母被编码成1个字节，汉字被编码成3个字节，极其生僻的字符被编码成4-6个字节。如果要传输的文本包含大量英文字符，用UTF-8编码就能节省空间。下面举一个例子：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">字符</th>
-<th style="text-align:left">ASCII</th>
-<th style="text-align:left">Unicode</th>
-<th style="text-align:left">UTF-8</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">A</td>
-<td style="text-align:left">01000001</td>
-<td style="text-align:left">00000000 01000001</td>
-<td style="text-align:left">01000001</td>
-</tr>
-<tr>
-<td style="text-align:left">中</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">01001110 00101101</td>
-<td style="text-align:left">11100100 10111000 10101101</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="1-5-总结"><a href="#1-5-总结" class="headerlink" title="1.5 总结"></a>1.5 总结</h2><p>简单概括为以下几点：<br>1.中国人民通过对ASCII编码的中文扩充改造，产生了GB2312编码，可以表示6000多个常用汉字；<br>2.汉字实在是太多了，包括繁体和各种中文字符，于是产生了GBK编码，它包括了GB2312中的编码，同时扩充了很多；<br>3.中国是个多民族国家，各个民族几乎都有自己独立的语言系统，为了表示那些字符，继续把 GBK 编码扩充为 GB18030 编码；<br>4.每个国家都像中国一样，把自己的语言进行编码，于是出现了各种各样的编码，如果不安装相应编码，就会出现乱码；<br>5.ISO组织制定了一种编码Unicode，这种编码非常大，可以容纳世界上任何一个文字和标志，所以只要电脑上有Unicode这种编码系统，无论是全球哪种文字，保存成Unicode编码就可以被其他电脑正常解释；<br>6.Unicode 在网络传输中，出现了<strong>两个标准UTF-8和UTF-16</strong>，分别每次传输 8个位和 16个位。</p>
-<h2 id="1-6-问题"><a href="#1-6-问题" class="headerlink" title="1.6 问题"></a>1.6 问题</h2><p>既然UTF-8能保存那么多文字、符号，为什么国内还有很多地方使用GBK等编码？<br>答：因为UTF-8编码体积比较大，占电脑空间比较多，如果面向的使用人群绝大部分都是中国人，用GBK等编码也可以，还能节省硬盘空间。目前，硬盘价格都不再像以前那样贵得要死，都是是可接受的，所以现在的网页统一都使用<strong>UTF-8</strong>编码。</p>
-<h1 id="2-计算机系统通用的字符编码工作方式"><a href="#2-计算机系统通用的字符编码工作方式" class="headerlink" title="2. 计算机系统通用的字符编码工作方式"></a>2. 计算机系统通用的字符编码工作方式</h1><p>在计算机内存中，统一使用<code>Unicode</code>编码，当需要保存到硬盘或者需要传输的时候，就转换为<code>UTF-8</code>编码。即：<br>用记事本编辑的时候，从硬盘中的文件读取的<code>UTF-8</code>字符被转换为<code>Unicode</code>字符加载到内存里，编辑完成后，保存的时候再把<code>Unicode</code>转换为<code>UTF-8</code>保存到文件：</p>
-<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/0.png"></center>
-
-<p>浏览网页的时候，服务器会把动态生成的<code>Unicode</code>内容转换为<code>UTF-8</code>再传输到浏览器：</p>
-<center><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/01.png"></center>
-
-<p>所以很多网页的源码种会有类似<code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>的信息，表示该网页正是用的<code>UTF-8</code>编码。由于<code>ASCII</code>码是最开始的字符编码格式，其他所有的编码格式都是基于<code>ASCII</code>码的扩展，所以所有的编码都能够兼容<code>ASCII</code>码。</p>
-]]></content>
-      <tags>
-        <tag>doubt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>码制的一些问题</title>
     <url>/2021/02/02/complement/</url>
     <content><![CDATA[<p>以前上课的时候，经常听见老师将补码的问题，很多门课的老师也会反复说码制之间的转换。但是，+0和-0的问题只是一笔带过。平时也很少遇到这种问题，而我自己又懒，就没有深究。现在想来，懒真的才是万恶之源。最近有空，便仔细想了这个问题，百度之后了解了这个问题。顺便把补码的几种求解方法列举了下来。特此，写篇博客记录下来。</p>
@@ -266,6 +266,62 @@ y=x^2\\
 <p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232645268.png" alt="image-20210202232645268"></p>
 <p>3.按照补码的定义，负数的补码，定义如下：</p>
 <p>​    <img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210202232730990.png" alt="image-20210202232730990"></p>
+]]></content>
+      <tags>
+        <tag>doubt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将进酒</title>
+    <url>/2021/02/03/poem1/</url>
+    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
+<a id="more"></a>
+<center>将进酒</center>
+
+<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
+<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
+<p><center>人生得意须尽欢，莫使金樽空对月。</p>
+<p><center>天生我才必有用，千金散尽还复来。</p>
+<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
+<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
+<p><center>与君歌一曲，请君为我倾耳听。</p>
+<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
+<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
+<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
+<p><center>主人何为言少钱，径须沽取对君酌。</p>
+<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
+]]></content>
+      <tags>
+        <tag>essay</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自然底数e的由来</title>
+    <url>/2021/02/02/origin_of_e/</url>
+    <content><![CDATA[<p>与圆周率$\pi$一样，自然底数e是一个常数。然而自从知道e开始，就只记得其大致的值为2.71828182845…，却不知其从何而来，这个数有什么意义。</p>
+<p>直到一天我在图书馆无意中翻看到一本关于物理学史的书时，发现上面大致介绍了一下这个常数的由来，特此写一篇博客记录。</p>
+<a id="more"></a>
+<p>首先，e 这个表示自然底数的符号是由瑞士数学和物理学家Leonhard Euler(莱昂哈德·欧拉)命名的，取的正是Euler的首字母“ <img src="https://www.zhihu.com/equation?tex=e" alt="[公式]"> ”</p>
+<p>但实际上，第一个发现这个常数的，并非欧拉本人，而是<strong>雅可比·伯努利</strong>（Jacob Bernoulli）（提出雅各比公式的那位），伯努利家族是17〜18世纪瑞士的一个赫赫有名的家族，其中出了很多著名的数理科学家，雅可比·伯努利是<strong>约翰·伯努利</strong>（Johann Bernoulli）的哥哥，而约翰·伯努利则是欧拉的数学老师。</p>
+<p>步入正题。我们知道，很多细菌是通过二分裂进行繁殖的，假设某种细菌1天会分裂1次，也就是 1 个增长周期为1天，这意味着：<strong>每一天，细菌的总数量都是前一天的两倍</strong>。<br>不难得出：1个细菌分裂$x$天后，细菌总数为$2^x$，那么$K$个细菌分裂$x$天后细菌总数为$Q=K\cdot2^x$</p>
+<p>如果将 “<strong>分裂</strong>”或“<strong>翻倍</strong>”换一种更文艺的说法，也可以说是：“<strong>增长率为$100\%$</strong> ”。也就是说，可以将上式写为：$(1+100\%)^x$，然而当增长率不是100%，而是50%、25%之类的时候，则需要将上式的100%更换即可。如此一来，便可得到适用于其他类似增长事物的普适的公式：</p>
+<script type="math/tex; mode=display">
+Q=(1+r)^x</script><p>这个公式的数学内涵是：一个增长周期内的增长率为 $r$ ，在增长了 $x$ 个周期之后，总数也将为初始量的 $Q$ 倍。</p>
+<p>以上为指数增长的一个简单实例，下面来看看雅可比·伯努利的发现：</p>
+<p>假如你有1元钱存在银行中，而银行的利率飙升到了100%（理想情况，姑且认为是严重的通货膨胀吧），若银行一年付一次利息，则一年后你可以拿到1元的本金和1元的利息，总共2元。</p>
+<p>现在银行的年利率不变，但是为了招揽客户，推出每半年就付一次利息（年利率还是100%，只不过一半时间内付一半的利息）的政策，那么在六个月后，你就能拿到1元的本金和0.5元的利息，总共1.5元，若不取出，而是继续存入银行中产生利息（俗称利滚利，专业术语称<strong>复利</strong>），那么再过六个月，存款将为2.25元。可用如下公式模拟：</p>
+<script type="math/tex; mode=display">
+Q=(1+\frac{100\%}{2})^2</script><p>继续，假设现在银行为了和其他银行抢生意，短期不想赚钱了，每四个月就付一次利息！而机智的你依然不取出而是继续存，与半年结算一次利息类似：即，每个结算周期为四个月，每四个月的利率是$\frac{100\%}{3}$，用如下公式模拟：</p>
+<script type="math/tex; mode=display">
+Q=(1+\frac{100\%}{3})^3\approx2.37037</script><p>不难发现，年利率虽然没变，但是随着每年利息交付次数的增加（按照时间每隔一段时间就付之以相对应时间占比的利率，如半年50%，四个月33.33%，三个月25%等），能从银行拿到的钱也在增加。随着交付次数的不断增加，当其趋于无穷时（即相当于每时每刻都在交付利息），经过不断计算发现，其最终的值趋于一个常数2.71828182845…，将其用字母 e 来定义，即得以下极限</p>
+<script type="math/tex; mode=display">
+e=\lim_{n \to \infty}(1+\frac{1}{n})^n\\
+此处的\infty默认为+\infty</script><p>然而，实际上银行的利率永远也不会超过100%（银行不做慈善），此外，有些事物的增长率是超过100%甚至是远超的。若将100%用变量x代替，便可得到满足所有自然增长事物的增长规律。以下是推导过程：</p>
+<script type="math/tex; mode=display">
+e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x}})^\frac{n}{x}=\lim_{n \to \infty}(1+\frac{x}{n})^\frac{n}{x}\\
+不难发现，e^x=\lim_{n \to \infty}((1+\frac{x}{n})^\frac{n}{x})^x\\
+\qquad\qquad\ \ \ =\lim_{n \to \infty}(1+\frac{x}{n})^n</script><p>由此便将式中的100%用 x 代替，便可表征所有自然增长的规律（ x代表增长率，既可能大于1，也可能小于1，甚至可能小于0（亏损、减少））</p>
+<p>有了自然之数，便有了其他底数为底的指数函数</p>
 ]]></content>
       <tags>
         <tag>doubt</tag>
@@ -849,62 +905,6 @@ e^{ix} = \cos x + i\sin x \\
       <tags>
         <tag>Typora</tag>
         <tag>LaTex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自然底数e的由来</title>
-    <url>/2021/02/02/origin_of_e/</url>
-    <content><![CDATA[<p>与圆周率$\pi$一样，自然底数e是一个常数。然而自从知道e开始，就只记得其大致的值为2.71828182845…，却不知其从何而来，这个数有什么意义。</p>
-<p>直到一天我在图书馆无意中翻看到一本关于物理学史的书时，发现上面大致介绍了一下这个常数的由来，特此写一篇博客记录。</p>
-<a id="more"></a>
-<p>首先，e 这个表示自然底数的符号是由瑞士数学和物理学家Leonhard Euler(莱昂哈德·欧拉)命名的，取的正是Euler的首字母“ <img src="https://www.zhihu.com/equation?tex=e" alt="[公式]"> ”</p>
-<p>但实际上，第一个发现这个常数的，并非欧拉本人，而是<strong>雅可比·伯努利</strong>（Jacob Bernoulli）（提出雅各比公式的那位），伯努利家族是17〜18世纪瑞士的一个赫赫有名的家族，其中出了很多著名的数理科学家，雅可比·伯努利是<strong>约翰·伯努利</strong>（Johann Bernoulli）的哥哥，而约翰·伯努利则是欧拉的数学老师。</p>
-<p>步入正题。我们知道，很多细菌是通过二分裂进行繁殖的，假设某种细菌1天会分裂1次，也就是 1 个增长周期为1天，这意味着：<strong>每一天，细菌的总数量都是前一天的两倍</strong>。<br>不难得出：1个细菌分裂$x$天后，细菌总数为$2^x$，那么$K$个细菌分裂$x$天后细菌总数为$Q=K\cdot2^x$</p>
-<p>如果将 “<strong>分裂</strong>”或“<strong>翻倍</strong>”换一种更文艺的说法，也可以说是：“<strong>增长率为$100\%$</strong> ”。也就是说，可以将上式写为：$(1+100\%)^x$，然而当增长率不是100%，而是50%、25%之类的时候，则需要将上式的100%更换即可。如此一来，便可得到适用于其他类似增长事物的普适的公式：</p>
-<script type="math/tex; mode=display">
-Q=(1+r)^x</script><p>这个公式的数学内涵是：一个增长周期内的增长率为 $r$ ，在增长了 $x$ 个周期之后，总数也将为初始量的 $Q$ 倍。</p>
-<p>以上为指数增长的一个简单实例，下面来看看雅可比·伯努利的发现：</p>
-<p>假如你有1元钱存在银行中，而银行的利率飙升到了100%（理想情况，姑且认为是严重的通货膨胀吧），若银行一年付一次利息，则一年后你可以拿到1元的本金和1元的利息，总共2元。</p>
-<p>现在银行的年利率不变，但是为了招揽客户，推出每半年就付一次利息（年利率还是100%，只不过一半时间内付一半的利息）的政策，那么在六个月后，你就能拿到1元的本金和0.5元的利息，总共1.5元，若不取出，而是继续存入银行中产生利息（俗称利滚利，专业术语称<strong>复利</strong>），那么再过六个月，存款将为2.25元。可用如下公式模拟：</p>
-<script type="math/tex; mode=display">
-Q=(1+\frac{100\%}{2})^2</script><p>继续，假设现在银行为了和其他银行抢生意，短期不想赚钱了，每四个月就付一次利息！而机智的你依然不取出而是继续存，与半年结算一次利息类似：即，每个结算周期为四个月，每四个月的利率是$\frac{100\%}{3}$，用如下公式模拟：</p>
-<script type="math/tex; mode=display">
-Q=(1+\frac{100\%}{3})^3\approx2.37037</script><p>不难发现，年利率虽然没变，但是随着每年利息交付次数的增加（按照时间每隔一段时间就付之以相对应时间占比的利率，如半年50%，四个月33.33%，三个月25%等），能从银行拿到的钱也在增加。随着交付次数的不断增加，当其趋于无穷时（即相当于每时每刻都在交付利息），经过不断计算发现，其最终的值趋于一个常数2.71828182845…，将其用字母 e 来定义，即得以下极限</p>
-<script type="math/tex; mode=display">
-e=\lim_{n \to \infty}(1+\frac{1}{n})^n\\
-此处的\infty默认为+\infty</script><p>然而，实际上银行的利率永远也不会超过100%（银行不做慈善），此外，有些事物的增长率是超过100%甚至是远超的。若将100%用变量x代替，便可得到满足所有自然增长事物的增长规律。以下是推导过程：</p>
-<script type="math/tex; mode=display">
-e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x}})^\frac{n}{x}=\lim_{n \to \infty}(1+\frac{x}{n})^\frac{n}{x}\\
-不难发现，e^x=\lim_{n \to \infty}((1+\frac{x}{n})^\frac{n}{x})^x\\
-\qquad\qquad\ \ \ =\lim_{n \to \infty}(1+\frac{x}{n})^n</script><p>由此便将式中的100%用 x 代替，便可表征所有自然增长的规律（ x代表增长率，既可能大于1，也可能小于1，甚至可能小于0（亏损、减少））</p>
-<p>有了自然之数，便有了其他底数为底的指数函数</p>
-]]></content>
-      <tags>
-        <tag>doubt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将进酒</title>
-    <url>/2021/02/03/poem1/</url>
-    <content><![CDATA[<p>终于把博客网站部署好了！！！也算有了自己的网站，特此背诵一首李白的《将进酒》留作以后纪念😄</p>
-<a id="more"></a>
-<center>将进酒</center>
-
-<p><center>君不见，黄河之水天上来，奔流到海不复回。</p>
-<p><center>君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
-<p><center>人生得意须尽欢，莫使金樽空对月。</p>
-<p><center>天生我才必有用，千金散尽还复来。</p>
-<p><center>烹羊宰牛且为乐，会须一饮三百杯。</p>
-<p><center>岑夫子，丹丘生，将进酒，杯莫停。</p>
-<p><center>与君歌一曲，请君为我倾耳听。</p>
-<p><center>钟鼓馔玉不足贵，但愿长醉不复醒。</p>
-<p><center>古来圣贤皆寂寞 ，惟有饮者留其名。</p>
-<p><center>陈王昔时宴平乐，斗酒十恣欢谑。</p>
-<p><center>主人何为言少钱，径须沽取对君酌。</p>
-<p><center>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
-]]></content>
-      <tags>
-        <tag>essay</tag>
       </tags>
   </entry>
   <entry>
@@ -1996,7 +1996,8 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <h2 id="2-3-变量的分类"><a href="#2-3-变量的分类" class="headerlink" title="2.3 变量的分类"></a>2.3 变量的分类</h2><p>按照基本数据类型分：</p>
 <p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/变量的分类-按数据类型.svg" alt="变量的分类-按数据类型"></p>
 <p>按照声明的位置不同分：</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/变量的分类-按声明的位置.svg" alt="变量的分类-按声明的位置"></p>
+<center><img alt="变量的分类-按照声明的位置" src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/变量的分类-按声明的位置.svg"></center>
+
 <p>下面介绍按照基本数据类型分类的变量。</p>
 <h3 id="2-3-1-基本数据类型（primitive-type）"><a href="#2-3-1-基本数据类型（primitive-type）" class="headerlink" title="2.3.1 基本数据类型（primitive type）"></a>2.3.1 基本数据类型（primitive type）</h3><p>1.整型（byte、short、int、long）：整型常量默认为 int 型<br>2.浮点型（float、double）：浮点型常量默认为 double 型，定义 long 和 float 类型初始化及赋值时需要在数值后面加上 “L” 或 “l” 和 “F” 或 “f”，常用 int 和 double 类型。若 long 型不加上后缀，则默认为 int 型，而 float 类型必须加上后缀，否则编译报错<br>3.字符型（char）：与C不同，java的字符型 char可以表示任何一个字符（每个字符占2个字节），而不单单是西文字符，如<code>char a = &#39;我&#39;;</code>，而<code>char a = &#39;48&#39;;</code>是错误的，因为 <code>&#39;48&#39;</code>是2个字符，哪怕是<code>&#39;4空格&#39;</code>也不行，空格也算一个字符，但是<code>char a = 48;</code>是对的，因为没有用单引号括起来时，相当于将 ASCII 码值给ａ，编译时机器会查表将其替换成对应的字符。128 个 ASCII 码字符用8位表示，最高位规定为0，剩下7位表示0~127的 ASCII 码字符。<br>4.布尔型（boolean）</p>
 <h3 id="2-3-2-引用数据类型（reference-type）"><a href="#2-3-2-引用数据类型（reference-type）" class="headerlink" title="2.3.2 引用数据类型（reference type）"></a>2.3.2 引用数据类型（reference type）</h3><p>class（类）、interface（接口）、array（数组）</p>
@@ -2293,8 +2294,7 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <p>与基本数据类型中的自动类型提升<code>int number1 = 1;double number2 = number1;</code>相似，子类创建的对象赋给父类型创建的变量即<code>Person p1 = new Man()</code>会<strong>自动</strong>将其强制转换成父类型Person，并且还具有了子类Man中的那些特有的属性和方法的，只不过调用不了而已，这种转型本质上就是多态。向下转型很少用，基本上都是用向上转型（多态）。<br>而若要像<code>double number1 = 1.0;int number2 = (int)number2;</code>，将父类型强制转换成子类型，可以像上述代码一样使用强制类型转换，但是这种直接的转换方式因为容易出错，所以一般使用<code>instanceof</code>关键字进行判断</p>
 <p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210303172607955.png" alt="image-20210303172607955"></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InstanceofTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.编译不通过</span></span><br><span class="line"><span class="comment">//        Man m1 = new Woman();</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.编译通过，运行不通过</span></span><br><span class="line"><span class="comment">//        Person p1 = new Woman();</span></span><br><span class="line"><span class="comment">//        Man m1 = (Man) p1;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.编译通过，运行时通过</span></span><br><span class="line">        Object obj = <span class="keyword">new</span> Woman();</span><br><span class="line">        Person p = (Person) obj;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*  a instanceof A    判断对象a是否是类A的实例，如果是，返回true，如果不是，返回false</span></span><br><span class="line"><span class="comment">        使用情境：为了避免再向下转型中出现ClassCastException的异常，再向下转型之前，使用instanceof的判断，一旦返回true，就进行向下转型，否则就不向下转型</span></span><br><span class="line"><span class="comment">        如果：a instanceof A返回true，且a instanceof B也返回true，那么类B是类A的父类</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        Man man = <span class="keyword">new</span> Man();</span><br><span class="line">        Woman woman = <span class="keyword">new</span> Woman();</span><br><span class="line">        <span class="keyword">if</span> (person <span class="keyword">instanceof</span> Person) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Person类的对象是Person类的一个实例&quot;</span>);<span class="comment">//其他的类型同理</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (man <span class="keyword">instanceof</span> Person) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;子类Man的对象也是父类Person类型的一个实例&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (woman <span class="keyword">instanceof</span> Person) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;子类Woman的对象也是父类Person类型的一个实例&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!(person <span class="keyword">instanceof</span> Man || person <span class="keyword">instanceof</span> Woman)) &#123;<span class="comment">//同时为false时才会执行</span></span><br><span class="line">            System.out.println(<span class="string">&quot;父类Person的对象不是子类Man和Woman的一个实例&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        Person manInPerson = <span class="keyword">new</span> Man();</span><br><span class="line">        Person womanInPerson = <span class="keyword">new</span> Woman();</span><br><span class="line">        <span class="keyword">if</span> (manInPerson <span class="keyword">instanceof</span> Person &amp;&amp; manInPerson <span class="keyword">instanceof</span> Man) &#123;</span><br><span class="line">            Man man1 = (Man) manInPerson;</span><br><span class="line">            System.out.println(<span class="string">&quot;在多态性中，子类Man的对象manInPerson是父类Person的一个实例，也是Man的一个实例&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (womanInPerson <span class="keyword">instanceof</span> Person &amp;&amp; womanInPerson <span class="keyword">instanceof</span> Woman) &#123;</span><br><span class="line">            Woman woman1 = (Woman) womanInPerson;</span><br><span class="line">            System.out.println(<span class="string">&quot;在多态性中，子类Woman的对象womanInPerson是父类Person的一个实例，也是Woman的一个实例&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!(manInPerson <span class="keyword">instanceof</span> Woman || womanInPerson <span class="keyword">instanceof</span> Man)) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;在多态性中，子类对象之间不是彼此类型的实例。因为没有继承关系，所以子类之间没有任何联系&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Woman</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<p><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210305122249565.png" alt="image-20210305122249565"></p>
+<p>结果如下：<br><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210305122249565.png" alt="image-20210305122249565"></p>
 <h2 id="5-7-Object类"><a href="#5-7-Object类" class="headerlink" title="5.7 Object类"></a>5.7 <code>Object</code>类</h2><p>Object类中没有定义属性，只定义了方法。其中，数组类似类，也都继承于 Object类。</p>
 <h3 id="5-7-1-equals-方法"><a href="#5-7-1-equals-方法" class="headerlink" title="5.7.1 equals()方法"></a>5.7.1 equals()方法</h3><p>1.回顾<code>==</code>运算符的使用<br>如果比较的是基本数据类型的变量（不能与boolean类型比），则比较的是<strong>数据值</strong>是否相同（数据类型不一定要相同，会自动类型提升）；<br>如果比较的是引用数据类型的变量，则比较的是<strong>两个对象的地址值</strong>是否相同（即两个引用（即变量）是否指向同一个对象实例），而不是比较对象本身的属性和方法是否一样。且只能用于<strong>相同类型的对象（包括子父类的对象）</strong>之间比较，否则连编译都不会通过，</p>
 <p>2.equals()方法的使用<br><code>public boolean equals(Object obj)</code>是一个方法，而非运算符，只能用于引用数据类型。示例如下：</p>
@@ -2374,11 +2374,70 @@ e=\lim_{n \to \infty}(1+\frac{1}{n})^n=\lim_{n \to \infty}(1+\frac{1}{\frac{n}{x
 <p>一些练习：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Integer内部定义了IntegerCache类，IntegerCache中定义了1个Integer类型的数组cache[]</span></span><br><span class="line">        <span class="comment">//保存了-128~127范围的整数。如果使用自动装箱的方式，给Integer赋值的范围在-128~127范围内时，</span></span><br><span class="line">        <span class="comment">//可以直接使用数组中的元素，不用再去new对象调用方法赋值。目的：为了提高效率，只要在范围内就不用每次都去new</span></span><br><span class="line">        Integer i = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">        Integer j = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">        System.out.println(i == j);</span><br><span class="line"></span><br><span class="line">        Integer m = <span class="number">1</span>;</span><br><span class="line">        Integer n = <span class="number">1</span>;</span><br><span class="line">        System.out.println(m == n);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">        Integer x = <span class="number">128</span>;</span><br><span class="line">        Integer y = <span class="number">128</span>;</span><br><span class="line">        System.out.println(x == y);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 <h1 id="6-面向对象编程（下）"><a href="#6-面向对象编程（下）" class="headerlink" title="6. 面向对象编程（下）"></a>6. 面向对象编程（下）</h1><h2 id="6-1-关键字static"><a href="#6-1-关键字static" class="headerlink" title="6.1 关键字static"></a>6.1 关键字static</h2><p>static可以用来修饰：属性、方法、代码块、内部类</p>
-<h3 id="6-1-1-static修饰属性"><a href="#6-1-1-static修饰属性" class="headerlink" title="6.1.1 static修饰属性"></a>6.1.1 static修饰属性</h3><p>static修饰的属性称为<strong>静态属性</strong>，或者叫<strong>静态变量</strong>；反之为<strong>非静态属性</strong>，或者叫<strong>实例变量</strong>。<br><strong>实例变量：</strong>创建了多个对象，每个对象都独立地拥有一套类中的非静态属性。当修改其中的一个对象中的非静态属性时，不会引起其他对象中的属性值的修改；<br><strong>静态变量：</strong>创建了多个对象，所有对象共享同一个静态属性。当通过某一个对下个修改静态变量时，会导致其他对象调用此静态变量时，是修改过了的。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="6-1-2-static修饰方法"><a href="#6-1-2-static修饰方法" class="headerlink" title="6.1.2 static修饰方法"></a>6.1.2 static修饰方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="6-2-理解main方法的语法"><a href="#6-2-理解main方法的语法" class="headerlink" title="6.2 理解main方法的语法"></a>6.2 理解main方法的语法</h2><h2 id="6-3-类的成员之四：代码块"><a href="#6-3-类的成员之四：代码块" class="headerlink" title="6.3 类的成员之四：代码块"></a>6.3 类的成员之四：代码块</h2><h2 id="6-4-关键字final"><a href="#6-4-关键字final" class="headerlink" title="6.4 关键字final"></a>6.4 关键字final</h2><h2 id="6-5-抽象类与抽象方法（使用关键字abstract）"><a href="#6-5-抽象类与抽象方法（使用关键字abstract）" class="headerlink" title="6.5 抽象类与抽象方法（使用关键字abstract）"></a>6.5 抽象类与抽象方法（使用关键字abstract）</h2><h2 id="6-6-接口（interface）"><a href="#6-6-接口（interface）" class="headerlink" title="6.6 接口（interface）"></a>6.6 接口（interface）</h2><h2 id="6-7-类的成员之五：内部类"><a href="#6-7-类的成员之五：内部类" class="headerlink" title="6.7 类的成员之五：内部类"></a>6.7 类的成员之五：内部类</h2><p>P316</p>
-<p><span id="bottom"></span></p>
+<h3 id="6-1-1-static修饰属性"><a href="#6-1-1-static修饰属性" class="headerlink" title="6.1.1 static修饰属性"></a>6.1.1 static修饰属性</h3><p>static修饰的属性称为<strong>静态属性</strong>，或者叫<strong>静态变量、类变量</strong>；非static修饰的属性为<strong>非静态属性</strong>，或者叫<strong>实例变量</strong>。<br><strong>实例变量：</strong>创建了多个对象，每个对象都独立地拥有一套类中的非静态属性。当修改其中的一个对象中的非静态属性时，不会引起其他对象中的属性值的修改；<br><strong>静态变量：</strong>创建了多个对象，所有对象共享同一个静态属性。当通过某一个对下个修改静态变量时，会导致其他对象调用此静态变量时，是修改过了的。</p>
+<center><img alt="变量的分类-按照声明的位置" src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/变量的分类-按声明的位置.svg"></center>
+
+<p>局部变量中除了形参，都是没有默认初始化的，需要显式初始化。</p>
+<p>static修饰属性的说明：<br>1.静态变量随着类的加载而加载，所以可以直接通过<code>类.静态变量</code>的方式进行调用，所以静态变量也叫做类变量；</p>
+<p>2.类和对象的调用权限：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"><strong>静态属性</strong></th>
+<th style="text-align:center"><strong>非静态方法</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>类</strong></td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>对象</strong></td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>3.静态变量的加载早于对象的创建；<br>4.由于类只加载一次，则静态变量在内存中也会只存在一份，存在于方法区的静态域中。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChineseTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Chinese c1 = <span class="keyword">new</span> Chinese();</span><br><span class="line">        c1.name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        c1.age = <span class="number">20</span>;</span><br><span class="line">        c1.nation = <span class="string">&quot;CHN&quot;</span>;</span><br><span class="line">        Chinese c2 = <span class="keyword">new</span> Chinese();</span><br><span class="line">        c2.name = <span class="string">&quot;李四&quot;</span>;</span><br><span class="line">        c2.age = <span class="number">30</span>;</span><br><span class="line">        System.out.println(c1.nation + <span class="string">&quot;\t&quot;</span> + c2.nation);</span><br><span class="line"></span><br><span class="line">        c2.nation = <span class="string">&quot;中国&quot;</span>;</span><br><span class="line">        System.out.println(c1.nation + <span class="string">&quot;\t&quot;</span> + c2.nation);</span><br><span class="line"></span><br><span class="line">        Chinese.nation = <span class="string">&quot;CHN中国&quot;</span>;</span><br><span class="line">        System.out.println(c1.nation + <span class="string">&quot;\t&quot;</span> + c2.nation + <span class="string">&quot;\t&quot;</span> + Chinese.nation);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chinese</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> String nation;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：<br><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210309203656746.png" alt="image-20210309203656746"></p>
+<p>下面是一段代码的内存解析：<br><img src="https://pic-blogs.oss-cn-beijing.aliyuncs.com/img/image-20210309205045010.png" alt="image-20210309205045010"></p>
+<h3 id="6-1-2-static修饰方法"><a href="#6-1-2-static修饰方法" class="headerlink" title="6.1.2 static修饰方法"></a>6.1.2 static修饰方法</h3><p>1.和静态属性类似，静态方法也随着类的加载而加载，所以也可以通过<code>类.静态方法</code>调用；</p>
+<p>2.类和对象的调用权限：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">静态方法</th>
+<th style="text-align:center">非静态方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>类</strong></td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>对象</strong></td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>3.静态方法中，只能调用静态的方法或属性，而非静态的方法中，既可以调用非静态的方法或属性，也可以调用静态的方法或属性；<br>4.在静态的方法内，不能使用this、super关键字，因为它们是基于对象的，而静态方法随类加载，故早于对象的创建。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chinese</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">static</span> String nation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;中国人吃中餐&quot;</span>);</span><br><span class="line">        <span class="comment">//调用非静态结构</span></span><br><span class="line">        <span class="keyword">this</span>.info();</span><br><span class="line">        <span class="comment">//调用静态结构</span></span><br><span class="line">        walk();</span><br><span class="line">        System.out.println(<span class="string">&quot;nation:&quot;</span> + nation);<span class="comment">//类.静态属性 中可以省略类</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是一个中国人！&quot;</span>);</span><br><span class="line">        <span class="comment">//不能调用非静态的属性、方法</span></span><br><span class="line"><span class="comment">//        eat();</span></span><br><span class="line"><span class="comment">//        name = &quot;Tom&quot;;</span></span><br><span class="line">        <span class="comment">//可以调用静态的结构</span></span><br><span class="line">        System.out.println(Chinese.nation);</span><br><span class="line">        walk();<span class="comment">//类.静态方法 中可以省略类</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;name:&quot;</span> + name + <span class="string">&quot;, age:&quot;</span> + age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于静态属性和静态方法的调用，可以从生命周期的角度去理解。</p>
+<p>用static修饰属性的场景：当属性值被多个对象所共享，不会随对象的不同而不同；类中的常量也常常声明为static；<br>用static修饰方法的场景：当方法操作的是静态属性时，通常也将方法也用static修饰；此外，工具类中的方法也一般用static修饰以直接调用而不需要创建对象，比如Math、Arrays、Collections等。</p>
+<p><strong>补充点：类的单例设计模式</strong></p>
+<h2 id="6-2-理解main方法的语法"><a href="#6-2-理解main方法的语法" class="headerlink" title="6.2 理解main方法的语法"></a>6.2 理解main方法的语法</h2><h2 id="6-3-类的成员之四：代码块"><a href="#6-3-类的成员之四：代码块" class="headerlink" title="6.3 类的成员之四：代码块"></a>6.3 类的成员之四：代码块</h2><h2 id="6-4-关键字final"><a href="#6-4-关键字final" class="headerlink" title="6.4 关键字final"></a>6.4 关键字final</h2><h2 id="6-5-抽象类与抽象方法（使用关键字abstract）"><a href="#6-5-抽象类与抽象方法（使用关键字abstract）" class="headerlink" title="6.5 抽象类与抽象方法（使用关键字abstract）"></a>6.5 抽象类与抽象方法（使用关键字abstract）</h2><h2 id="6-6-接口（interface）"><a href="#6-6-接口（interface）" class="headerlink" title="6.6 接口（interface）"></a>6.6 接口（interface）</h2><h2 id="6-7-类的成员之五：内部类"><a href="#6-7-类的成员之五：内部类" class="headerlink" title="6.7 类的成员之五：内部类"></a>6.7 类的成员之五：内部类</h2><p><span id="bottom"></span></p>
 <p><code>step over</code>逐行单步调试</p>
 <p><code>step into</code>逐行调试（有方法时进入方法）</p>
 <p><code>step out</code>从into中出来</p>
